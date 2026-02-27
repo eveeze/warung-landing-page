@@ -104,9 +104,9 @@ export default function ProductDetail() {
             </h1>
 
             <p className="font-serif text-lg md:text-xl text-text-muted leading-relaxed mb-12 max-w-lg">
-              Setiap potongan dan kualitas barang kami pastikan memenuhi standar
-              premium operasional Anda. {product.name} siap menyuplai kebutuhan
-              warung atau dapur rumah Anda.
+              Kami jamin kualitas dan kesegaran setiap produk yang kami jual.
+              {product.name} tersedia untuk pembelian eceran maupun grosir
+              dengan harga terbaik langsung dari Warung Mbah Manto.
             </p>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 border-t border-border/30 pt-8">

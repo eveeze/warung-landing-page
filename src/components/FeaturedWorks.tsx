@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { fetchProducts } from '@/lib/api';
 import type { Product } from '@/lib/api';
@@ -22,9 +23,9 @@ export default function FeaturedWorks() {
       <div className="w-full px-6 mb-16">
         {/* Meta Header */}
         <div className="flex justify-between items-center text-text-muted font-heading font-bold text-[10px] uppercase tracking-widest border-b border-border/30 pb-4">
-          <span>© PRODUK ANDALAN プロダクト</span>
+          <span>© PRODUK ANDALAN</span>
           <span className="hidden md:block">(WM™ — 03)</span>
-          <span>KUALITAS TERBAIK</span>
+          <span>PILIHAN TERBAIK</span>
         </div>
       </div>
 
@@ -36,10 +37,10 @@ export default function FeaturedWorks() {
           className="flex font-heading font-black text-[clamp(6rem,20vw,25rem)] leading-[0.8] tracking-tighter text-white"
         >
           {/* Duplicate text seamlessly */}
-          <span className="pr-8">Featured Products©</span>
-          <span className="pr-8">Featured Products©</span>
-          <span className="pr-8">Featured Products©</span>
-          <span className="pr-8">Featured Products©</span>
+          <span className="pr-8">Produk Pilihan©</span>
+          <span className="pr-8">Produk Pilihan©</span>
+          <span className="pr-8">Produk Pilihan©</span>
+          <span className="pr-8">Produk Pilihan©</span>
         </motion.div>
       </div>
 
@@ -50,19 +51,19 @@ export default function FeaturedWorks() {
           {/* Context Text & Button */}
           <div className="max-w-md">
             <p className="font-serif text-base text-text-muted leading-relaxed mb-8">
-              Kami menyeleksi setiap produk dengan standar tertinggi, memastikan{' '}
+              Setiap produk kami seleksi langsung dari pemasok terpercaya. Dari{' '}
               <strong className="text-white font-medium">
-                kesegaran, ketersediaan, dan kualitas premium
+                bahan pokok, bumbu dapur, hingga kebutuhan rumah tangga
               </strong>{' '}
-              untuk memenuhi kebutuhan harian maupun pasokan bisnis Anda secara
+              — semua tersedia dengan harga transparan dan kualitas yang
               konsisten.
             </p>
-            <a
-              href="#contact"
+            <Link
+              href="/belanja"
               className="inline-flex items-center justify-center px-8 py-3 rounded-full border border-white text-white font-heading font-bold text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
             >
-              Lihat Katalog
-            </a>
+              Jelajahi Katalog →
+            </Link>
           </div>
 
           {/* Product 0: Large Square */}

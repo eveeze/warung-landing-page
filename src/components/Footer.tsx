@@ -11,9 +11,9 @@ export default function Footer() {
         {/* Centered Descriptive Text */}
         <div className="max-w-[700px] text-center mb-12">
           <p className="font-heading font-medium tracking-tight text-white/90 text-sm md:text-base leading-relaxed">
-            I build expressive, performance-driven experiences by blending clean
-            design and solid software architecture. Mendefinisikan ulang tradisi
-            lokal menjadi standar global melalui pelayanan tanpa kompromi.
+            Warung Mbah Manto hadir untuk menjadi mitra belanja harian Anda.
+            Dari kebutuhan dapur hingga stok usaha, kami pastikan kualitas
+            terbaik dengan harga yang selalu bersahabat.
           </p>
         </div>
 

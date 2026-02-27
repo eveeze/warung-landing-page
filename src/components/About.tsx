@@ -5,16 +5,16 @@ import { motion, useInView } from 'framer-motion';
 
 const features = [
   {
-    label: 'Harga Grosir',
-    desc: 'Tersedia harga spesial bertingkat untuk pembelian dalam jumlah besar, memastikan efisiensi pasokan bisnis atau acara Anda terjaga.',
+    label: 'Harga Grosir Bertingkat',
+    desc: 'Beli lebih banyak, bayar lebih hemat. Sistem harga tier otomatis menyesuaikan diskon berdasarkan jumlah pesanan Anda.',
   },
   {
-    label: 'Buka Setiap Hari',
-    desc: 'Melayani kebutuhan belanja harian Anda setiap saat. Kami memastikan ketersediaan barang tanpa mengenal hari libur.',
+    label: 'Buka 7 Hari Seminggu',
+    desc: 'Warung buka setiap hari tanpa libur. Stok selalu diperbaharui agar kebutuhan dapur dan usaha Anda tidak pernah terhenti.',
   },
   {
-    label: 'Pesan WhatsApp',
-    desc: 'Interaksi langsung dan personal untuk pemesanan cepat. Konsultasikan kebutuhan grosir Anda langsung dengan tim kami.',
+    label: 'Pesan Langsung via WA',
+    desc: 'Cukup pilih barang, isi keranjang, dan pesanan Anda langsung terkirim ke WhatsApp kami di 0882‑003‑310‑360.',
   },
 ];
 
@@ -44,9 +44,9 @@ export default function About() {
       <div className="w-full px-6">
         {/* Top Meta Data */}
         <div className="flex justify-between items-center text-text-muted font-heading font-bold text-[10px] uppercase tracking-widest mb-12 border-b border-border/30 pb-4">
-          <span>© CAPABILITIES Layanan</span>
+          <span>© KEUNGGULAN KAMI</span>
           <span className="hidden md:block">(WM™ — 02)</span>
-          <span>GROSIR EXECUTION</span>
+          <span>LAYANAN UNGGULAN</span>
         </div>
 
         {/* Massive Title */}
@@ -72,10 +72,10 @@ export default function About() {
           style={{ originX: 0 }}
           className="w-full bg-white text-black py-3 px-6 mb-24 md:mb-32 grid grid-cols-2 lg:grid-cols-4 font-heading font-black text-[10px] md:text-sm uppercase tracking-widest text-left md:text-center gap-4"
         >
-          <span className="text-left">Precise</span>
-          <span>Structured</span>
-          <span className="hidden lg:block">Focused</span>
-          <span className="hidden lg:block text-right">Visual Language</span>
+          <span className="text-left">Terpercaya</span>
+          <span>Terstruktur</span>
+          <span className="hidden lg:block">Konsisten</span>
+          <span className="hidden lg:block text-right">Berkualitas</span>
         </motion.div>
 
         {/* Asymmetrical Right-Aligned List */}

@@ -18,18 +18,21 @@ export default function Contact() {
 
         {/* Right: Massive Typography & CTA */}
         <div className="w-full md:w-1/2 flex flex-col justify-center items-start">
-          <h2 className="font-heading font-medium text-[clamp(2.5rem,5vw,5rem)] leading-[1.1] tracking-tighter text-white mb-12">
-            10+ tahun™ melayani kebutuhan harian dengan kualitas, konsistensi,
-            dan dedikasi penuh di setiap langkah.
+          <h2
+            className="font-heading font-medium text-[clamp(2.5rem,5vw,5rem)] leading-[1.1] tracking-tighter text-white mb-12"
+            style={{ textWrap: 'balance' }}
+          >
+            10+ tahun™ melayani ribuan pelanggan setia dengan harga jujur, stok
+            lengkap, dan layanan sepenuh hati.
           </h2>
 
           <a
-            href="https://wa.me/6281234567890"
+            href="https://wa.me/62882003310360"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center px-10 py-4 rounded-full border border-white text-white font-heading font-bold text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
           >
-            Pesan WhatsApp
+            Hubungi via WhatsApp →
           </a>
         </div>
       </div>

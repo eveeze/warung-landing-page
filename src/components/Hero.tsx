@@ -12,10 +12,10 @@ const defaultVars = {
 };
 
 const marqueeItems = [
-  { text: 'W. MANTO™', type: 'bold' },
-  { text: '— GROSIR & ECERAN', type: 'serif' },
+  { text: 'WARUNG MBAH MANTO™', type: 'bold' },
+  { text: '— Grosir & Eceran Terpercaya', type: 'serif' },
   { text: 'BUKA SETIAP HARI', type: 'bold' },
-  { text: '— KUALITAS TERBAIK', type: 'serif' },
+  { text: '— Sejak 2014, Melayani Sepenuh Hati', type: 'serif' },
 ];
 
 const MarqueeContent = () => (
@@ -51,12 +51,15 @@ export default function Hero() {
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
             className="w-full md:w-7/12 md:pr-12"
           >
-            <h1 className="text-[clamp(2.5rem,5vw,5rem)] font-heading font-medium tracking-tight text-white leading-[1.05]">
-              Menyatukan Kebutuhan dan <br className="hidden md:block" />
-              Tradisi yang Membentuk <br className="hidden md:block" />
-              Sebuah{' '}
+            <h1
+              className="text-[clamp(2.5rem,5vw,5rem)] font-heading font-medium tracking-tight text-white leading-[1.05]"
+              style={{ textWrap: 'balance' }}
+            >
+              Belanja Harian Jadi Mudah, <br className="hidden md:block" />
+              Harga Grosir untuk <br className="hidden md:block" />
+              Semua{' '}
               <span className="font-serif italic text-text-muted font-light tracking-normal lowercase">
-                identitas.
+                kalangan.
               </span>
             </h1>
           </motion.div>
@@ -82,9 +85,9 @@ export default function Hero() {
           style={{ originX: 0 }}
           className="w-full bg-white text-black py-3 px-6 mt-16 md:mt-24 mb-12 md:mb-16 grid grid-cols-3 font-heading font-black text-[10px] md:text-sm uppercase tracking-widest text-center"
         >
-          <span className="text-left">Harga Grosir</span>
-          <span className="text-center">Setiap Hari</span>
-          <span className="text-right">Kualitas</span>
+          <span className="text-left">Harga Bersahabat</span>
+          <span className="text-center">Buka Setiap Hari</span>
+          <span className="text-right">Kualitas Terjamin</span>
         </motion.div>
 
         {/* Massive Screen-Filling Text */}
