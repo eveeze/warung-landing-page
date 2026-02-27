@@ -52,6 +52,12 @@ export async function fetchProducts(params?: {
 
 export async function fetchProductById(id: string): Promise<Product> {
   const res = await fetch(`${API_BASE}/public/products/${id}`);
+  if (!res.ok) {
+    const errorJson = await res
+      .json()
+      .catch(() => ({ message: 'Product not found' }));
+    throw new Error(errorJson.message || 'Product not found');
+  }
   const json = await res.json();
   return json.data;
 }
