@@ -106,3 +106,20 @@ h6 {
 .animate-marquee-slow {
   animation: marquee 40s linear infinite;
 }
+
+@keyframes marquee-half {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-seamless {
+  animation: marquee-half 40s linear infinite;
+}
+
+.animate-marquee-seamless-fast {
+  animation: marquee-half 25s linear infinite;
+}

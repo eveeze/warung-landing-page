@@ -28,12 +28,41 @@ export default function Footer() {
         {/* Links Grid */}
         <div className="w-full flex justify-between items-end border-b border-border/30 pb-4 mb-4 md:mb-8">
           <div className="flex flex-col">
-            <h4 className="font-heading font-bold text-white text-[10px] md:text-xs uppercase tracking-widest mb-1">
+            <h4 className="font-heading font-bold text-white text-[10px] md:text-xs uppercase tracking-widest mb-2">
               Quick Links
             </h4>
-            <p className="font-serif italic text-text-muted text-[10px] md:text-sm">
-              Beranda, Layanan, Koleksi, Kontak
-            </p>
+            <div className="flex gap-2">
+              <a
+                href="/#beranda"
+                className="font-serif italic text-text-muted text-[10px] md:text-sm hover:text-white transition-colors"
+              >
+                Beranda,
+              </a>
+              <a
+                href="/#layanan"
+                className="font-serif italic text-text-muted text-[10px] md:text-sm hover:text-white transition-colors"
+              >
+                Layanan,
+              </a>
+              <a
+                href="/#kategori"
+                className="font-serif italic text-text-muted text-[10px] md:text-sm hover:text-white transition-colors"
+              >
+                Kategori,
+              </a>
+              <a
+                href="/#works"
+                className="font-serif italic text-text-muted text-[10px] md:text-sm hover:text-white transition-colors"
+              >
+                Koleksi,
+              </a>
+              <a
+                href="/#contact"
+                className="font-serif italic text-text-muted text-[10px] md:text-sm hover:text-white transition-colors"
+              >
+                Kontak
+              </a>
+            </div>
           </div>
 
           <div className="flex flex-col text-right">

@@ -30,18 +30,19 @@ export default function FeaturedWorks() {
       </div>
 
       {/* Infinite Marquee Heading */}
-      <div className="w-full relative flex items-center overflow-hidden mb-24 whitespace-nowrap">
-        <motion.div
-          animate={{ x: [0, '-50%'] }}
-          transition={{ repeat: Infinity, duration: 20, ease: 'linear' }}
-          className="flex font-heading font-black text-[clamp(6rem,20vw,25rem)] leading-[0.8] tracking-tighter text-white"
-        >
-          {/* Duplicate text seamlessly */}
-          <span className="pr-8">Produk Pilihan©</span>
-          <span className="pr-8">Produk Pilihan©</span>
-          <span className="pr-8">Produk Pilihan©</span>
-          <span className="pr-8">Produk Pilihan©</span>
-        </motion.div>
+      <div className="w-full relative flex items-center overflow-hidden mb-24 select-none">
+        <div className="flex flex-shrink-0 animate-marquee-slow font-heading font-black text-[clamp(6rem,20vw,25rem)] leading-[0.8] tracking-tighter text-white whitespace-nowrap">
+          <span className="pr-16">Produk Pilihan©</span>
+          <span className="pr-16">Produk Pilihan©</span>
+          <span className="pr-16">Produk Pilihan©</span>
+          <span className="pr-16">Produk Pilihan©</span>
+        </div>
+        <div className="flex flex-shrink-0 animate-marquee-slow font-heading font-black text-[clamp(6rem,20vw,25rem)] leading-[0.8] tracking-tighter text-white whitespace-nowrap">
+          <span className="pr-16">Produk Pilihan©</span>
+          <span className="pr-16">Produk Pilihan©</span>
+          <span className="pr-16">Produk Pilihan©</span>
+          <span className="pr-16">Produk Pilihan©</span>
+        </div>
       </div>
 
       {/* Content & Bento Grid Grid */}
