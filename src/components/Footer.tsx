@@ -66,7 +66,7 @@ export default function Footer() {
         {/* Massive Copyright Text */}
         <div className="w-full flex justify-center -mb-[2%]">
           <h1 className="text-[clamp(6rem,26vw,32rem)] font-heading font-black tracking-tighter uppercase text-white leading-[0.75] text-center">
-            ©2024
+            ©2026
           </h1>
         </div>
       </div>

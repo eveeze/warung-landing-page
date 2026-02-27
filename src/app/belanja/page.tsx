@@ -59,6 +59,14 @@ export default function Belanja() {
               <p className="font-serif text-text-muted text-base max-w-md">
                 Koleksi lengkap kebutuhan harian dan pasokan bisnis dengan
                 standar kualitas terbaik Warung Mbah Manto.
+                <br />
+                <br />
+                <span className="text-white/80 bg-white/10 px-3 py-2 rounded border border-white/20 inline-block text-sm">
+                  💡 <strong>Simulasi Belanja:</strong> Katalog ini adalah
+                  demonstrasi. Pemesanan asli akan diarahkan ke WhatsApp{' '}
+                  <strong>0882003310360</strong>. (Fitur kategori belum
+                  diimplementasikan).
+                </span>
               </p>
             </div>
             <div className="text-[10px] font-heading font-bold uppercase tracking-widest text-text-muted text-right">

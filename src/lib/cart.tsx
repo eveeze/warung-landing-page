@@ -152,7 +152,7 @@ export function useCart() {
 export function generateWhatsAppURL(
   cartItems: CartItem[],
   customerInfo: { name: string; address?: string },
-  waNumber = '6281234567890',
+  waNumber = '62882003310360',
 ): string {
   let message = 'Halo Warung Manto! 👋\nSaya ingin memesan:\n\n';
   let grandTotal = 0;
