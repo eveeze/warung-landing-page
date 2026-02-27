@@ -6,6 +6,7 @@ import { Search, Loader2 } from 'lucide-react';
 import { fetchProducts, fetchCategories, formatRupiah } from '@/lib/api';
 import type { Product, Category } from '@/lib/api';
 import { useCart } from '@/lib/cart';
+import AnimatedButton from '@/components/ui/AnimatedButton';
 
 function ProductSkeleton() {
   return (
@@ -298,20 +299,23 @@ export default function Shopping() {
             {/* Brutalist Load More */}
             {hasMore && (
               <div className="flex justify-center mt-20">
-                <button
-                  onClick={() => loadProducts(page + 1)}
-                  disabled={loadingMore}
-                  className="w-full md:w-auto px-12 py-6 border border-white font-heading font-bold text-xs uppercase tracking-[0.2em] text-white hover:bg-white hover:text-black transition-colors duration-500 disabled:opacity-50"
-                >
-                  {loadingMore ? (
-                    <span className="flex items-center justify-center gap-4">
-                      <Loader2 size={16} className="animate-spin" /> Sedang
-                      Memuat…
-                    </span>
-                  ) : (
-                    'Muat Lebih Banyak'
-                  )}
-                </button>
+                {loadingMore ? (
+                  <button
+                    disabled
+                    className="w-full md:w-auto px-12 py-6 border border-white font-heading font-bold text-xs uppercase tracking-[0.2em] text-white hover:bg-white hover:text-black transition-colors duration-500 disabled:opacity-50 flex items-center justify-center gap-4"
+                  >
+                    <Loader2 size={16} className="animate-spin" /> Sedang
+                    Memuat…
+                  </button>
+                ) : (
+                  <AnimatedButton
+                    onClick={() => loadProducts(page + 1)}
+                    fillColor="bg-white"
+                    className="w-full md:w-auto px-12 py-6 rounded-full border border-white/30 font-heading font-bold text-xs uppercase tracking-[0.2em] text-white hover:border-white hover:text-black transition-colors duration-500 flex items-center justify-center"
+                  >
+                    Muat Lebih Banyak
+                  </AnimatedButton>
+                )}
               </div>
             )}
           </>

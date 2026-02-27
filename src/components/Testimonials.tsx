@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import AnimatedButton from '@/components/ui/AnimatedButton';
 
 const testimonials = [
   {
@@ -60,33 +61,43 @@ const testimonials = [
   },
 ];
 
-function TestimonialCard({ data }: { data: (typeof testimonials)[0] }) {
+function TestimonialCard({
+  data,
+  className = '',
+}: {
+  data: (typeof testimonials)[0];
+  className?: string;
+}) {
   return (
-    <div className="w-[320px] md:w-[400px] bg-[#0a0a0a] border border-[#222] rounded-xl p-6 md:p-8 flex flex-col shadow-2xl">
-      <p className="font-serif text-sm md:text-base text-gray-300 leading-relaxed max-w-[90%] mb-12">
+    <div
+      className={`group w-full lg:w-[400px] bg-[#050505] border border-white/5 rounded-[2.5rem] p-8 md:p-10 flex flex-col shadow-lg hover:shadow-[0_0_40px_rgba(255,255,255,0.06)] transition-all duration-700 min-h-[280px] ${className}`}
+    >
+      <p className="font-serif text-[15px] md:text-lg text-text-muted leading-relaxed max-w-[95%] mb-12 flex-1 relative z-10">
         "{data.quote}"
       </p>
 
-      <div className="flex items-center gap-4 pt-6 border-t border-[#222]">
-        <img
-          src={data.image}
-          alt={data.author}
-          className="w-10 h-10 rounded-md object-cover grayscale brightness-75"
-        />
+      <div className="flex items-center gap-4 pt-6 border-t border-white/5 mt-auto relative z-10">
+        <div className="relative w-12 h-12 rounded-full overflow-hidden">
+          <img
+            src={data.image}
+            alt={data.author}
+            className="absolute inset-0 w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+          />
+        </div>
         <div className="flex-1 flex flex-col">
           <div className="flex items-center gap-1.5">
-            <h4 className="font-heading font-medium text-white text-sm">
+            <h4 className="font-heading font-bold text-white text-sm md:text-base tracking-tight text-white/90 group-hover:text-white transition-colors">
               {data.author}
             </h4>
             {/* Verified Badge Icon */}
             <svg
-              className="w-4 h-4 text-blue-500 fill-current"
+              className="w-4 h-4 text-blue-500 fill-current opacity-80 group-hover:opacity-100 transition-opacity"
               viewBox="0 0 24 24"
             >
               <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z" />
             </svg>
           </div>
-          <p className="font-sans text-[10px] md:text-xs text-gray-500 mt-0.5">
+          <p className="font-sans text-[10px] md:text-[11px] text-text-muted mt-0.5 uppercase tracking-widest font-bold">
             {data.role}
           </p>
         </div>
@@ -114,18 +125,18 @@ export default function Testimonials() {
     <section
       ref={containerRef}
       id="ulasan"
-      className="relative h-auto md:h-[350vh] bg-black z-10 border-t border-border/30"
+      className="relative h-auto lg:h-[350vh] bg-black z-10 border-t border-border/30"
     >
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col items-center justify-center">
-        {/* Infinite Looping Background Text (Reduced Size) */}
+      <div className="sticky top-0 h-[100dvh] w-full flex flex-col items-center justify-center overflow-hidden z-0">
+        {/* Infinite Looping Background Text */}
         <div className="absolute inset-0 flex items-center overflow-hidden whitespace-nowrap pointer-events-none select-none">
-          <div className="flex flex-shrink-0 animate-marquee-slow font-heading font-black text-[clamp(4rem,10vw,12rem)] leading-[0.8] tracking-tighter text-white opacity-80">
+          <div className="flex flex-shrink-0 animate-marquee-slow font-heading font-black text-[clamp(4rem,20vw,12rem)] leading-[0.8] tracking-tighter text-white opacity-100 drop-shadow-md">
             <span className="pr-16">© — Reviews in Testimonial</span>
             <span className="pr-16">© — Reviews in Testimonial</span>
             <span className="pr-16">© — Reviews in Testimonial</span>
             <span className="pr-16">© — Reviews in Testimonial</span>
           </div>
-          <div className="flex flex-shrink-0 animate-marquee-slow font-heading font-black text-[clamp(4rem,10vw,12rem)] leading-[0.8] tracking-tighter text-white opacity-80">
+          <div className="flex flex-shrink-0 animate-marquee-slow font-heading font-black text-[clamp(4rem,20vw,12rem)] leading-[0.8] tracking-tighter text-white opacity-100 drop-shadow-md">
             <span className="pr-16">© — Reviews in Testimonial</span>
             <span className="pr-16">© — Reviews in Testimonial</span>
             <span className="pr-16">© — Reviews in Testimonial</span>
@@ -133,18 +144,20 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* Action Button */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-16 md:translate-y-20 z-20">
-          <a
+        {/* Action Button (Sticky for all sizes) */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-16 md:translate-y-20 z-20 pointer-events-auto">
+          <AnimatedButton
             href="#contact"
-            className="inline-flex items-center justify-center px-6 md:px-8 py-2 md:py-3 rounded-full border-2 border-white text-white font-heading font-bold text-[10px] md:text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
+            as="a"
+            fillColor="bg-white"
+            className="group inline-flex items-center justify-center px-6 md:px-8 py-3 rounded-[2rem] border-2 border-white/20 bg-black/40 backdrop-blur-md text-white font-heading font-bold text-xs md:text-sm uppercase tracking-widest hover:border-white hover:text-black transition-colors duration-500 shadow-[0_0_0_rgba(255,255,255,0)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]"
           >
             Hubungi Kami
-          </a>
+          </AnimatedButton>
         </div>
 
         {/* Desktop: Floating Cards Container (Parallax) */}
-        <div className="hidden md:block absolute inset-0 z-30 pointer-events-none h-[350vh]">
+        <div className="hidden lg:block absolute inset-0 z-30 pointer-events-none h-[350vh]">
           {/* Card 1: Left Edge */}
           <motion.div
             style={{ y: y1 }}
@@ -195,10 +208,22 @@ export default function Testimonials() {
         </div>
       </div>
 
-      {/* Mobile: Stacked Cards */}
-      <div className="md:hidden relative z-30 flex flex-col items-center gap-6 py-24 px-4 -mt-[80vh] pb-32">
-        {testimonials.map((t) => (
-          <TestimonialCard key={t.id} data={t} />
+      {/* Mobile & Tablet: 1-Column Grid (Stacked) with Scroll Animations */}
+      <div className="lg:hidden relative z-30 w-full flex flex-col items-center gap-10 px-4 pb-32 pt-20">
+        {testimonials.map((t, i) => (
+          <motion.div
+            key={t.id}
+            initial={{ opacity: 0, y: 150 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 1.2,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            viewport={{ once: true, margin: '0px 0px -100px 0px' }}
+            className="w-full max-w-[90vw] md:max-w-[500px]"
+          >
+            <TestimonialCard data={t} />
+          </motion.div>
         ))}
       </div>
     </section>

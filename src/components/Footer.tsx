@@ -1,5 +1,7 @@
 'use client';
 
+import AnimatedButton from '@/components/ui/AnimatedButton';
+
 export default function Footer() {
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -18,12 +20,13 @@ export default function Footer() {
         </div>
 
         {/* Back to Top Button */}
-        <button
+        <AnimatedButton
           onClick={handleScrollToTop}
-          className="mb-32 px-6 py-2.5 rounded-full border border-border text-[10px] md:text-xs font-heading font-bold uppercase tracking-[0.1em] hover:bg-white hover:text-black hover:border-white transition-all duration-300"
+          fillColor="bg-white"
+          className="mb-32 px-6 py-2.5 rounded-full border border-border text-[10px] md:text-xs font-heading font-bold uppercase tracking-[0.1em] hover:border-white hover:text-black transition-colors duration-300"
         >
           Back To Top
-        </button>
+        </AnimatedButton>
 
         {/* Links Grid */}
         <div className="w-full flex justify-between items-end border-b border-border/30 pb-4 mb-4 md:mb-8">

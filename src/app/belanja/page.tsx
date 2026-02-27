@@ -10,6 +10,7 @@ import Footer from '@/components/Footer';
 import CartDrawer from '@/components/CartDrawer';
 import { useCart } from '@/lib/cart';
 import { Search, X, ChevronDown } from 'lucide-react';
+import AnimatedButton from '@/components/ui/AnimatedButton';
 
 // ─── Design threshold: ≤8 categories = pill row, >8 = scrollable dropdown ───
 const PILL_THRESHOLD = 8;
@@ -364,15 +365,16 @@ export default function Belanja() {
                   : 'Tidak ada produk dalam kategori ini.'}
               </p>
               {(searchQuery || activeCategoryId) && (
-                <button
+                <AnimatedButton
                   onClick={() => {
                     setSearchQuery('');
                     setActiveCategoryId(null);
                   }}
-                  className="text-[10px] font-heading font-bold uppercase tracking-widest border-b border-white pb-1 hover:opacity-70 transition-opacity"
+                  fillColor="bg-white"
+                  className="mt-4 px-8 py-4 rounded-full border border-white/30 text-[10px] font-heading font-bold uppercase tracking-widest text-white hover:border-white hover:text-black transition-colors flex items-center justify-center"
                 >
                   Reset Semua Filter
-                </button>
+                </AnimatedButton>
               )}
             </motion.div>
           )}

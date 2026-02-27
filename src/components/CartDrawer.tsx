@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Minus, Plus, Trash2, MessageCircle } from 'lucide-react';
 import { useCart, generateWhatsAppURL } from '@/lib/cart';
 import { calculatePrice, formatRupiah } from '@/lib/api';
+import AnimatedButton from '@/components/ui/AnimatedButton';
 
 export default function CartDrawer() {
   const {
@@ -170,12 +171,12 @@ export default function CartDrawer() {
 
                   {/* Clear All */}
                   <div className="pt-2 flex justify-start">
-                    <button
+                    <AnimatedButton
                       onClick={clearCart}
-                      className="text-[10px] text-text-muted hover:text-white transition-colors font-heading uppercase tracking-[0.2em] font-medium"
+                      className="text-[10px] text-text-muted hover:text-white transition-colors font-heading uppercase tracking-[0.2em] font-medium flex"
                     >
                       Hapus Semua Item
-                    </button>
+                    </AnimatedButton>
                   </div>
                 </div>
               )}
@@ -213,14 +214,23 @@ export default function CartDrawer() {
                 </div>
 
                 {/* WhatsApp Button */}
-                <button
+                {/* WhatsApp Button */}
+                <AnimatedButton
+                  as="button"
                   onClick={handleCheckout}
                   disabled={!name.trim()}
-                  className="w-full flex items-center justify-center gap-3 bg-white hover:bg-forest text-black hover:text-black font-heading font-black text-xs tracking-[0.2em] uppercase py-5 transition-all duration-500 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-black"
+                  iconLeft={
+                    <MessageCircle
+                      size={18}
+                      strokeWidth={2}
+                      className="relative z-10"
+                    />
+                  }
+                  fillColor="bg-white"
+                  className="group w-full flex items-center justify-center gap-3 bg-[#111] border border-white/10 text-white hover:text-black font-heading font-black text-xs tracking-[0.2em] uppercase py-5 transition-colors duration-500 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-[#111] disabled:hover:text-white"
                 >
-                  <MessageCircle size={18} strokeWidth={2} />
-                  <span>Checkout via WA</span>
-                </button>
+                  Checkout via WA
+                </AnimatedButton>
               </div>
             )}
           </motion.div>

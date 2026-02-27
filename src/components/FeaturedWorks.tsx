@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { fetchProducts } from '@/lib/api';
 import type { Product } from '@/lib/api';
+import AnimatedButton from '@/components/ui/AnimatedButton';
 
 export default function FeaturedWorks() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -59,11 +60,14 @@ export default function FeaturedWorks() {
               — semua tersedia dengan harga transparan dan kualitas yang
               konsisten.
             </p>
-            <Link
-              href="/belanja"
-              className="inline-flex items-center justify-center px-8 py-3 rounded-full border border-white text-white font-heading font-bold text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
-            >
-              Jelajahi Katalog →
+            <Link href="/belanja" className="inline-block">
+              <AnimatedButton
+                as="span"
+                fillColor="bg-white"
+                className="inline-flex items-center justify-center px-8 py-3 rounded-full border border-white text-white font-heading font-bold text-xs uppercase tracking-widest hover:border-white hover:text-black transition-colors duration-300"
+              >
+                Jelajahi Katalog →
+              </AnimatedButton>
             </Link>
           </div>
 

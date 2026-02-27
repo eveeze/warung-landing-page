@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
+import AnimatedButton from '@/components/ui/AnimatedButton';
 
 const categories = [
   {
@@ -87,12 +88,14 @@ export default function Categories() {
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <Link
+            <AnimatedButton
               href="/belanja"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-border/50 text-white font-heading font-bold text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
+              as="a"
+              fillColor="bg-white"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-border/50 text-white font-heading font-bold text-xs uppercase tracking-widest hover:border-white hover:text-black transition-colors duration-300"
             >
               Lihat Semua Kategori →
-            </Link>
+            </AnimatedButton>
           </motion.div>
         </div>
 

@@ -1,3 +1,5 @@
+import AnimatedButton from '@/components/ui/AnimatedButton';
+
 export default function Contact() {
   return (
     <section
@@ -26,14 +28,16 @@ export default function Contact() {
             lengkap, dan layanan sepenuh hati.
           </h2>
 
-          <a
+          <AnimatedButton
+            as="a"
             href="https://wa.me/62882003310360"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-10 py-4 rounded-full border border-white text-white font-heading font-bold text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
+            fillColor="bg-white"
+            className="inline-flex items-center justify-center px-10 py-4 rounded-full border border-white text-white font-heading font-bold text-sm uppercase tracking-widest hover:border-white hover:text-black transition-colors duration-300"
           >
             Hubungi via WhatsApp →
-          </a>
+          </AnimatedButton>
         </div>
       </div>
     </section>

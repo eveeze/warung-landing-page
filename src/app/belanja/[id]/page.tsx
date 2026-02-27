@@ -15,6 +15,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CartDrawer from '@/components/CartDrawer';
 import { useCart } from '@/lib/cart';
+import AnimatedButton from '@/components/ui/AnimatedButton';
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -220,7 +221,7 @@ export default function ProductDetail() {
                       </span>
                     </div>
 
-                    <button
+                    <AnimatedButton
                       onClick={() => {
                         addItem(
                           {
@@ -235,10 +236,11 @@ export default function ProductDetail() {
                         );
                         openCart();
                       }}
-                      className="w-full sm:w-auto px-10 py-5 rounded-full bg-white text-black font-heading font-bold text-xs uppercase tracking-widest hover:bg-gray-200 transition-colors"
+                      className="group w-full sm:w-auto px-10 py-5 rounded-full bg-transparent border border-white/20 text-white font-heading font-bold text-xs uppercase tracking-widest hover:border-white hover:text-black transition-colors duration-500 flex items-center justify-center"
+                      fillColor="bg-white"
                     >
-                      + Tambah {quantity > 1 ? `${quantity} ` : ''}ke Keranjang
-                    </button>
+                      {`+ Tambah ${quantity > 1 ? `${quantity} ` : ''}ke Keranjang`}
+                    </AnimatedButton>
                   </>
                 )}
               </div>
