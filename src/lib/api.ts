@@ -50,6 +50,12 @@ export async function fetchProducts(params?: {
   return json.data;
 }
 
+export async function fetchProductById(id: string): Promise<Product> {
+  const res = await fetch(`${API_BASE}/public/products/${id}`);
+  const json = await res.json();
+  return json.data;
+}
+
 export async function fetchCategories(): Promise<Category[]> {
   const res = await fetch(`${API_BASE}/public/categories`);
   const json = await res.json();

@@ -1,15 +1,16 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { useCart } from '@/lib/cart';
 
 const navLinks = [
-  { label: 'Beranda', href: '#beranda' },
-  { label: 'Tentang', href: '#tentang' },
-  { label: 'Belanja', href: '#belanja' },
-  { label: 'Kontak', href: '#kontak' },
+  { label: 'Beranda', href: '/' },
+  { label: 'Tentang', href: '/#works' },
+  { label: 'Belanja', href: '/belanja' },
+  { label: 'Kontak', href: '/#contact' },
 ];
 
 export default function Navbar() {
@@ -28,12 +29,12 @@ export default function Navbar() {
           <div className="grid grid-cols-2 md:grid-cols-12 gap-4 items-start">
             {/* Left: Brand */}
             <div className="col-span-1 md:col-span-3">
-              <a
-                href="#beranda"
+              <Link
+                href="/"
                 className="font-heading text-lg md:text-xl text-white tracking-tight hover:opacity-50 transition-opacity"
               >
                 Warung Manto®
-              </a>
+              </Link>
             </div>
 
             {/* Middle: Quick Links (Desktop only) */}
@@ -43,14 +44,14 @@ export default function Navbar() {
               </span>
               <div className="flex flex-wrap gap-2 text-[10px] text-text-muted font-heading tracking-wider">
                 {navLinks.map((link, i) => (
-                  <a
+                  <Link
                     key={link.href}
                     href={link.href}
                     className="hover:text-white transition-colors"
                   >
                     {link.label}
                     {i < navLinks.length - 1 ? ',' : ''}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
