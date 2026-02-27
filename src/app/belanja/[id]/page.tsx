@@ -357,40 +357,43 @@ export default function ProductDetail() {
                     className="group"
                   >
                     <Link href={`/belanja/${rp.id}`} className="block">
-                      <div className="w-full aspect-[4/5] bg-[#0a0a0a] overflow-hidden relative mb-4">
+                      <div className="w-full aspect-[4/5] bg-[#050505] rounded-[2rem] overflow-hidden relative mb-6 border border-white/5 shadow-lg group-hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-shadow duration-700">
                         {rp.image_url ? (
                           <motion.img
-                            whileHover={{ scale: 1.05 }}
+                            whileHover={{ scale: 1.08 }}
                             transition={{
-                              duration: 0.7,
+                              duration: 1.2,
                               ease: [0.16, 1, 0.3, 1],
                             }}
                             src={rp.image_url}
                             alt={rp.name}
-                            className="absolute inset-0 w-full h-full object-cover"
+                            className="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-90 transition-all duration-700"
                           />
                         ) : (
-                          <div className="absolute inset-0 bg-[#111] flex items-center justify-center">
-                            <span className="font-heading font-black text-4xl text-white/10">
+                          <div className="absolute inset-0 bg-[#0a0a0a] flex items-center justify-center">
+                            <span className="font-heading font-black text-4xl text-white/5 group-hover:text-white/20 transition-colors duration-700">
                               {rp.name.charAt(0)}
                             </span>
                           </div>
                         )}
-                        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
                       </div>
-                      <div className="flex justify-between items-start px-1">
+                      <div className="flex justify-between items-start gap-4 px-2">
                         <div className="flex flex-col gap-1">
-                          <span className="font-heading font-bold text-sm tracking-tight group-hover:opacity-70 transition-opacity">
+                          <span className="font-heading font-bold text-base leading-tight tracking-tight group-hover:text-text-muted transition-colors">
                             {rp.name}
                           </span>
-                          <span className="font-serif text-xs text-text-muted">
+                          <span className="font-serif italic text-sm text-text-muted mt-1">
                             {rp.base_price > 0
                               ? `${formatRupiah(rp.base_price)} / ${rp.unit}`
                               : 'Harga belum tersedia'}
                           </span>
                         </div>
-                        <span className="font-heading font-medium text-text-muted text-xs">
-                          {String(index + 1).padStart(2, '0')}
+                        <span
+                          className="font-heading font-bold text-text-muted/30 text-xs mt-0.5"
+                          style={{ fontVariantNumeric: 'tabular-nums' }}
+                        >
+                          ({String(index + 1).padStart(2, '0')})
                         </span>
                       </div>
                     </Link>

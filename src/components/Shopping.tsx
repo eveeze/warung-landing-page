@@ -203,8 +203,8 @@ export default function Shopping() {
           </div>
           <h2 className="font-heading font-black text-[clamp(4rem,10vw,12rem)] leading-[0.8] tracking-tighter uppercase text-white">
             Katalog{' '}
-            <span className="font-serif italic font-light lowercase text-text-muted">
-              produk.
+            <span className="font-serif italic font-light text-text-muted">
+              Produk
             </span>
           </h2>
         </motion.div>
@@ -221,7 +221,7 @@ export default function Shopping() {
             <div className="col-span-1 lg:col-span-1 relative flex items-center bg-black">
               <input
                 type="text"
-                placeholder="PENCARIAN..."
+                placeholder="Cari produk…"
                 value={search}
                 onChange={(e) => handleSearch(e.target.value)}
                 className="w-full bg-transparent pl-4 pr-12 py-4 md:py-6 text-sm md:text-base font-heading font-bold text-white uppercase placeholder:text-text-muted focus:outline-none focus:bg-white focus:text-black transition-colors duration-500 rounded-none peer"
@@ -306,7 +306,7 @@ export default function Shopping() {
                   {loadingMore ? (
                     <span className="flex items-center justify-center gap-4">
                       <Loader2 size={16} className="animate-spin" /> Sedang
-                      Memuat
+                      Memuat…
                     </span>
                   ) : (
                     'Muat Lebih Banyak'

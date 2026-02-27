@@ -39,6 +39,12 @@ export default function Footer() {
                 Beranda,
               </a>
               <a
+                href="/belanja"
+                className="font-serif italic text-text-muted text-[10px] md:text-sm hover:text-white transition-colors"
+              >
+                Belanja,
+              </a>
+              <a
                 href="/#layanan"
                 className="font-serif italic text-text-muted text-[10px] md:text-sm hover:text-white transition-colors"
               >

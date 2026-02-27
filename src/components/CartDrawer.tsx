@@ -53,7 +53,7 @@ export default function CartDrawer() {
             <div className="flex items-center justify-between px-8 py-8 border-b border-border">
               <div>
                 <h2 className="font-heading font-black text-white text-2xl uppercase tracking-tighter">
-                  Keranjang.
+                  Keranjang
                 </h2>
                 <span className="text-xs font-heading font-medium text-text-muted tracking-[0.2em] uppercase mt-1 block">
                   {totalItems} item

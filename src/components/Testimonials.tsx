@@ -114,7 +114,7 @@ export default function Testimonials() {
     <section
       ref={containerRef}
       id="ulasan"
-      className="relative h-[350vh] bg-black z-10 border-t border-border/30"
+      className="relative h-auto md:h-[350vh] bg-black z-10 border-t border-border/30"
     >
       <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col items-center justify-center">
         {/* Infinite Looping Background Text (Reduced Size) */}
@@ -139,16 +139,16 @@ export default function Testimonials() {
             href="#contact"
             className="inline-flex items-center justify-center px-6 md:px-8 py-2 md:py-3 rounded-full border-2 border-white text-white font-heading font-bold text-[10px] md:text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
           >
-            Get in Touch
+            Hubungi Kami
           </a>
         </div>
 
-        {/* Floating Cards Container */}
-        <div className="absolute inset-0 z-30 pointer-events-none">
+        {/* Desktop: Floating Cards Container (Parallax) */}
+        <div className="hidden md:block absolute inset-0 z-30 pointer-events-none h-[350vh]">
           {/* Card 1: Left Edge */}
           <motion.div
             style={{ y: y1 }}
-            className="absolute left-[2%] md:left-[5%] top-0 pointer-events-auto"
+            className="absolute left-[5%] top-0 pointer-events-auto"
           >
             <TestimonialCard data={testimonials[0]} />
           </motion.div>
@@ -156,7 +156,7 @@ export default function Testimonials() {
           {/* Card 2: Right Edge */}
           <motion.div
             style={{ y: y2 }}
-            className="absolute right-[2%] md:right-[5%] top-0 pointer-events-auto"
+            className="absolute right-[5%] top-0 pointer-events-auto"
           >
             <TestimonialCard data={testimonials[1]} />
           </motion.div>
@@ -172,7 +172,7 @@ export default function Testimonials() {
           {/* Card 4: Left Offset */}
           <motion.div
             style={{ y: y4 }}
-            className="absolute left-[8%] md:left-[15%] top-0 pointer-events-auto"
+            className="absolute left-[15%] top-0 pointer-events-auto"
           >
             <TestimonialCard data={testimonials[3]} />
           </motion.div>
@@ -180,7 +180,7 @@ export default function Testimonials() {
           {/* Card 5: Right Offset */}
           <motion.div
             style={{ y: y5 }}
-            className="absolute right-[8%] md:right-[15%] top-0 pointer-events-auto"
+            className="absolute right-[15%] top-0 pointer-events-auto"
           >
             <TestimonialCard data={testimonials[4]} />
           </motion.div>
@@ -193,6 +193,13 @@ export default function Testimonials() {
             <TestimonialCard data={testimonials[5]} />
           </motion.div>
         </div>
+      </div>
+
+      {/* Mobile: Stacked Cards */}
+      <div className="md:hidden relative z-30 flex flex-col items-center gap-6 py-24 px-4 -mt-[80vh] pb-32">
+        {testimonials.map((t) => (
+          <TestimonialCard key={t.id} data={t} />
+        ))}
       </div>
     </section>
   );

@@ -131,22 +131,24 @@ export default function Belanja() {
           {/* ─── Search + Filter Bar ─── */}
           <div className="mb-16 space-y-6">
             {/* Search Input */}
-            <div className="relative">
+            <div className="relative mb-8">
               <Search
-                size={16}
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-text-muted"
+                size={24}
+                className="absolute left-0 top-1/2 -translate-y-1/2 text-text-muted"
+                strokeWidth={1.5}
               />
               <input
                 type="text"
                 placeholder="Cari produk…"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-white/[0.03] border border-border/30 rounded-full pl-12 pr-12 py-4 text-sm font-heading font-medium text-white placeholder:text-text-muted focus:outline-none focus:border-white/50 transition-colors"
+                className="w-full bg-transparent border-b-2 border-border/30 pl-10 pr-12 py-6 text-2xl md:text-4xl font-heading font-bold text-white uppercase placeholder:text-border focus:outline-none focus:border-white transition-colors duration-500 rounded-none peer"
               />
+              <div className="absolute left-0 bottom-0 w-full h-[2px] bg-white scale-x-0 peer-focus:scale-x-100 transition-transform duration-700 origin-left" />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-text-muted hover:text-white transition-colors"
+                  className="absolute right-0 top-1/2 -translate-y-1/2 text-text-muted hover:text-white transition-colors p-2"
                 >
                   <X size={16} />
                 </button>
@@ -396,59 +398,62 @@ export default function Belanja() {
                     {/* Image Container */}
                     <Link
                       href={`/belanja/${product.id}`}
-                      className="block w-full aspect-[4/5] bg-[#0a0a0a] overflow-hidden relative mb-4"
+                      className="block w-full aspect-[4/5] bg-[#050505] rounded-[2rem] overflow-hidden relative mb-6 border border-white/5 shadow-lg group-hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-shadow duration-700"
                     >
                       {product.image_url ? (
                         <motion.img
-                          whileHover={{ scale: 1.05 }}
+                          whileHover={{ scale: 1.08 }}
                           transition={{
-                            duration: 0.7,
+                            duration: 1.2,
                             ease: [0.16, 1, 0.3, 1],
                           }}
                           src={product.image_url}
                           alt={product.name}
-                          className="absolute inset-0 w-full h-full object-cover"
+                          className="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-90 transition-all duration-700"
                         />
                       ) : (
-                        <div className="absolute inset-0 bg-[#111] flex items-center justify-center">
-                          <span className="font-heading font-black text-4xl text-white/10">
+                        <div className="absolute inset-0 bg-[#0a0a0a] flex items-center justify-center">
+                          <span className="font-heading font-black text-6xl text-white/5 group-hover:text-white/20 transition-colors duration-700">
                             {product.name.charAt(0)}
                           </span>
                         </div>
                       )}
+
+                      {/* Vignette Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
                       {/* Category badge on card */}
                       {product.category && (
-                        <span className="absolute top-3 left-3 text-[8px] font-heading font-bold bg-black/60 backdrop-blur-md text-white px-3 py-1 rounded-full uppercase tracking-widest">
+                        <span className="absolute top-4 left-4 text-[10px] font-heading font-bold bg-black/60 backdrop-blur-md text-white px-4 py-1.5 rounded-full uppercase tracking-widest border border-white/10">
                           {product.category.name}
                         </span>
                       )}
                       {/* Grosir badge */}
                       {product.pricing_tiers &&
                         product.pricing_tiers.length > 0 && (
-                          <span className="absolute top-3 right-3 text-[8px] font-heading font-bold bg-white/90 text-black px-3 py-1 rounded-full uppercase tracking-widest">
+                          <span className="absolute top-4 right-4 text-[10px] font-heading font-bold bg-white text-black px-4 py-1.5 rounded-full uppercase tracking-widest">
                             Grosir
                           </span>
                         )}
-                      <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                     </Link>
 
                     {/* Product Metadata */}
-                    <div className="flex flex-col gap-1 px-1">
-                      <div className="flex justify-between items-start">
+                    <div className="flex flex-col gap-1 px-2 pb-4">
+                      <div className="flex justify-between items-start gap-4">
                         <Link
                           href={`/belanja/${product.id}`}
-                          className="font-heading font-bold text-base tracking-tight hover:opacity-70 transition-opacity"
+                          className="font-heading font-bold text-lg leading-tight tracking-tight group-hover:text-text-muted transition-colors"
                         >
                           {product.name}
                         </Link>
                         <span
-                          className="font-heading font-medium text-text-muted text-xs"
+                          className="font-heading font-bold text-text-muted/30 text-xs mt-1"
                           style={{ fontVariantNumeric: 'tabular-nums' }}
                         >
-                          {String(index + 1).padStart(2, '0')}
+                          ({String(index + 1).padStart(2, '0')})
                         </span>
                       </div>
-                      <span className="font-serif text-sm text-text-muted">
+                      <span className="font-serif italic text-base text-text-muted mt-1">
                         {product.base_price > 0
                           ? `${formatRupiah(product.base_price)} / ${product.unit}`
                           : 'Harga belum tersedia'}
@@ -472,7 +477,7 @@ export default function Belanja() {
                             );
                             openCart();
                           }}
-                          className="mt-4 self-start text-[10px] font-heading font-bold uppercase tracking-widest border-b border-border/50 pb-1 hover:border-white transition-colors"
+                          className="mt-6 self-start flex items-center gap-2 text-[10px] font-heading font-bold uppercase tracking-widest text-white border border-white/20 px-4 py-2 rounded-full hover:bg-white hover:text-black transition-all duration-300"
                         >
                           + Keranjang
                         </button>

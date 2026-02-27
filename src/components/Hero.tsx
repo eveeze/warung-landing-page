@@ -58,8 +58,8 @@ export default function Hero() {
               Belanja Harian Jadi Mudah, <br className="hidden md:block" />
               Harga Grosir untuk <br className="hidden md:block" />
               Semua{' '}
-              <span className="font-serif italic text-text-muted font-light tracking-normal lowercase">
-                kalangan.
+              <span className="font-serif italic text-text-muted font-light tracking-normal">
+                Kalangan
               </span>
             </h1>
           </motion.div>

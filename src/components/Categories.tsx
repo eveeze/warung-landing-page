@@ -79,7 +79,7 @@ export default function Categories() {
             className="font-heading font-medium text-[clamp(4rem,8vw,8rem)] leading-[0.9] tracking-tighter text-white"
           >
             Penuhi Kebutuhan <br className="hidden md:block" />
-            <span className="text-text-muted">Harian Anda.</span>
+            <span className="text-text-muted">Harian Anda</span>
           </motion.h2>
 
           <motion.div
