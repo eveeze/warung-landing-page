@@ -25,14 +25,14 @@ export default function Footer() {
           fillColor="bg-white"
           className="mb-32 px-6 py-2.5 rounded-full border border-border text-[10px] md:text-xs font-heading font-bold uppercase tracking-[0.1em] hover:border-white hover:text-black transition-colors duration-300"
         >
-          Back To Top
+          Kembali ke Atas
         </AnimatedButton>
 
         {/* Links Grid */}
         <div className="w-full flex justify-between items-end border-b border-border/30 pb-4 mb-4 md:mb-8">
           <div className="flex flex-col">
             <h4 className="font-heading font-bold text-white text-[10px] md:text-xs uppercase tracking-widest mb-2">
-              Quick Links
+              Tautan Cepat
             </h4>
             <div className="flex gap-2">
               <a
@@ -76,7 +76,7 @@ export default function Footer() {
 
           <div className="flex flex-col text-right">
             <h4 className="font-heading font-bold text-white text-[10px] md:text-xs uppercase tracking-widest mb-1">
-              Networks
+              Jejaring Sosial
             </h4>
             <div className="flex gap-2 justify-end">
               <a
