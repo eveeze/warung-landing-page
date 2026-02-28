@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       },
     ],
-    sitemap: 'https://warungmbahmanto.com/sitemap.xml',
+    sitemap: 'https://warungmanto.store/sitemap.xml',
   };
 }

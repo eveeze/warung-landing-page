@@ -26,7 +26,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://warungmbahmanto.com'),
+  metadataBase: new URL('https://warungmanto.store'),
   title: 'Warung Mbah Manto | Grosir & Eceran Sembako Terpercaya',
   description:
     'Warung Mbah Manto melayani kebutuhan belanja harian dan grosir sembako terpercaya sejak 2014. Harga jujur, stok lengkap, dan layanan pesan antar cepat via WhatsApp.',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title: 'Warung Mbah Manto | Grosir & Eceran Sembako Terpercaya',
     description:
       'Penuhi kebutuhan harian dan pasokan bisnis Anda dengan standar kualitas terbaik dari Warung Mbah Manto. Buka setiap hari.',
-    url: 'https://warungmbahmanto.com',
+    url: 'https://warungmanto.store',
     siteName: 'Warung Mbah Manto',
     locale: 'id_ID',
     type: 'website',
@@ -80,7 +80,7 @@ export default function RootLayout({
               name: 'Warung Mbah Manto',
               description:
                 'Warung grosir dan eceran sembako terpercaya sejak 2014. Melayani kebutuhan harian dengan harga jujur dan stok lengkap.',
-              url: 'https://warungmbahmanto.com',
+              url: 'https://warungmanto.store',
               telephone: '+62882003310360',
               address: {
                 '@type': 'PostalAddress',
