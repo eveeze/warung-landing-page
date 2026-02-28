@@ -145,7 +145,7 @@ export default function Testimonials() {
         </div>
 
         {/* Action Button (Sticky for all sizes) */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-16 md:translate-y-20 z-20 pointer-events-auto">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-28 md:translate-y-32 z-20 pointer-events-auto">
           <AnimatedButton
             href="#contact"
             as="a"
