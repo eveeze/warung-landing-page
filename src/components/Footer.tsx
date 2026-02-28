@@ -1,25 +1,26 @@
 'use client';
 
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef, useEffect, useState } from 'react';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 
 export default function Footer() {
   const ref = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
-  // Track scroll: 0 when footer top meets viewport bottom, 1 when footer top is at 60% of viewport
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'start 0.4'],
-  });
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
 
-  // Map scroll → smooth slide up/down
-  const y1 = useTransform(scrollYProgress, [0, 1], [100, 0]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [140, 0]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [180, 0]);
-  const opacity1 = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
-  const opacity2 = useTransform(scrollYProgress, [0.1, 0.6], [0, 1]);
-  const opacity3 = useTransform(scrollYProgress, [0.2, 0.7], [0, 1]);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.05 },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -29,19 +30,28 @@ export default function Footer() {
     <footer ref={ref} className="relative bg-black text-white pt-24 pb-0 z-20">
       <div className="w-full px-6 flex flex-col items-center max-w-[1800px] mx-auto">
         {/* Centered Descriptive Text */}
-        <motion.div
-          style={{ y: y1, opacity: opacity1 }}
-          className="max-w-[700px] text-center mb-12"
+        <div
+          className="max-w-[700px] text-center mb-12 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+          style={{
+            transform: isVisible ? 'translateY(0)' : 'translateY(80px)',
+            opacity: isVisible ? 1 : 0,
+          }}
         >
           <p className="font-heading font-medium tracking-tight text-white/90 text-sm md:text-base leading-relaxed">
             Warung Mbah Manto hadir untuk menjadi mitra belanja harian Anda.
             Dari kebutuhan dapur hingga stok usaha, kami pastikan kualitas
             terbaik dengan harga yang selalu bersahabat.
           </p>
-        </motion.div>
+        </div>
 
         {/* Back to Top Button */}
-        <motion.div style={{ y: y1, opacity: opacity1 }}>
+        <div
+          className="transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] delay-100"
+          style={{
+            transform: isVisible ? 'translateY(0)' : 'translateY(80px)',
+            opacity: isVisible ? 1 : 0,
+          }}
+        >
           <AnimatedButton
             onClick={handleScrollToTop}
             fillColor="bg-white"
@@ -49,12 +59,15 @@ export default function Footer() {
           >
             Kembali ke Atas
           </AnimatedButton>
-        </motion.div>
+        </div>
 
         {/* Links Grid */}
-        <motion.div
-          style={{ y: y2, opacity: opacity2 }}
-          className="w-full flex justify-between items-end border-b border-border/30 pb-4 mb-4 md:mb-8"
+        <div
+          className="w-full flex justify-between items-end border-b border-border/30 pb-4 mb-4 md:mb-8 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] delay-200"
+          style={{
+            transform: isVisible ? 'translateY(0)' : 'translateY(80px)',
+            opacity: isVisible ? 1 : 0,
+          }}
         >
           <div className="flex flex-col">
             <h4 className="font-heading font-bold text-white text-[10px] md:text-xs uppercase tracking-widest mb-2">
@@ -125,17 +138,20 @@ export default function Footer() {
               </a>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Massive Copyright Text */}
-        <motion.div
-          style={{ y: y3, opacity: opacity3 }}
-          className="w-full flex justify-center -mb-[2%]"
+        <div
+          className="w-full flex justify-center -mb-[2%] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] delay-300"
+          style={{
+            transform: isVisible ? 'translateY(0)' : 'translateY(100px)',
+            opacity: isVisible ? 1 : 0,
+          }}
         >
           <h1 className="text-[clamp(6rem,26vw,32rem)] font-heading font-black tracking-tighter uppercase text-white leading-[0.75] text-center">
             ©2026
           </h1>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );
