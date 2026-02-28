@@ -26,6 +26,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://warungmbahmanto.com'),
   title: 'Warung Mbah Manto | Grosir & Eceran Sembako Terpercaya',
   description:
     'Warung Mbah Manto melayani kebutuhan belanja harian dan grosir sembako terpercaya sejak 2014. Harga jujur, stok lengkap, dan layanan pesan antar cepat via WhatsApp.',
@@ -70,6 +71,41 @@ export default function RootLayout({
       <body
         className={`${interHeading.variable} ${inter.variable} ${playfair.variable} font-body antialiased bg-black selection:bg-white selection:text-black`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'LocalBusiness',
+              name: 'Warung Mbah Manto',
+              description:
+                'Warung grosir dan eceran sembako terpercaya sejak 2014. Melayani kebutuhan harian dengan harga jujur dan stok lengkap.',
+              url: 'https://warungmbahmanto.com',
+              telephone: '+62882003310360',
+              address: {
+                '@type': 'PostalAddress',
+                addressLocality: 'Indonesia',
+                addressCountry: 'ID',
+              },
+              openingHoursSpecification: {
+                '@type': 'OpeningHoursSpecification',
+                dayOfWeek: [
+                  'Monday',
+                  'Tuesday',
+                  'Wednesday',
+                  'Thursday',
+                  'Friday',
+                  'Saturday',
+                  'Sunday',
+                ],
+                opens: '06:00',
+                closes: '21:00',
+              },
+              priceRange: 'Rp',
+              currenciesAccepted: 'IDR',
+            }),
+          }}
+        />
         <CartProvider>{children}</CartProvider>
       </body>
     </html>
