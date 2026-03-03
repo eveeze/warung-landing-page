@@ -29,12 +29,31 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://warungmanto.store'),
-  title: 'Warung Mbah Manto | Grosir & Eceran Sembako Terpercaya',
+  title: {
+    default: 'Warung Mbah Manto | Grosir & Eceran Sembako Terpercaya',
+    template: '%s | Warung Mbah Manto',
+  },
   description:
     'Warung Mbah Manto melayani kebutuhan belanja harian dan grosir sembako terpercaya sejak 2014. Harga jujur, stok lengkap, dan layanan pesan antar cepat via WhatsApp.',
-  keywords:
-    'warung, kelontong, grosir sembako, eceran, belanja harian, sembako murah, pesan antar sembako, warung sembako terdekat',
+  keywords: [
+    'warung mbah manto',
+    'warung manto',
+    'grosir sembako',
+    'eceran sembako',
+    'belanja harian',
+    'sembako murah',
+    'pesan antar sembako',
+    'warung sembako terdekat',
+    'kelontong',
+    'toko sembako online',
+    'belanja online sembako',
+  ],
   authors: [{ name: 'Warung Mbah Manto' }],
+  creator: 'Warung Mbah Manto',
+  publisher: 'Warung Mbah Manto',
+  alternates: {
+    canonical: 'https://warungmanto.store',
+  },
   openGraph: {
     title: 'Warung Mbah Manto | Grosir & Eceran Sembako Terpercaya',
     description:
@@ -61,6 +80,10 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  // Uncomment and add your Google Search Console verification code below:
+  // verification: {
+  //   google: 'YOUR_GOOGLE_VERIFICATION_CODE_HERE',
+  // },
 };
 
 export default function RootLayout({
@@ -78,16 +101,26 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'LocalBusiness',
+              '@type': 'GroceryStore',
+              '@id': 'https://warungmanto.store/#business',
               name: 'Warung Mbah Manto',
+              alternateName: 'Warung Manto',
               description:
-                'Warung grosir dan eceran sembako terpercaya sejak 2014. Melayani kebutuhan harian dengan harga jujur dan stok lengkap.',
+                'Warung grosir dan eceran sembako terpercaya sejak 2014. Melayani kebutuhan belanja harian, bumbu dapur, minuman, dan kebutuhan rumah tangga dengan harga jujur dan stok lengkap.',
               url: 'https://warungmanto.store',
               telephone: '+62882003310360',
+              image: 'https://warungmanto.store/opengraph-image',
               address: {
                 '@type': 'PostalAddress',
+                streetAddress: 'Jl. Raya',
                 addressLocality: 'Indonesia',
+                addressRegion: 'Jawa',
                 addressCountry: 'ID',
+              },
+              geo: {
+                '@type': 'GeoCoordinates',
+                latitude: -7.0,
+                longitude: 110.0,
               },
               openingHoursSpecification: {
                 '@type': 'OpeningHoursSpecification',
@@ -105,6 +138,56 @@ export default function RootLayout({
               },
               priceRange: 'Rp',
               currenciesAccepted: 'IDR',
+              paymentAccepted: 'Cash, QRIS',
+              hasOfferCatalog: {
+                '@type': 'OfferCatalog',
+                name: 'Katalog Produk',
+                itemListElement: [
+                  {
+                    '@type': 'OfferCatalog',
+                    name: 'Sembako',
+                  },
+                  {
+                    '@type': 'OfferCatalog',
+                    name: 'Bumbu Dapur',
+                  },
+                  {
+                    '@type': 'OfferCatalog',
+                    name: 'Minuman',
+                  },
+                  {
+                    '@type': 'OfferCatalog',
+                    name: 'Kebutuhan Rumah Tangga',
+                  },
+                ],
+              },
+              sameAs: [],
+              foundingDate: '2014',
+              areaServed: {
+                '@type': 'GeoCircle',
+                geoMidpoint: {
+                  '@type': 'GeoCoordinates',
+                  latitude: -7.0,
+                  longitude: 110.0,
+                },
+                geoRadius: '10000',
+              },
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              '@id': 'https://warungmanto.store/#website',
+              name: 'Warung Mbah Manto',
+              url: 'https://warungmanto.store',
+              publisher: {
+                '@id': 'https://warungmanto.store/#business',
+              },
+              inLanguage: 'id-ID',
             }),
           }}
         />
