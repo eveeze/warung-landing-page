@@ -73,7 +73,7 @@ function TestimonialCard({
       className={`group w-full lg:w-[400px] bg-[var(--color-surface)] border border-[var(--color-primary)]/5 rounded-[2.5rem] p-8 md:p-10 flex flex-col shadow-lg hover:shadow-[0_0_40px_rgba(255,255,255,0.06)] transition-all duration-700 min-h-[280px] ${className}`}
     >
       <p className="font-serif text-[15px] md:text-lg text-text-muted leading-relaxed max-w-[95%] mb-12 flex-1 relative z-10">
-        "{data.quote}"
+        &quot;{data.quote}&quot;
       </p>
 
       <div className="flex items-center gap-4 pt-6 border-t border-[var(--color-primary)]/5 mt-auto relative z-10">

@@ -1,72 +1,19 @@
 @import 'tailwindcss';
 
-/* ================================================================
-   THEME SYSTEM — CSS Variables
-   ================================================================ */
-
-/* Dark Theme (Default) */
-[data-theme='dark'],
-:root {
-  --color-bg: #000000;
-  --color-bg-secondary: #0a0a0a;
-  --color-surface: #111111;
-  --color-surface-hover: #1a1a1a;
-
-  --color-primary: #ffffff;
-  --color-accent: #ffffff;
-  --color-accent-contrast: #000000;
-
-  --color-text-heading: #ffffff;
-  --color-text-body: #a0a0a0;
-  --color-text-muted: #666666;
-
-  --color-border: rgba(255, 255, 255, 0.15);
-  --color-border-strong: rgba(255, 255, 255, 0.3);
-
-  --color-overlay: rgba(0, 0, 0, 0.8);
-  --color-card: #111111;
-  --color-card-hover: #1a1a1a;
-
-  --color-scrollbar-track: #000000;
-  --color-scrollbar-thumb: #1a1a1a;
-  --color-scrollbar-hover: #ffffff;
-}
-
-/* Light Theme — Navy Blue Brand (High Contrast) */
-[data-theme='light'] {
-  --color-bg: #f2f0eb;
-  --color-bg-secondary: #e8e6e0;
-  --color-surface: #ffffff;
-  --color-surface-hover: #f8f7f4;
-
-  --color-primary: #0f1b33;
-  --color-accent: #0f1b33;
-  --color-accent-contrast: #ffffff;
-
-  --color-text-heading: #0f1b33;
-  --color-text-body: #3d4550;
-  --color-text-muted: #6b7280;
-
-  --color-border: rgba(15, 27, 51, 0.12);
-  --color-border-strong: rgba(15, 27, 51, 0.25);
-
-  --color-overlay: rgba(242, 240, 235, 0.92);
-  --color-card: #ffffff;
-  --color-card-hover: #f8f7f4;
-
-  --color-scrollbar-track: #f2f0eb;
-  --color-scrollbar-thumb: #c8c6c0;
-  --color-scrollbar-hover: #0f1b33;
-}
-
 @theme inline {
-  /* Legacy variables (kept for compat) */
-  --color-forest: #ffffff;
-  --color-forest-deep: #000000;
-  --color-forest-mid: #0a0a0a;
-  --color-forest-light: #1a1a1a;
+  /* COLORS - CSS Variables driven by next-themes */
+  --color-forest: var(--forest);
+  --color-forest-deep: var(--forest-deep);
+  --color-forest-mid: var(--forest-mid);
+  --color-forest-light: var(--forest-light);
 
-  --color-cream: #000000;
+  --color-cream: var(--cream);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-body: var(--text-body);
+  --color-text-muted: var(--text-muted);
 
   --font-heading: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -77,9 +24,41 @@
   --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* ================================================================
-   ANIMATIONS
-   ================================================================ */
+/* 
+ * DEFAULT (LIGHT THEME) - THE NAVY THEME
+ * Navy Blue context per request. Deep premium blue as base background.
+ */
+:root {
+  --forest: #ffffff; /* Contrast Text/Accent -> White */
+  --forest-deep: #0f172a; /* Deep Navy Blue Background */
+  --forest-mid: #1e3a8a; /* Slate Blue Highlights */
+  --forest-light: #475569;
+  --cream: #ffffff;
+  --surface: #0a0f1c; /* Almost black navy for deep surfaces */
+  --border: #1e293b;
+
+  --text-primary: #ffffff;
+  --text-body: #94a3b8;
+  --text-muted: #64748b;
+}
+
+/* 
+ * DARK THEME
+ * Classic Premium Dark
+ */
+[data-theme='dark'] {
+  --forest: #ffffff; /* Contrast Accent */
+  --forest-deep: #000000; /* Pure Black Background */
+  --forest-mid: #0a0a0a;
+  --forest-light: #1a1a1a;
+  --cream: #000000;
+  --surface: #000000;
+  --border: #333333;
+
+  --text-primary: #ffffff;
+  --text-body: #a0a0a0;
+  --text-muted: #666666;
+}
 
 @keyframes marquee {
   0% {
@@ -99,50 +78,22 @@
   }
 }
 
-@keyframes marquee-half {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-/* ================================================================
-   BASE STYLES
-   ================================================================ */
-
+/* Base Styles */
 html {
   scroll-behavior: smooth;
 }
 
-/* Smooth theme transition on ALL elements */
-*,
-*::before,
-*::after {
-  transition-property:
-    background-color, border-color, color, fill, stroke, box-shadow;
-  transition-duration: 0.5s;
-  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* Opt-out for animated elements that manage their own transitions */
-.no-theme-transition,
-.no-theme-transition *,
-.animate-marquee,
-.animate-marquee-slow,
-.animate-marquee-seamless,
-.animate-marquee-seamless-fast {
-  transition-property: none !important;
-}
-
 body {
   font-family: var(--font-body);
-  background: var(--color-bg);
-  color: var(--color-text-body);
+  background: var(--forest-deep);
+  color: var(--text-body);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Smooth transition for theme switching */
+  transition:
+    background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 h1,
@@ -152,9 +103,10 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading);
-  color: var(--color-text-heading);
+  color: var(--text-primary);
   letter-spacing: -0.02em;
   line-height: 1.1;
+  transition: color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Custom Scrollbar */
@@ -162,41 +114,52 @@ h6 {
   width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-scrollbar-track);
+  background: var(--forest-deep);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-scrollbar-thumb);
+  background: var(--forest-light);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-scrollbar-hover);
+  background: var(--forest);
 }
 
 ::selection {
-  background: var(--color-primary);
-  color: var(--color-bg);
+  background: var(--forest);
+  color: var(--forest-deep);
 }
 
 .skeleton {
   background: linear-gradient(
     90deg,
-    var(--color-surface) 25%,
-    var(--color-bg-secondary) 50%,
-    var(--color-surface) 75%
+    var(--surface) 25%,
+    var(--forest-mid) 50%,
+    var(--surface) 75%
   );
   background-size: 400% 100%;
   animation: shimmer 3s ease-in-out infinite;
 }
 
-/* Marquee Utilities */
+/* Marquee Utillity */
 .animate-marquee {
   animation: marquee 25s linear infinite;
 }
 .animate-marquee-slow {
   animation: marquee 40s linear infinite;
 }
+
+@keyframes marquee-half {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 .animate-marquee-seamless {
   animation: marquee-half 40s linear infinite;
 }
+
 .animate-marquee-seamless-fast {
   animation: marquee-half 25s linear infinite;
 }

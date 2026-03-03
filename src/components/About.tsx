@@ -43,18 +43,11 @@ export default function About() {
     <section
       ref={ref}
       id="layanan"
-      className="pt-32 pb-40 w-full"
-      style={{ backgroundColor: 'var(--color-bg)' }}
+      className="bg-forest-deep transition-colors duration-700 pt-32 pb-40 w-full"
     >
       <div className="w-full px-6">
         {/* Top Meta Data */}
-        <div
-          className="flex justify-between items-center font-heading font-bold text-[10px] uppercase tracking-widest mb-12 pb-4"
-          style={{
-            color: 'var(--color-text-muted)',
-            borderBottom: '1px solid var(--color-border)',
-          }}
-        >
+        <div className="flex justify-between items-center text-text-muted font-heading font-bold text-[10px] uppercase tracking-widest mb-12 border-b border-border/30 pb-4">
           <span>© KEUNGGULAN KAMI</span>
           <span className="hidden md:block">(WM™ — 02)</span>
           <span>LAYANAN UNGGULAN</span>
@@ -67,10 +60,7 @@ export default function About() {
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           className="mb-16 md:mb-24"
         >
-          <h2
-            className="font-heading font-medium text-[clamp(4rem,15vw,18rem)] leading-[0.8] tracking-tighter flex items-start"
-            style={{ color: 'var(--color-text-heading)' }}
-          >
+          <h2 className="font-heading font-medium text-[clamp(4rem,15vw,18rem)] leading-[0.8] tracking-tighter text-text-primary transition-colors duration-700 flex items-start">
             Layanan{' '}
             <sup className="text-[clamp(1rem,4vw,4rem)] font-light mt-4 md:mt-12 ml-4">
               (3)
@@ -78,17 +68,13 @@ export default function About() {
           </h2>
         </motion.div>
 
-        {/* Accent Grid Bar */}
+        {/* White Grid Bar */}
         <motion.div
           initial={{ scaleX: 0 }}
           animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
           transition={{ duration: 1, ease: [1, 0, 0, 1] }}
-          style={{
-            originX: 0,
-            backgroundColor: 'var(--color-accent)',
-            color: 'var(--color-accent-contrast)',
-          }}
-          className="w-full py-3 px-6 mb-24 md:mb-32 grid grid-cols-2 lg:grid-cols-4 font-heading font-black text-[10px] md:text-sm uppercase tracking-widest text-left md:text-center gap-4"
+          style={{ originX: 0 }}
+          className="w-full bg-forest text-forest-deep transition-colors duration-700 py-3 px-6 mb-24 md:mb-32 grid grid-cols-2 lg:grid-cols-4 font-heading font-black text-[10px] md:text-sm uppercase tracking-widest text-left md:text-center gap-4"
         >
           <span className="text-left">Terpercaya</span>
           <span>Terstruktur</span>
@@ -96,14 +82,17 @@ export default function About() {
           <span className="hidden lg:block text-right">Berkualitas</span>
         </motion.div>
 
-        {/* Feature List */}
+        {/* Asymmetrical Right-Aligned List */}
         <motion.div
           variants={listParentVars}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
           className="flex flex-col md:flex-row w-full"
         >
+          {/* Left Empty Space (Crucial for the Palmer Look) */}
           <div className="hidden md:block md:w-5/12 lg:w-1/2"></div>
+
+          {/* Right Content */}
           <div className="w-full md:w-7/12 lg:w-1/2 flex flex-col gap-16 md:gap-24">
             {features.map((feature, idx) => (
               <motion.div
@@ -111,22 +100,18 @@ export default function About() {
                 variants={listItemVars}
                 className="grid grid-cols-1 md:grid-cols-[auto_1fr] lg:grid-cols-[auto_1fr_1fr] gap-6 md:gap-12 lg:gap-16 items-start"
               >
-                <span
-                  className="font-heading font-bold text-sm md:text-base tracking-tighter w-12"
-                  style={{ color: 'var(--color-text-heading)' }}
-                >
+                {/* Number */}
+                <span className="font-heading font-bold text-sm md:text-base text-text-primary transition-colors duration-700 tracking-tighter w-12">
                   {String(idx + 1).padStart(2, '0')}
                 </span>
-                <h3
-                  className="font-heading font-medium text-xl md:text-2xl tracking-tight leading-snug"
-                  style={{ color: 'var(--color-text-heading)' }}
-                >
+
+                {/* Title */}
+                <h3 className="font-heading font-medium text-xl md:text-2xl text-text-primary transition-colors duration-700 tracking-tight leading-snug">
                   {feature.label}
                 </h3>
-                <p
-                  className="font-serif text-sm md:text-base leading-relaxed lg:max-w-[300px]"
-                  style={{ color: 'var(--color-text-muted)' }}
-                >
+
+                {/* Description */}
+                <p className="font-serif text-sm md:text-base text-text-muted leading-relaxed lg:max-w-[300px]">
                   {feature.desc}
                 </p>
               </motion.div>

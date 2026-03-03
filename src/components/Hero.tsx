@@ -26,14 +26,8 @@ const MarqueeContent = () => (
         className={
           item.type === 'bold'
             ? 'font-heading font-black uppercase text-2xl md:text-4xl tracking-tighter'
-            : 'font-serif italic text-xl md:text-2xl'
+            : 'font-serif italic text-xl md:text-2xl text-text-muted'
         }
-        style={{
-          color:
-            item.type === 'bold'
-              ? 'var(--color-text-heading)'
-              : 'var(--color-text-muted)',
-        }}
       >
         {item.text}
       </span>
@@ -45,8 +39,7 @@ export default function Hero({ introComplete }: { introComplete: boolean }) {
   return (
     <section
       id="beranda"
-      className="relative pt-32 overflow-hidden flex flex-col justify-between min-h-screen"
-      style={{ backgroundColor: 'var(--color-bg)' }}
+      className="relative pt-32 bg-forest-deep transition-colors duration-700 overflow-hidden flex flex-col justify-between min-h-screen"
     >
       <div className="w-full px-6 flex-1 flex flex-col justify-center">
         {/* Top 2-Column Section */}
@@ -59,19 +52,13 @@ export default function Hero({ introComplete }: { introComplete: boolean }) {
             className="w-full md:w-7/12 md:pr-12"
           >
             <h1
-              className="text-[clamp(2.5rem,5vw,5rem)] font-heading font-medium tracking-tight leading-[1.05]"
-              style={{
-                color: 'var(--color-text-heading)',
-                textWrap: 'balance',
-              }}
+              className="text-[clamp(2.5rem,5vw,5rem)] font-heading font-medium tracking-tight text-text-primary leading-[1.05] transition-colors duration-700"
+              style={{ textWrap: 'balance' }}
             >
               Belanja Harian Jadi Mudah, <br className="hidden md:block" />
               Harga Grosir untuk <br className="hidden md:block" />
               Semua{' '}
-              <span
-                className="font-serif italic font-light tracking-normal"
-                style={{ color: 'var(--color-text-muted)' }}
-              >
+              <span className="font-serif italic text-text-muted font-light tracking-normal transition-colors duration-700">
                 Kalangan
               </span>
             </h1>
@@ -84,13 +71,7 @@ export default function Hero({ introComplete }: { introComplete: boolean }) {
             variants={defaultVars}
             className="w-full md:w-5/12 flex md:justify-end"
           >
-            <div
-              className="w-full max-w-[400px] aspect-[4/5] rounded-xl overflow-hidden relative"
-              style={{
-                border: '1px solid var(--color-border)',
-                backgroundColor: 'var(--color-surface)',
-              }}
-            >
+            <div className="w-full max-w-[400px] aspect-[4/5] bg-forest-light rounded-xl overflow-hidden relative border border-border/20">
               <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1604719312566-8912e9227c6a?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center mix-blend-luminosity opacity-80" />
             </div>
           </motion.div>
@@ -101,12 +82,8 @@ export default function Hero({ introComplete }: { introComplete: boolean }) {
           initial={{ scaleX: 0 }}
           animate={introComplete ? { scaleX: 1 } : { scaleX: 0 }}
           transition={{ duration: 1, ease: [1, 0, 0, 1] as const, delay: 0.5 }}
-          style={{
-            originX: 0,
-            backgroundColor: 'var(--color-accent)',
-            color: 'var(--color-accent-contrast)',
-          }}
-          className="w-full py-3 px-6 mt-16 md:mt-24 mb-12 md:mb-16 grid grid-cols-3 font-heading font-black text-[10px] md:text-sm uppercase tracking-widest text-center"
+          style={{ originX: 0 }}
+          className="w-full bg-forest text-forest-deep transition-colors duration-700 py-3 px-6 mt-16 md:mt-24 mb-12 md:mb-16 grid grid-cols-3 font-heading font-black text-[10px] md:text-sm uppercase tracking-widest text-center"
         >
           <span className="text-left">Harga Bersahabat</span>
           <span className="text-center">Buka Setiap Hari</span>
@@ -126,10 +103,7 @@ export default function Hero({ introComplete }: { introComplete: boolean }) {
           }}
           className="w-full flex justify-center items-end flex-1 pb-16"
         >
-          <h2
-            className="text-[clamp(6rem,22vw,28rem)] font-heading font-black tracking-tighter uppercase leading-none text-center"
-            style={{ color: 'var(--color-text-heading)' }}
-          >
+          <h2 className="text-[clamp(6rem,22vw,28rem)] font-heading font-black tracking-tighter uppercase text-text-primary transition-colors duration-700 leading-none text-center">
             Manto™
           </h2>
         </motion.div>
@@ -140,12 +114,7 @@ export default function Hero({ introComplete }: { introComplete: boolean }) {
         initial={{ opacity: 0 }}
         animate={introComplete ? { opacity: 1 } : { opacity: 0 }}
         transition={{ delay: 1.5, duration: 1 }}
-        className="w-full py-4 overflow-hidden flex mt-auto no-theme-transition"
-        style={{
-          backgroundColor: 'var(--color-bg)',
-          borderTop: '1px solid var(--color-border-strong)',
-          borderBottom: '1px solid var(--color-border-strong)',
-        }}
+        className="w-full border-t border-b border-border transition-colors duration-700 py-4 overflow-hidden flex bg-forest-deep mt-auto"
       >
         <div className="flex animate-marquee min-w-max">
           <MarqueeContent />

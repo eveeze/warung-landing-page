@@ -73,7 +73,11 @@ export default function HowToOrder() {
   const [activeStep, setActiveStep] = useState<number | null>(null);
 
   return (
-    <section ref={ref} id="cara-pesan" className="w-full pt-32 pb-40">
+    <section
+      ref={ref}
+      id="cara-pesan"
+      className="w-full pt-32 pb-40 transition-colors duration-700 bg-forest-deep"
+    >
       <div className="w-full px-6 max-w-[1600px] mx-auto">
         {/* Meta Header */}
         <div className="flex justify-between items-center text-text-muted font-heading font-bold text-[10px] uppercase tracking-widest border-b border-border/30 mb-16 pb-4">
@@ -92,14 +96,16 @@ export default function HowToOrder() {
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             >
               <h2
-                className="font-heading font-medium text-[clamp(4.5rem,7vw,8rem)] leading-[0.9] tracking-tighter mb-8"
+                className="font-heading font-medium text-[clamp(4.5rem,7vw,8rem)] text-text-primary transition-colors duration-700 leading-[0.9] tracking-tighter mb-8"
                 style={{ textWrap: 'balance' }}
               >
                 Belanja <br className="hidden lg:block" /> Cepat,{' '}
                 <br className="hidden lg:block" />
-                <span className="text-gray-500">Tanpa Ribet.</span>
+                <span className="text-text-muted transition-colors duration-700">
+                  Tanpa Ribet.
+                </span>
               </h2>
-              <p className="font-serif text-lg md:text-xl text-gray-400 leading-relaxed max-w-md">
+              <p className="font-serif text-lg md:text-xl text-text-muted transition-colors duration-700 leading-relaxed max-w-md">
                 Mulai dari memilih sembako hingga konfirmasi pesanan, semuanya
                 dirancang untuk menghemat waktu Anda. Tidak perlu mengantre.
               </p>
@@ -147,7 +153,7 @@ export default function HowToOrder() {
                 <motion.div
                   whileHover={{ x: 8 }}
                   transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  className="relative border-t border-border/20 py-12 md:py-16 cursor-default"
+                  className="relative border-t border-border/20 py-12 md:py-16 cursor-default transition-colors duration-700"
                 >
                   {/* Hover Fill Background */}
                   <div className="absolute inset-0 bg-[var(--color-accent)]/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -156,7 +162,7 @@ export default function HowToOrder() {
                   <div className="relative z-10 flex items-center justify-between mb-8">
                     {/* Step Number — Now Visible */}
                     <div className="flex items-center gap-4">
-                      <span className="font-heading font-black text-5xl md:text-7xl tracking-tighter text-[var(--color-primary)]/10 group-hover:text-[var(--color-primary)]/30 transition-colors duration-500">
+                      <span className="font-heading font-black text-5xl md:text-7xl tracking-tighter text-text-primary/10 group-hover:text-text-primary/30 transition-colors duration-500">
                         {step.num}
                       </span>
                       {/* Animated line */}
@@ -174,19 +180,19 @@ export default function HowToOrder() {
                     </div>
 
                     {/* Icon Circle */}
-                    <div className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)]/30 group-hover:border-[var(--color-primary)]/40 group-hover:text-[var(--color-primary)]/70 group-hover:scale-110 transition-all duration-500">
+                    <div className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-text-primary/10 flex items-center justify-center text-text-primary/30 group-hover:border-text-primary/40 group-hover:text-text-primary/70 group-hover:scale-110 transition-all duration-500">
                       {step.icon}
                     </div>
                   </div>
 
                   {/* Content */}
                   <div className="relative z-10">
-                    <h3 className="font-heading font-bold text-2xl md:text-4xl mb-4 tracking-tight group-hover:text-[var(--color-primary)] transition-colors">
+                    <h3 className="font-heading font-bold text-2xl md:text-4xl mb-4 tracking-tight text-text-primary transition-colors duration-700 group-hover:text-text-primary/80">
                       {step.title}
                     </h3>
 
                     {/* Description with animated reveal */}
-                    <p className="font-serif text-base md:text-lg text-gray-500 leading-relaxed max-w-lg group-hover:text-gray-300 transition-colors duration-500">
+                    <p className="font-serif text-base md:text-lg text-text-muted leading-relaxed max-w-lg group-hover:text-text-primary transition-colors duration-500">
                       {step.desc}
                     </p>
                   </div>
@@ -200,7 +206,7 @@ export default function HowToOrder() {
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="1.5"
-                      className="text-[var(--color-text-muted)]"
+                      className="text-text-primary/30"
                     >
                       <path d="m9 18 6-6-6-6" />
                     </svg>

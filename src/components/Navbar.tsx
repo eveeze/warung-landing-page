@@ -3,10 +3,10 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useCart } from '@/lib/cart';
-import { useTheme } from '@/lib/theme';
 import AnimatedButton from '@/components/ui/AnimatedButton';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const navLinks = [
   { label: 'Beranda', href: '/#beranda' },
@@ -20,7 +20,6 @@ const navLinks = [
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { totalItems, openCart } = useCart();
-  const { theme, toggleTheme } = useTheme();
 
   return (
     <>
@@ -28,11 +27,7 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.85, 0, 0.15, 1] }}
-        className="fixed top-0 left-0 right-0 z-50"
-        style={{
-          backgroundColor: 'var(--color-bg)',
-          borderBottom: '1px solid var(--color-border)',
-        }}
+        className="fixed top-0 left-0 right-0 z-50 bg-forest-deep/90 backdrop-blur-md border-b border-border transition-colors duration-700"
       >
         <div className="mx-auto max-w-[1600px] px-6 md:px-12 xl:px-20 py-6">
           <div className="grid grid-cols-2 md:grid-cols-12 gap-4 items-start">
@@ -40,8 +35,7 @@ export default function Navbar() {
             <div className="col-span-1 md:col-span-3">
               <Link
                 href="/"
-                className="font-heading text-lg md:text-xl tracking-tight hover:opacity-50 transition-opacity relative z-50"
-                style={{ color: 'var(--color-text-heading)' }}
+                className="font-heading text-lg md:text-xl text-text-primary tracking-tight hover:opacity-50 transition-opacity relative z-50 transition-colors duration-700"
                 onClick={() => setMobileOpen(false)}
               >
                 Warung Manto®
@@ -50,22 +44,16 @@ export default function Navbar() {
 
             {/* Middle: Quick Links (Desktop only) */}
             <div className="hidden md:flex flex-col col-span-5">
-              <span
-                className="text-[10px] font-heading font-bold tracking-wider mb-1"
-                style={{ color: 'var(--color-text-heading)' }}
-              >
+              <span className="text-[10px] font-heading font-bold text-text-primary tracking-wider mb-1 transition-colors duration-700">
                 Akses Cepat
               </span>
-              <div
-                className="flex flex-wrap gap-2 text-[10px] font-heading tracking-wider"
-                style={{ color: 'var(--color-text-muted)' }}
-              >
+              <div className="flex flex-wrap gap-2 text-[10px] text-text-muted font-heading tracking-wider">
                 {navLinks.map((link, i) => (
                   <AnimatedButton
                     key={link.href}
                     href={link.href}
                     as="a"
-                    className="hover:opacity-70 transition-colors flex"
+                    className="hover:text-text-primary transition-colors flex duration-700"
                   >
                     {link.label + (i < navLinks.length - 1 ? ',' : '')}
                   </AnimatedButton>
@@ -73,71 +61,29 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* Right: Info & Cart & Theme Toggle */}
+            {/* Right: Info & Cart */}
             <div className="col-span-1 md:col-span-4 flex justify-end md:justify-between items-start">
               {/* Meta Info (Desktop only) */}
               <div className="hidden md:flex flex-col">
-                <span
-                  className="text-[10px] font-heading font-bold tracking-wider mb-1"
-                  style={{ color: 'var(--color-text-heading)' }}
-                >
+                <span className="text-[10px] font-heading font-bold text-text-primary tracking-wider mb-1 transition-colors duration-700">
                   Berbasis di Indonesia
                 </span>
-                <span
-                  className="text-[10px] font-heading tracking-wider"
-                  style={{ color: 'var(--color-text-muted)' }}
-                >
+                <span className="text-[10px] text-text-muted font-heading tracking-wider">
                   Grosir + Eceran
                 </span>
               </div>
 
-              <div className="flex items-center gap-4 md:gap-6 relative z-50">
-                {/* Theme Toggle */}
-                <button
-                  onClick={toggleTheme}
-                  className="relative w-8 h-8 flex items-center justify-center rounded-full no-theme-transition"
-                  style={{ border: '1px solid var(--color-border-strong)' }}
-                  aria-label="Toggle Theme"
-                >
-                  <AnimatePresence mode="wait">
-                    {theme === 'dark' ? (
-                      <motion.div
-                        key="sun"
-                        initial={{ rotate: -90, scale: 0, opacity: 0 }}
-                        animate={{ rotate: 0, scale: 1, opacity: 1 }}
-                        exit={{ rotate: 90, scale: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                      >
-                        <Sun
-                          size={14}
-                          style={{ color: 'var(--color-text-heading)' }}
-                        />
-                      </motion.div>
-                    ) : (
-                      <motion.div
-                        key="moon"
-                        initial={{ rotate: 90, scale: 0, opacity: 0 }}
-                        animate={{ rotate: 0, scale: 1, opacity: 1 }}
-                        exit={{ rotate: -90, scale: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                      >
-                        <Moon
-                          size={14}
-                          style={{ color: 'var(--color-text-heading)' }}
-                        />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </button>
-
+              <div className="flex items-center gap-6 relative z-50">
                 {/* Cart Button */}
                 <AnimatedButton
                   onClick={openCart}
-                  className="text-[10px] font-heading font-bold tracking-widest hover:opacity-100 transition-opacity uppercase flex"
-                  style={{ color: 'var(--color-text-heading)' }}
+                  className="text-[10px] font-heading font-bold text-text-primary tracking-widest hover:opacity-100 transition-all duration-700 uppercase flex"
                 >
                   {`Keranjang [${totalItems}]`}
                 </AnimatedButton>
+
+                {/* Theme Toggle */}
+                <ThemeToggle />
 
                 {/* Mobile Menu Toggle */}
                 <button
@@ -151,8 +97,7 @@ export default function Navbar() {
                       y: mobileOpen ? 8 : 0,
                     }}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    className="w-6 h-[2px] rounded-full origin-center"
-                    style={{ backgroundColor: 'var(--color-text-heading)' }}
+                    className="w-6 h-[2px] bg-text-primary rounded-full origin-center transition-colors duration-700"
                   />
                   <motion.div
                     animate={{
@@ -160,8 +105,7 @@ export default function Navbar() {
                       x: mobileOpen ? 20 : 0,
                     }}
                     transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                    className="w-6 h-[2px] rounded-full"
-                    style={{ backgroundColor: 'var(--color-text-heading)' }}
+                    className="w-6 h-[2px] bg-text-primary rounded-full transition-colors duration-700"
                   />
                   <motion.div
                     animate={{
@@ -169,8 +113,7 @@ export default function Navbar() {
                       y: mobileOpen ? -8 : 0,
                     }}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    className="w-6 h-[2px] rounded-full origin-center"
-                    style={{ backgroundColor: 'var(--color-text-heading)' }}
+                    className="w-6 h-[2px] bg-text-primary rounded-full origin-center transition-colors duration-700"
                   />
                 </button>
               </div>
@@ -179,7 +122,7 @@ export default function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Framer Glassmorphic Vibes */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -195,8 +138,7 @@ export default function Navbar() {
               },
             }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-40 flex flex-col justify-between px-6 pt-32 pb-12"
-            style={{ backgroundColor: 'var(--color-overlay)' }}
+            className="fixed inset-0 z-40 bg-forest-deep/80 flex flex-col justify-between px-6 pt-32 pb-12 transition-colors duration-700"
           >
             <div className="flex flex-col gap-6 mt-12 md:mt-20">
               {navLinks.map((link, i) => (
@@ -221,8 +163,7 @@ export default function Navbar() {
                       delay: 0.1 + i * 0.08,
                     }}
                     onClick={() => setMobileOpen(false)}
-                    className="block text-6xl sm:text-7xl font-heading font-black tracking-tighter uppercase leading-[0.85] transition-colors"
-                    style={{ color: 'var(--color-text-heading)' }}
+                    className="block text-6xl sm:text-7xl font-heading font-black text-text-primary hover:text-text-muted transition-colors tracking-tighter uppercase leading-[0.85] duration-700"
                   >
                     {link.label}
                   </motion.a>
@@ -230,6 +171,7 @@ export default function Navbar() {
               ))}
             </div>
 
+            {/* Footer-like element inside the mobile menu */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -239,34 +181,21 @@ export default function Navbar() {
                 duration: 0.8,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="flex justify-between items-end pt-6 mt-8"
-              style={{ borderTop: '1px solid var(--color-border)' }}
+              className="flex justify-between items-end border-t border-white/20 pt-6 mt-8"
             >
               <div className="flex flex-col">
-                <span
-                  className="text-[10px] font-heading font-bold uppercase tracking-widest mb-1"
-                  style={{ color: 'var(--color-text-muted)' }}
-                >
+                <span className="text-[10px] text-text-muted font-heading font-bold uppercase tracking-widest mb-1">
                   Lokasi
                 </span>
-                <span
-                  className="font-serif italic text-sm"
-                  style={{ color: 'var(--color-text-heading)' }}
-                >
+                <span className="font-serif italic text-sm text-text-primary transition-colors duration-700">
                   Indonesia
                 </span>
               </div>
               <div className="flex flex-col text-right">
-                <span
-                  className="text-[10px] font-heading font-bold uppercase tracking-widest mb-1"
-                  style={{ color: 'var(--color-text-muted)' }}
-                >
+                <span className="text-[10px] text-text-muted font-heading font-bold uppercase tracking-widest mb-1">
                   Kontak
                 </span>
-                <span
-                  className="font-serif italic text-sm"
-                  style={{ color: 'var(--color-text-heading)' }}
-                >
+                <span className="font-serif italic text-sm text-text-primary transition-colors duration-700">
                   WhatsApp
                 </span>
               </div>

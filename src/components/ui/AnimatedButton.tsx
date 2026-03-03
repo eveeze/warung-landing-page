@@ -4,15 +4,14 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 interface AnimatedButtonProps {
-  children: string;
+  children: string; // We enforce string so we can split it into characters
   className?: string;
-  style?: React.CSSProperties;
-  onClick?: (e?: any) => void;
+  onClick?: (e?: React.MouseEvent) => void;
   href?: string;
   as?: 'button' | 'a' | 'span';
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
-  fillColor?: string;
+  fillColor?: string; // e.g. "bg-white", "bg-gray-200"
   disabled?: boolean;
   target?: string;
   rel?: string;
@@ -21,7 +20,6 @@ interface AnimatedButtonProps {
 export default function AnimatedButton({
   children,
   className = '',
-  style,
   onClick,
   href,
   as = 'button',
@@ -137,7 +135,6 @@ export default function AnimatedButton({
       <a
         href={href}
         className={outerClasses}
-        style={style}
         onClick={onClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -153,7 +150,6 @@ export default function AnimatedButton({
     return (
       <span
         className={outerClasses}
-        style={style}
         onClick={onClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -166,7 +162,6 @@ export default function AnimatedButton({
   return (
     <button
       className={outerClasses}
-      style={style}
       onClick={onClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
