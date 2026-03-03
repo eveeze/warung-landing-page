@@ -30,7 +30,7 @@ export default function Footer() {
   return (
     <footer
       ref={ref}
-      className="relative bg-forest-deep text-text-primary transition-colors duration-700 pt-24 pb-0 z-20"
+      className="relative bg-[#0f172a] text-white transition-colors duration-700 pt-24 pb-0 z-20"
     >
       <div className="w-full px-6 flex flex-col items-center max-w-[1800px] mx-auto">
         {/* Centered Descriptive Text */}
@@ -41,7 +41,7 @@ export default function Footer() {
             opacity: isVisible ? 1 : 0,
           }}
         >
-          <p className="font-heading font-medium tracking-tight text-text-primary/90 transition-colors duration-700 text-sm md:text-base leading-relaxed">
+          <p className="font-heading font-medium tracking-tight text-white/90 transition-colors duration-700 text-sm md:text-base leading-relaxed">
             Warung Mbah Manto hadir untuk menjadi mitra belanja harian Anda.
             Dari kebutuhan dapur hingga stok usaha, kami pastikan kualitas
             terbaik dengan harga yang selalu bersahabat.
@@ -58,8 +58,8 @@ export default function Footer() {
         >
           <AnimatedButton
             onClick={handleScrollToTop}
-            fillColor="bg-forest"
-            className="mb-32 px-6 py-2.5 rounded-full border border-border text-[10px] md:text-xs font-heading font-bold uppercase tracking-[0.1em] text-text-primary hover:border-forest hover:text-forest-deep transition-all duration-700"
+            fillColor="bg-white"
+            className="mb-32 px-6 py-2.5 rounded-full border border-white/20 text-[10px] md:text-xs font-heading font-bold uppercase tracking-[0.1em] text-white hover:border-white hover:text-[#0f172a] transition-all duration-700"
           >
             Kembali ke Atas
           </AnimatedButton>
@@ -74,43 +74,43 @@ export default function Footer() {
           }}
         >
           <div className="flex flex-col">
-            <h4 className="font-heading font-bold text-text-primary text-[10px] md:text-xs uppercase tracking-widest mb-2 transition-colors duration-700">
+            <h4 className="font-heading font-bold text-white text-[10px] md:text-xs uppercase tracking-widest mb-2 transition-colors duration-700">
               Tautan Cepat
             </h4>
             <div className="flex gap-2">
               <Link
                 href="/#beranda"
-                className="font-serif italic text-text-muted text-[10px] md:text-sm hover:text-text-primary transition-colors duration-700"
+                className="font-serif italic text-white/50 text-[10px] md:text-sm hover:text-white transition-colors duration-700"
               >
                 Beranda,
               </Link>
               <Link
                 href="/belanja"
-                className="font-serif italic text-text-muted text-[10px] md:text-sm hover:text-text-primary transition-colors duration-700"
+                className="font-serif italic text-white/50 text-[10px] md:text-sm hover:text-white transition-colors duration-700"
               >
                 Belanja,
               </Link>
               <Link
                 href="/#layanan"
-                className="font-serif italic text-text-muted text-[10px] md:text-sm hover:text-text-primary transition-colors duration-700"
+                className="font-serif italic text-white/50 text-[10px] md:text-sm hover:text-white transition-colors duration-700"
               >
                 Layanan,
               </Link>
               <Link
                 href="/#kategori"
-                className="font-serif italic text-text-muted text-[10px] md:text-sm hover:text-text-primary transition-colors duration-700"
+                className="font-serif italic text-white/50 text-[10px] md:text-sm hover:text-white transition-colors duration-700"
               >
                 Kategori,
               </Link>
               <Link
                 href="/#works"
-                className="font-serif italic text-text-muted text-[10px] md:text-sm hover:text-text-primary transition-colors duration-700"
+                className="font-serif italic text-white/50 text-[10px] md:text-sm hover:text-white transition-colors duration-700"
               >
                 Koleksi,
               </Link>
               <Link
                 href="/#contact"
-                className="font-serif italic text-text-muted text-[10px] md:text-sm hover:text-text-primary transition-colors duration-700"
+                className="font-serif italic text-white/50 text-[10px] md:text-sm hover:text-white transition-colors duration-700"
               >
                 Kontak
               </Link>
@@ -118,25 +118,25 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col text-right">
-            <h4 className="font-heading font-bold text-text-primary text-[10px] md:text-xs uppercase tracking-widest mb-1 transition-colors duration-700">
+            <h4 className="font-heading font-bold text-white text-[10px] md:text-xs uppercase tracking-widest mb-1 transition-colors duration-700">
               Jejaring Sosial
             </h4>
             <div className="flex gap-2 justify-end">
               <Link
                 href="#"
-                className="font-serif italic text-text-muted text-[10px] md:text-sm hover:text-text-primary transition-colors duration-700"
+                className="font-serif italic text-white/50 text-[10px] md:text-sm hover:text-white transition-colors duration-700"
               >
                 WhatsApp,
               </Link>
               <Link
                 href="#"
-                className="font-serif italic text-text-muted text-[10px] md:text-sm hover:text-text-primary transition-colors duration-700"
+                className="font-serif italic text-white/50 text-[10px] md:text-sm hover:text-white transition-colors duration-700"
               >
                 Instagram,
               </Link>
               <Link
                 href="#"
-                className="font-serif italic text-text-muted text-[10px] md:text-sm hover:text-text-primary transition-colors duration-700"
+                className="font-serif italic text-white/50 text-[10px] md:text-sm hover:text-white transition-colors duration-700"
               >
                 Tokopedia
               </Link>
@@ -152,7 +152,7 @@ export default function Footer() {
             opacity: isVisible ? 1 : 0,
           }}
         >
-          <h1 className="text-[clamp(6rem,26vw,32rem)] font-heading font-black tracking-tighter uppercase text-text-primary transition-colors duration-700 leading-[0.75] text-center">
+          <h1 className="text-[clamp(6rem,26vw,32rem)] font-heading font-black tracking-tighter uppercase text-white transition-colors duration-700 leading-[0.75] text-center">
             ©2026
           </h1>
         </div>

@@ -124,7 +124,9 @@ export default function HowToOrder() {
                   animate={{
                     scale: activeStep === idx ? 1 : 0.8,
                     backgroundColor:
-                      activeStep === idx ? '#ffffff' : 'rgba(255,255,255,0.15)',
+                      activeStep === idx
+                        ? 'var(--accent)'
+                        : 'var(--accent, #1a3a6b)33',
                   }}
                   transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                   className="w-2.5 h-2.5 rounded-full"

@@ -83,7 +83,7 @@ export default function Hero({ introComplete }: { introComplete: boolean }) {
           animate={introComplete ? { scaleX: 1 } : { scaleX: 0 }}
           transition={{ duration: 1, ease: [1, 0, 0, 1] as const, delay: 0.5 }}
           style={{ originX: 0 }}
-          className="w-full bg-forest text-forest-deep transition-colors duration-700 py-3 px-6 mt-16 md:mt-24 mb-12 md:mb-16 grid grid-cols-3 font-heading font-black text-[10px] md:text-sm uppercase tracking-widest text-center"
+          className="w-full bg-forest text-cream transition-colors duration-700 py-3 px-6 mt-16 md:mt-24 mb-12 md:mb-16 grid grid-cols-3 font-heading font-black text-[10px] md:text-sm uppercase tracking-widest text-center"
         >
           <span className="text-left">Harga Bersahabat</span>
           <span className="text-center">Buka Setiap Hari</span>

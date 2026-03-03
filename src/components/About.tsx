@@ -74,7 +74,7 @@ export default function About() {
           animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
           transition={{ duration: 1, ease: [1, 0, 0, 1] }}
           style={{ originX: 0 }}
-          className="w-full bg-forest text-forest-deep transition-colors duration-700 py-3 px-6 mb-24 md:mb-32 grid grid-cols-2 lg:grid-cols-4 font-heading font-black text-[10px] md:text-sm uppercase tracking-widest text-left md:text-center gap-4"
+          className="w-full bg-forest text-cream transition-colors duration-700 py-3 px-6 mb-24 md:mb-32 grid grid-cols-2 lg:grid-cols-4 font-heading font-black text-[10px] md:text-sm uppercase tracking-widest text-left md:text-center gap-4"
         >
           <span className="text-left">Terpercaya</span>
           <span>Terstruktur</span>

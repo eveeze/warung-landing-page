@@ -236,28 +236,36 @@ export default function Shopping() {
 
             {/* Category Links (Scrollable Pill List for Scalability) */}
             <div className="col-span-1 lg:col-span-3 flex items-center overflow-x-auto px-6 py-4 md:py-6 gap-3 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
-              <button
+              <AnimatedButton
                 onClick={() => setActiveCategory('')}
+                fillColor={
+                  activeCategory === '' ? undefined : 'bg-[var(--color-accent)]'
+                }
                 className={`shrink-0 px-6 py-2.5 rounded-full border text-xs font-heading font-bold uppercase tracking-widest transition-all duration-300 ${
                   activeCategory === ''
-                    ? 'border-[var(--color-primary)] bg-[var(--color-accent)] text-[var(--color-accent-contrast)]'
-                    : 'border-border text-text-muted hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]'
+                    ? 'border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-accent-contrast)]'
+                    : 'border-border text-text-muted hover:border-[var(--color-accent)] hover:text-[var(--color-accent-contrast)]'
                 }`}
               >
                 Semua Koleksi
-              </button>
+              </AnimatedButton>
               {categories.map((cat) => (
-                <button
+                <AnimatedButton
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}
+                  fillColor={
+                    activeCategory === cat.id
+                      ? undefined
+                      : 'bg-[var(--color-accent)]'
+                  }
                   className={`shrink-0 px-6 py-2.5 rounded-full border text-xs font-heading font-bold uppercase tracking-widest transition-all duration-300 ${
                     activeCategory === cat.id
-                      ? 'border-[var(--color-primary)] bg-[var(--color-accent)] text-[var(--color-accent-contrast)]'
-                      : 'border-border text-text-muted hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]'
+                      ? 'border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-accent-contrast)]'
+                      : 'border-border text-text-muted hover:border-[var(--color-accent)] hover:text-[var(--color-accent-contrast)]'
                   }`}
                 >
                   {cat.name}
-                </button>
+                </AnimatedButton>
               ))}
             </div>
           </div>

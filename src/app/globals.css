@@ -15,6 +15,11 @@
   --color-text-body: var(--text-body);
   --color-text-muted: var(--text-muted);
 
+  /* Brand Accent Colors */
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-accent-contrast: var(--accent-contrast);
+
   --font-heading: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-serif: var(--font-serif), 'Playfair Display', serif;
@@ -25,39 +30,55 @@
 }
 
 /* 
- * DEFAULT (LIGHT THEME) - THE NAVY THEME
- * Navy Blue context per request. Deep premium blue as base background.
+ * DEFAULT (LIGHT THEME) — WARM OFF-WHITE + NAVY ACCENT
+ * Trendy warm ivory bg, navy blue as brand accent, not background.
  */
 :root {
-  --forest: #ffffff; /* Contrast Text/Accent -> White */
-  --forest-deep: #0f172a; /* Deep Navy Blue Background */
-  --forest-mid: #1e3a8a; /* Slate Blue Highlights */
-  --forest-light: #475569;
-  --cream: #ffffff;
-  --surface: #0a0f1c; /* Almost black navy for deep surfaces */
-  --border: #1e293b;
+  --forest: #1a3a6b; /* Navy Brand Accent — more vivid blue */
+  --forest-deep: #f8f7f4; /* Warm Off-White Background (trending) */
+  --forest-mid: #eae8e3; /* Subtle warm gray surface */
+  --forest-light: #d8d4cc; /* Muted warm border */
+  --cream: #f8f7f4;
+  --surface: #ffffff; /* Pure white cards/surfaces */
+  --border: #e0ddd6; /* Warm soft border */
 
-  --text-primary: #ffffff;
-  --text-body: #94a3b8;
-  --text-muted: #64748b;
+  --text-primary: #0f172a; /* Deep Dark Navy text */
+  --text-body: #4a5568; /* Warm gray body */
+  --text-muted: #8896a6; /* Soft muted */
+
+  /* Brand Accent System */
+  --accent: #1a3a6b; /* Vivid Navy Blue */
+  --accent-light: #2a4f8f; /* Lighter hover navy */
+  --accent-contrast: #ffffff; /* White on navy */
+
+  /* Component-level aliases */
+  --color-primary: #0f172a;
+  --color-bg: #f8f7f4;
 }
 
 /* 
- * DARK THEME
- * Classic Premium Dark
+ * DARK THEME — Premium Dark with Navy Accent
  */
 [data-theme='dark'] {
-  --forest: #ffffff; /* Contrast Accent */
-  --forest-deep: #000000; /* Pure Black Background */
-  --forest-mid: #0a0a0a;
-  --forest-light: #1a1a1a;
-  --cream: #000000;
-  --surface: #000000;
-  --border: #333333;
+  --forest: #ffffff; /* Contrast Accent (white) */
+  --forest-deep: #050505; /* Near black background */
+  --forest-mid: #0e0e0e; /* Slightly lighter surface */
+  --forest-light: #1a1a1a; /* Subtle surface */
+  --cream: #050505;
+  --surface: #0a0a0a; /* Card surface */
+  --border: #222222; /* Dark border */
 
-  --text-primary: #ffffff;
+  --text-primary: #f0f0f0; /* Slightly warm white */
   --text-body: #a0a0a0;
-  --text-muted: #666666;
+  --text-muted: #606060;
+
+  /* Brand Accent System — navy accent in dark mode */
+  --accent: #4a7fd4; /* Brighter navy for dark mode contrast */
+  --accent-light: #5f94e8;
+  --accent-contrast: #050505; /* Dark text on accent */
+
+  --color-primary: #f0f0f0;
+  --color-bg: #050505;
 }
 
 @keyframes marquee {

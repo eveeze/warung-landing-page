@@ -39,7 +39,7 @@ export default function CartDrawer() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
             onClick={closeCart}
-            className="fixed inset-0 z-50 bg-forest-deep/80 backdrop-blur-md"
+            className="fixed inset-0 z-50 bg-text-primary/60 backdrop-blur-md"
           />
 
           {/* Drawer */}
@@ -48,7 +48,7 @@ export default function CartDrawer() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed right-0 top-0 bottom-0 z-50 w-full max-w-md bg-forest-deep border-l border-border shadow-[-30px_0_80px_-20px_rgba(0,0,0,0.5)] flex flex-col"
+            className="fixed right-0 top-0 bottom-0 z-50 w-full max-w-md bg-surface border-l border-border shadow-[-30px_0_80px_-20px_rgba(0,0,0,0.15)] flex flex-col"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-8 py-8 border-b border-border">
@@ -184,7 +184,7 @@ export default function CartDrawer() {
 
             {/* Footer — Checkout */}
             {items.length > 0 && (
-              <div className="border-t border-border px-8 py-8 space-y-8 bg-forest-deep">
+              <div className="border-t border-border px-8 py-8 space-y-8 bg-surface">
                 {/* Total */}
                 <div className="flex items-end justify-between">
                   <span className="text-xs text-text-muted font-heading uppercase tracking-[0.3em] font-medium">

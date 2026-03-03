@@ -27,7 +27,7 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.85, 0, 0.15, 1] }}
-        className="fixed top-0 left-0 right-0 z-50 bg-forest-deep/90 backdrop-blur-md border-b border-border transition-colors duration-700"
+        className="fixed top-0 left-0 right-0 z-50 bg-[#0f172a]/95 backdrop-blur-md border-b border-white/10 transition-colors duration-700"
       >
         <div className="mx-auto max-w-[1600px] px-6 md:px-12 xl:px-20 py-6">
           <div className="grid grid-cols-2 md:grid-cols-12 gap-4 items-start">
@@ -35,7 +35,7 @@ export default function Navbar() {
             <div className="col-span-1 md:col-span-3">
               <Link
                 href="/"
-                className="font-heading text-lg md:text-xl text-text-primary tracking-tight hover:opacity-50 transition-opacity relative z-50 transition-colors duration-700"
+                className="font-heading text-lg md:text-xl text-white tracking-tight hover:opacity-50 transition-opacity relative z-50 duration-700"
                 onClick={() => setMobileOpen(false)}
               >
                 Warung Manto®
@@ -44,16 +44,16 @@ export default function Navbar() {
 
             {/* Middle: Quick Links (Desktop only) */}
             <div className="hidden md:flex flex-col col-span-5">
-              <span className="text-[10px] font-heading font-bold text-text-primary tracking-wider mb-1 transition-colors duration-700">
+              <span className="text-[10px] font-heading font-bold text-white tracking-wider mb-1 transition-colors duration-700">
                 Akses Cepat
               </span>
-              <div className="flex flex-wrap gap-2 text-[10px] text-text-muted font-heading tracking-wider">
+              <div className="flex flex-wrap gap-2 text-[10px] text-white/60 font-heading tracking-wider">
                 {navLinks.map((link, i) => (
                   <AnimatedButton
                     key={link.href}
                     href={link.href}
                     as="a"
-                    className="hover:text-text-primary transition-colors flex duration-700"
+                    className="hover:text-white transition-colors flex duration-700"
                   >
                     {link.label + (i < navLinks.length - 1 ? ',' : '')}
                   </AnimatedButton>
@@ -65,10 +65,10 @@ export default function Navbar() {
             <div className="col-span-1 md:col-span-4 flex justify-end md:justify-between items-start">
               {/* Meta Info (Desktop only) */}
               <div className="hidden md:flex flex-col">
-                <span className="text-[10px] font-heading font-bold text-text-primary tracking-wider mb-1 transition-colors duration-700">
+                <span className="text-[10px] font-heading font-bold text-white tracking-wider mb-1 transition-colors duration-700">
                   Berbasis di Indonesia
                 </span>
-                <span className="text-[10px] text-text-muted font-heading tracking-wider">
+                <span className="text-[10px] text-white/60 font-heading tracking-wider">
                   Grosir + Eceran
                 </span>
               </div>
@@ -77,7 +77,7 @@ export default function Navbar() {
                 {/* Cart Button */}
                 <AnimatedButton
                   onClick={openCart}
-                  className="text-[10px] font-heading font-bold text-text-primary tracking-widest hover:opacity-100 transition-all duration-700 uppercase flex"
+                  className="text-[10px] font-heading font-bold text-white tracking-widest hover:opacity-100 transition-all duration-700 uppercase flex"
                 >
                   {`Keranjang [${totalItems}]`}
                 </AnimatedButton>
@@ -97,7 +97,7 @@ export default function Navbar() {
                       y: mobileOpen ? 8 : 0,
                     }}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    className="w-6 h-[2px] bg-text-primary rounded-full origin-center transition-colors duration-700"
+                    className="w-6 h-[2px] bg-white rounded-full origin-center transition-colors duration-700"
                   />
                   <motion.div
                     animate={{
@@ -105,7 +105,7 @@ export default function Navbar() {
                       x: mobileOpen ? 20 : 0,
                     }}
                     transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                    className="w-6 h-[2px] bg-text-primary rounded-full transition-colors duration-700"
+                    className="w-6 h-[2px] bg-white rounded-full transition-colors duration-700"
                   />
                   <motion.div
                     animate={{
@@ -113,7 +113,7 @@ export default function Navbar() {
                       y: mobileOpen ? -8 : 0,
                     }}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    className="w-6 h-[2px] bg-text-primary rounded-full origin-center transition-colors duration-700"
+                    className="w-6 h-[2px] bg-white rounded-full origin-center transition-colors duration-700"
                   />
                 </button>
               </div>
@@ -138,7 +138,7 @@ export default function Navbar() {
               },
             }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-40 bg-forest-deep/80 flex flex-col justify-between px-6 pt-32 pb-12 transition-colors duration-700"
+            className="fixed inset-0 z-40 bg-[#0f172a]/95 flex flex-col justify-between px-6 pt-32 pb-12 transition-colors duration-700"
           >
             <div className="flex flex-col gap-6 mt-12 md:mt-20">
               {navLinks.map((link, i) => (
@@ -163,7 +163,7 @@ export default function Navbar() {
                       delay: 0.1 + i * 0.08,
                     }}
                     onClick={() => setMobileOpen(false)}
-                    className="block text-6xl sm:text-7xl font-heading font-black text-text-primary hover:text-text-muted transition-colors tracking-tighter uppercase leading-[0.85] duration-700"
+                    className="block text-6xl sm:text-7xl font-heading font-black text-white hover:text-white/60 transition-colors tracking-tighter uppercase leading-[0.85] duration-700"
                   >
                     {link.label}
                   </motion.a>
@@ -184,18 +184,18 @@ export default function Navbar() {
               className="flex justify-between items-end border-t border-white/20 pt-6 mt-8"
             >
               <div className="flex flex-col">
-                <span className="text-[10px] text-text-muted font-heading font-bold uppercase tracking-widest mb-1">
+                <span className="text-[10px] text-white/50 font-heading font-bold uppercase tracking-widest mb-1">
                   Lokasi
                 </span>
-                <span className="font-serif italic text-sm text-text-primary transition-colors duration-700">
+                <span className="font-serif italic text-sm text-white transition-colors duration-700">
                   Indonesia
                 </span>
               </div>
               <div className="flex flex-col text-right">
-                <span className="text-[10px] text-text-muted font-heading font-bold uppercase tracking-widest mb-1">
+                <span className="text-[10px] text-white/50 font-heading font-bold uppercase tracking-widest mb-1">
                   Kontak
                 </span>
-                <span className="font-serif italic text-sm text-text-primary transition-colors duration-700">
+                <span className="font-serif italic text-sm text-white transition-colors duration-700">
                   WhatsApp
                 </span>
               </div>

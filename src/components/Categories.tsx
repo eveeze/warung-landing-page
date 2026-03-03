@@ -98,7 +98,7 @@ export default function Categories() {
               href="/belanja"
               as="a"
               fillColor="bg-forest"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-border/50 font-heading font-bold text-xs uppercase tracking-widest text-text-primary hover:border-forest hover:text-forest-deep transition-all duration-300"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-forest/30 font-heading font-bold text-xs uppercase tracking-widest text-text-primary hover:border-forest hover:text-cream transition-all duration-300"
             >
               Lihat Semua Kategori →
             </AnimatedButton>
@@ -137,17 +137,17 @@ export default function Categories() {
                     <div className="flex flex-col transform group-hover:-translate-y-2 transition-transform duration-700 ease-[0.16,1,0.3,1]">
                       {/* Pill Badge */}
                       <div className="mb-4">
-                        <span className="inline-flex items-center px-4 py-1.5 bg-forest-deep/80 backdrop-blur-xl rounded-full text-[10px] md:text-xs font-heading font-medium text-text-primary uppercase tracking-widest border border-border/40 group-hover:bg-forest group-hover:text-forest-deep transition-all duration-500">
+                        <span className="inline-flex items-center px-4 py-1.5 bg-[#0f172a]/80 backdrop-blur-xl rounded-full text-[10px] md:text-xs font-heading font-medium text-white uppercase tracking-widest border border-white/20 group-hover:bg-forest group-hover:text-cream transition-all duration-500">
                           {cat.count}
                         </span>
                       </div>
 
                       {/* Category Name with Slide Arrow */}
                       <div className="flex items-end justify-between overflow-hidden">
-                        <h3 className="font-heading font-black text-4xl md:text-5xl lg:text-7xl tracking-tighter leading-none mb-0 text-white group-hover:text-forest-deep transition-colors duration-500 drop-shadow-lg">
+                        <h3 className="font-heading font-black text-4xl md:text-5xl lg:text-7xl tracking-tighter leading-none mb-0 text-white group-hover:text-cream transition-colors duration-500 drop-shadow-lg">
                           {cat.name}
                         </h3>
-                        <div className="translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 ease-[0.16,1,0.3,1] pb-2 md:pb-4 text-forest-deep">
+                        <div className="translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 ease-[0.16,1,0.3,1] pb-2 md:pb-4 text-cream">
                           <svg
                             width="32"
                             height="32"
