@@ -8,7 +8,7 @@ export default function Contact() {
     >
       <div className="w-full px-6 flex-1 flex flex-col md:flex-row gap-12 md:gap-24">
         {/* Left: Large Portrait Image */}
-        <div className="w-full md:w-1/2 flex-1 relative rounded-2xl md:rounded-[2rem] overflow-hidden bg-[#1a1a1a] min-h-[50vh] md:min-h-full">
+        <div className="w-full md:w-1/2 flex-1 relative rounded-2xl md:rounded-[2rem] overflow-hidden bg-[var(--color-surface)] min-h-[50vh] md:min-h-full">
           {/* Using a placeholder aesthetic image to match the reference look */}
           <img
             src="https://images.unsplash.com/photo-1600607688969-a5bfcd64bd40?q=80&w=1400&auto=format&fit=crop"

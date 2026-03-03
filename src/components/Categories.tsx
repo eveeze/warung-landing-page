@@ -110,7 +110,7 @@ export default function Categories() {
             <motion.div key={cat.id} variants={itemVars}>
               <Link
                 href={`/belanja?kategori=${cat.id}`}
-                className="group block relative w-full aspect-[4/3] md:aspect-[1/1] xl:aspect-[4/3] rounded-[2rem] overflow-hidden bg-[#050505] p-2 border border-[var(--color-primary)]/5 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-bg)] outline-none shadow-xl hover:shadow-[0_0_40px_rgba(255,255,255,0.05)] transition-shadow duration-700"
+                className="group block relative w-full aspect-[4/3] md:aspect-[1/1] xl:aspect-[4/3] rounded-[2rem] overflow-hidden bg-[var(--color-surface)] p-2 border border-[var(--color-primary)]/5 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-bg)] outline-none shadow-xl hover:shadow-[0_0_40px_rgba(255,255,255,0.05)] transition-shadow duration-700"
               >
                 {/* Inner Image Container */}
                 <div className="relative w-full h-full rounded-[1.5rem] overflow-hidden">

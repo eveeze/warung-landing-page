@@ -227,7 +227,7 @@ export default function CartDrawer() {
                     />
                   }
                   fillColor="bg-[var(--color-accent)]"
-                  className="group w-full flex items-center justify-center gap-3 bg-[#111] border border-[var(--color-primary)]/10 hover:text-[var(--color-accent-contrast)] font-heading font-black text-xs tracking-[0.2em] uppercase py-5 transition-colors duration-500 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-[#111] disabled:hover:text-[var(--color-primary)]"
+                  className="group w-full flex items-center justify-center gap-3 bg-[var(--color-surface)] border border-[var(--color-primary)]/10 hover:text-[var(--color-accent-contrast)] font-heading font-black text-xs tracking-[0.2em] uppercase py-5 transition-colors duration-500 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-[var(--color-surface)] disabled:hover:text-[var(--color-primary)]"
                 >
                   Checkout via WA
                 </AnimatedButton>

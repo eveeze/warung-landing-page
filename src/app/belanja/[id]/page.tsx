@@ -98,7 +98,7 @@ export default function ProductDetail() {
         {/* Split Screen: Image + Details */}
         <div className="min-h-screen flex flex-col md:flex-row">
           {/* Left Side: Massive Edge-to-Edge Image with Parallax */}
-          <div className="w-full md:w-1/2 h-[70vh] md:h-screen sticky top-0 bg-[#0a0a0a] overflow-hidden">
+          <div className="w-full md:w-1/2 h-[70vh] md:h-screen sticky top-0 bg-[var(--color-bg-secondary)] overflow-hidden">
             {product.image_url ? (
               <motion.img
                 style={{ y: yImage, scale: scaleImage }}
@@ -359,7 +359,7 @@ export default function ProductDetail() {
                     className="group"
                   >
                     <Link href={`/belanja/${rp.id}`} className="block">
-                      <div className="w-full aspect-[4/5] bg-[#050505] rounded-[2rem] overflow-hidden relative mb-6 border border-white/5 shadow-lg group-hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-shadow duration-700">
+                      <div className="w-full aspect-[4/5] bg-[var(--color-surface)] rounded-[2rem] overflow-hidden relative mb-6 border border-[var(--color-border)] shadow-lg group-hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-shadow duration-700">
                         {rp.image_url ? (
                           <motion.img
                             whileHover={{ scale: 1.08 }}
@@ -372,7 +372,7 @@ export default function ProductDetail() {
                             className="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-90 transition-all duration-700"
                           />
                         ) : (
-                          <div className="absolute inset-0 bg-[#0a0a0a] flex items-center justify-center">
+                          <div className="absolute inset-0 bg-[var(--color-bg-secondary)] flex items-center justify-center">
                             <span className="font-heading font-black text-4xl text-[var(--color-primary)]/5 group-hover:text-[var(--color-primary)]/20 transition-colors duration-700">
                               {rp.name.charAt(0)}
                             </span>

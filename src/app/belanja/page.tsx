@@ -228,7 +228,7 @@ export default function Belanja() {
                       <div ref={dropdownRef} className="relative">
                         <button
                           onClick={() => setDropdownOpen(!dropdownOpen)}
-                          className="flex items-center gap-2 px-5 py-3 rounded-full border border-border/50 bg-[var(--color-accent)]/[0.03] text-sm font-heading font-bold text-[var(--color-primary)] hover:border-white/50 transition-colors"
+                          className="flex items-center gap-2 px-5 py-3 rounded-full border border-border/50 bg-[var(--color-accent)]/[0.03] text-sm font-heading font-bold text-[var(--color-primary)] hover:border-[var(--color-border)]0 transition-colors"
                         >
                           <span>{activeCategoryName}</span>
                           <motion.span
@@ -249,7 +249,7 @@ export default function Belanja() {
                                 duration: 0.25,
                                 ease: [0.16, 1, 0.3, 1],
                               }}
-                              className="absolute left-0 top-full mt-2 w-72 max-h-80 overflow-y-auto bg-[#111] border border-border/30 rounded-xl shadow-2xl z-40 custom-scrollbar"
+                              className="absolute left-0 top-full mt-2 w-72 max-h-80 overflow-y-auto bg-[var(--color-surface)] border border-border/30 rounded-xl shadow-2xl z-40 custom-scrollbar"
                             >
                               {/* "Semua" option */}
                               <button
@@ -320,7 +320,7 @@ export default function Belanja() {
                           className={`flex-shrink-0 px-4 py-2 rounded-full text-[10px] font-heading font-bold uppercase tracking-widest border transition-all duration-300 ${
                             activeCategoryId === cat.id
                               ? 'bg-[var(--color-accent)] text-[var(--color-accent-contrast)] border-white'
-                              : 'bg-transparent text-text-muted border-border/30 hover:border-white/50 hover:text-[var(--color-primary)]'
+                              : 'bg-transparent text-text-muted border-border/30 hover:border-[var(--color-border)]0 hover:text-[var(--color-primary)]'
                           }`}
                         >
                           {cat.name}
@@ -400,7 +400,7 @@ export default function Belanja() {
                     {/* Image Container */}
                     <Link
                       href={`/belanja/${product.id}`}
-                      className="block w-full aspect-[4/5] bg-[#050505] rounded-[2rem] overflow-hidden relative mb-6 border border-white/5 shadow-lg group-hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-shadow duration-700"
+                      className="block w-full aspect-[4/5] bg-[var(--color-surface)] rounded-[2rem] overflow-hidden relative mb-6 border border-[var(--color-border)] shadow-lg group-hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-shadow duration-700"
                     >
                       {product.image_url ? (
                         <motion.img
@@ -414,7 +414,7 @@ export default function Belanja() {
                           className="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-90 transition-all duration-700"
                         />
                       ) : (
-                        <div className="absolute inset-0 bg-[#0a0a0a] flex items-center justify-center">
+                        <div className="absolute inset-0 bg-[var(--color-bg-secondary)] flex items-center justify-center">
                           <span className="font-heading font-black text-6xl text-[var(--color-primary)]/5 group-hover:text-[var(--color-primary)]/20 transition-colors duration-700">
                             {product.name.charAt(0)}
                           </span>

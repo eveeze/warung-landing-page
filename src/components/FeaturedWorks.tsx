@@ -71,7 +71,7 @@ export default function FeaturedWorks() {
           {/* Product 0: Large Square */}
           {products[0] && (
             <div className="w-full xl:w-[90%] group cursor-pointer flex flex-col">
-              <div className="w-full aspect-square bg-[#0a0a0a] rounded-2xl md:rounded-[2rem] overflow-hidden relative mb-4">
+              <div className="w-full aspect-square bg-[var(--color-bg-secondary)] rounded-2xl md:rounded-[2rem] overflow-hidden relative mb-4">
                 {products[0].image_url ? (
                   <motion.img
                     whileHover={{ scale: 1.05 }}
@@ -81,7 +81,7 @@ export default function FeaturedWorks() {
                     className="absolute inset-0 w-full h-full object-cover"
                   />
                 ) : (
-                  <div className="absolute inset-0 bg-[#111]" />
+                  <div className="absolute inset-0 bg-[var(--color-surface)]" />
                 )}
                 <div className="absolute inset-0 bg-[var(--color-bg)]/20 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
               </div>
@@ -102,7 +102,7 @@ export default function FeaturedWorks() {
           {/* Product 1: Wide Rectangle */}
           {products[1] && (
             <div className="w-full md:w-[80%] lg:w-[95%] xl:w-[85%] self-end group cursor-pointer flex flex-col">
-              <div className="w-full aspect-[4/3] bg-[#0a0a0a] rounded-2xl md:rounded-[2rem] overflow-hidden relative mb-4">
+              <div className="w-full aspect-[4/3] bg-[var(--color-bg-secondary)] rounded-2xl md:rounded-[2rem] overflow-hidden relative mb-4">
                 {products[1].image_url ? (
                   <motion.img
                     whileHover={{ scale: 1.05 }}
@@ -112,7 +112,7 @@ export default function FeaturedWorks() {
                     className="absolute inset-0 w-full h-full object-cover"
                   />
                 ) : (
-                  <div className="absolute inset-0 bg-[#111]" />
+                  <div className="absolute inset-0 bg-[var(--color-surface)]" />
                 )}
                 <div className="absolute inset-0 bg-[var(--color-bg)]/20 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
               </div>
@@ -130,7 +130,7 @@ export default function FeaturedWorks() {
           {/* Product 2: Tall Rectangle */}
           {products[2] && (
             <div className="w-full md:w-[70%] lg:w-[80%] lg:-ml-12 group cursor-pointer flex flex-col">
-              <div className="w-full aspect-[3/4] bg-[#0a0a0a] rounded-2xl md:rounded-[2rem] overflow-hidden relative mb-4">
+              <div className="w-full aspect-[3/4] bg-[var(--color-bg-secondary)] rounded-2xl md:rounded-[2rem] overflow-hidden relative mb-4">
                 {products[2].image_url ? (
                   <motion.img
                     whileHover={{ scale: 1.05 }}
@@ -140,7 +140,7 @@ export default function FeaturedWorks() {
                     className="absolute inset-0 w-full h-full object-cover"
                   />
                 ) : (
-                  <div className="absolute inset-0 bg-[#111]" />
+                  <div className="absolute inset-0 bg-[var(--color-surface)]" />
                 )}
                 <div className="absolute inset-0 bg-[var(--color-bg)]/20 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
               </div>

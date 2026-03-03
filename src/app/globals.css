@@ -32,31 +32,31 @@
   --color-scrollbar-hover: #ffffff;
 }
 
-/* Light Theme — Navy Blue Brand */
+/* Light Theme — Navy Blue Brand (High Contrast) */
 [data-theme='light'] {
-  --color-bg: #f5f5f0;
-  --color-bg-secondary: #eeeee8;
+  --color-bg: #f2f0eb;
+  --color-bg-secondary: #e8e6e0;
   --color-surface: #ffffff;
-  --color-surface-hover: #f0f0ea;
+  --color-surface-hover: #f8f7f4;
 
-  --color-primary: #1a2744;
-  --color-accent: #1a2744;
+  --color-primary: #0f1b33;
+  --color-accent: #0f1b33;
   --color-accent-contrast: #ffffff;
 
-  --color-text-heading: #1a2744;
-  --color-text-body: #4a5568;
-  --color-text-muted: #8895a7;
+  --color-text-heading: #0f1b33;
+  --color-text-body: #3d4550;
+  --color-text-muted: #6b7280;
 
-  --color-border: rgba(26, 39, 68, 0.15);
-  --color-border-strong: rgba(26, 39, 68, 0.3);
+  --color-border: rgba(15, 27, 51, 0.12);
+  --color-border-strong: rgba(15, 27, 51, 0.25);
 
-  --color-overlay: rgba(245, 245, 240, 0.9);
+  --color-overlay: rgba(242, 240, 235, 0.92);
   --color-card: #ffffff;
-  --color-card-hover: #f8f8f4;
+  --color-card-hover: #f8f7f4;
 
-  --color-scrollbar-track: #f5f5f0;
-  --color-scrollbar-thumb: #d0d0c8;
-  --color-scrollbar-hover: #1a2744;
+  --color-scrollbar-track: #f2f0eb;
+  --color-scrollbar-thumb: #c8c6c0;
+  --color-scrollbar-hover: #0f1b33;
 }
 
 @theme inline {
