@@ -4,7 +4,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="w-full min-h-screen bg-black flex flex-col pt-32 pb-24 border-t border-border/30"
+      className="w-full min-h-screen flex flex-col pt-32 pb-24 border-t border-border/30"
     >
       <div className="w-full px-6 flex-1 flex flex-col md:flex-row gap-12 md:gap-24">
         {/* Left: Large Portrait Image */}
@@ -21,7 +21,7 @@ export default function Contact() {
         {/* Right: Massive Typography & CTA */}
         <div className="w-full md:w-1/2 flex flex-col justify-center items-start">
           <h2
-            className="font-heading font-medium text-[clamp(2.5rem,5vw,5rem)] leading-[1.1] tracking-tighter text-white mb-12"
+            className="font-heading font-medium text-[clamp(2.5rem,5vw,5rem)] leading-[1.1] tracking-tighter mb-12"
             style={{ textWrap: 'balance' }}
           >
             10+ tahun™ melayani ribuan pelanggan setia dengan harga jujur, stok
@@ -33,8 +33,8 @@ export default function Contact() {
             href="https://wa.me/62882003310360"
             target="_blank"
             rel="noopener noreferrer"
-            fillColor="bg-white"
-            className="inline-flex items-center justify-center px-10 py-4 rounded-full border border-white text-white font-heading font-bold text-sm uppercase tracking-widest hover:border-white hover:text-black transition-colors duration-300"
+            fillColor="bg-[var(--color-accent)]"
+            className="inline-flex items-center justify-center px-10 py-4 rounded-full border border-[var(--color-primary)] font-heading font-bold text-sm uppercase tracking-widest hover:border-[var(--color-primary)] hover:text-[var(--color-accent-contrast)] transition-colors duration-300"
           >
             Hubungi via WhatsApp →
           </AnimatedButton>

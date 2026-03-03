@@ -47,7 +47,7 @@ function ProductCard({ product }: { product: Product }) {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.98, y: 20 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
-      className="group bg-transparent border border-border hover:border-white transition-colors duration-300 relative flex flex-col justify-between"
+      className="group bg-transparent border border-border hover:border-[var(--color-primary)] transition-colors duration-300 relative flex flex-col justify-between"
     >
       {/* Image / Color Placeholder */}
       <div className="relative aspect-[4/3] overflow-hidden bg-forest-mid border-b border-border">
@@ -58,8 +58,8 @@ function ProductCard({ product }: { product: Product }) {
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[0.16,1,0.3,1] mix-blend-luminosity group-hover:mix-blend-normal"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-black group-hover:bg-white transition-colors duration-500">
-            <span className="font-heading font-black text-6xl text-border group-hover:text-black transition-colors duration-500">
+          <div className="w-full h-full flex items-center justify-center group-hover:bg-[var(--color-accent)] transition-colors duration-500">
+            <span className="font-heading font-black text-6xl text-border group-hover:text-[var(--color-accent-contrast)] transition-colors duration-500">
               W.M.
             </span>
           </div>
@@ -67,7 +67,7 @@ function ProductCard({ product }: { product: Product }) {
 
         {/* Wholesale badge */}
         {product.pricing_tiers?.length > 0 && (
-          <div className="absolute top-0 left-0 bg-white text-black text-[9px] font-heading font-black px-2 py-1 uppercase tracking-widest">
+          <div className="absolute top-0 left-0 bg-[var(--color-accent)] text-[var(--color-accent-contrast)] text-[9px] font-heading font-black px-2 py-1 uppercase tracking-widest">
             Grosir
           </div>
         )}
@@ -75,7 +75,7 @@ function ProductCard({ product }: { product: Product }) {
         {/* Action Button */}
         <button
           onClick={handleAdd}
-          className="absolute bottom-4 right-4 w-10 h-10 bg-white text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0"
+          className="absolute bottom-4 right-4 w-10 h-10 bg-[var(--color-accent)] text-[var(--color-accent-contrast)] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0"
         >
           {added ? (
             <span className="font-heading font-black text-xs uppercase tracking-widest">
@@ -91,10 +91,10 @@ function ProductCard({ product }: { product: Product }) {
 
       <div className="p-4 md:p-6 flex flex-col justify-between flex-1">
         <div className="flex justify-between items-start gap-4 mb-8">
-          <h3 className="font-heading font-black text-lg uppercase tracking-tight text-white leading-tight">
+          <h3 className="font-heading font-black text-lg uppercase tracking-tight leading-tight">
             {product.name}
           </h3>
-          <p className="font-heading font-black text-base md:text-lg text-white whitespace-nowrap">
+          <p className="font-heading font-black text-base md:text-lg whitespace-nowrap">
             {formatRupiah(product.base_price)}
           </p>
         </div>
@@ -186,7 +186,7 @@ export default function Shopping() {
     <section
       ref={ref}
       id="belanja"
-      className="relative py-24 md:py-32 bg-black border-t border-white"
+      className="relative py-24 md:py-32 border-t border-[var(--color-primary)]"
     >
       <div className="w-full max-w-[1600px] mx-auto px-6 md:px-12 xl:px-20">
         {/* Massive Typography Heading */}
@@ -197,12 +197,12 @@ export default function Shopping() {
           className="mb-16 md:mb-24 flex flex-col"
         >
           <div className="flex items-center gap-6 mb-8">
-            <span className="w-12 h-[1px] bg-white"></span>
+            <span className="w-12 h-[1px] bg-[var(--color-accent)]"></span>
             <span className="font-heading font-black text-xs uppercase tracking-[0.3em] text-text-muted">
               ( COLLECTION )
             </span>
           </div>
-          <h2 className="font-heading font-black text-[clamp(4rem,10vw,12rem)] leading-[0.8] tracking-tighter uppercase text-white">
+          <h2 className="font-heading font-black text-[clamp(4rem,10vw,12rem)] leading-[0.8] tracking-tighter uppercase ">
             Katalog{' '}
             <span className="font-serif italic font-light text-text-muted">
               Produk
@@ -219,18 +219,18 @@ export default function Shopping() {
         >
           <div className="grid grid-cols-1 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-border">
             {/* Elegant Search Input */}
-            <div className="col-span-1 lg:col-span-1 relative flex items-center bg-black">
+            <div className="col-span-1 lg:col-span-1 relative flex items-center ">
               <input
                 type="text"
                 placeholder="Cari produk…"
                 value={search}
                 onChange={(e) => handleSearch(e.target.value)}
-                className="w-full bg-transparent pl-4 pr-12 py-4 md:py-6 text-sm md:text-base font-heading font-bold text-white uppercase placeholder:text-text-muted focus:outline-none focus:bg-white focus:text-black transition-colors duration-500 rounded-none peer"
+                className="w-full bg-transparent pl-4 pr-12 py-4 md:py-6 text-sm md:text-base font-heading font-bold uppercase placeholder:text-text-muted focus:outline-none focus:bg-[var(--color-accent)] focus:text-[var(--color-accent-contrast)] transition-colors duration-500 rounded-none peer"
               />
               <Search
                 size={16}
                 strokeWidth={2}
-                className="absolute right-4 text-text-muted peer-focus:text-black pointer-events-none transition-colors duration-500"
+                className="absolute right-4 text-text-muted peer-focus:text-[var(--color-accent-contrast)] pointer-events-none transition-colors duration-500"
               />
             </div>
 
@@ -240,8 +240,8 @@ export default function Shopping() {
                 onClick={() => setActiveCategory('')}
                 className={`shrink-0 px-6 py-2.5 rounded-full border text-xs font-heading font-bold uppercase tracking-widest transition-all duration-300 ${
                   activeCategory === ''
-                    ? 'border-white bg-white text-black'
-                    : 'border-border text-text-muted hover:border-white hover:text-white'
+                    ? 'border-[var(--color-primary)] bg-[var(--color-accent)] text-[var(--color-accent-contrast)]'
+                    : 'border-border text-text-muted hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]'
                 }`}
               >
                 Semua Koleksi
@@ -252,8 +252,8 @@ export default function Shopping() {
                   onClick={() => setActiveCategory(cat.id)}
                   className={`shrink-0 px-6 py-2.5 rounded-full border text-xs font-heading font-bold uppercase tracking-widest transition-all duration-300 ${
                     activeCategory === cat.id
-                      ? 'border-white bg-white text-black'
-                      : 'border-border text-text-muted hover:border-white hover:text-white'
+                      ? 'border-[var(--color-primary)] bg-[var(--color-accent)] text-[var(--color-accent-contrast)]'
+                      : 'border-border text-text-muted hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]'
                   }`}
                 >
                   {cat.name}
@@ -276,7 +276,7 @@ export default function Shopping() {
             animate={{ opacity: 1 }}
             className="flex flex-col items-center justify-center py-40 text-center border border-border"
           >
-            <p className="font-heading font-black text-white text-4xl uppercase tracking-tighter">
+            <p className="font-heading font-black text-4xl uppercase tracking-tighter">
               Koleksi Kosong
             </p>
             <p className="text-xs text-text-muted mt-4 font-heading font-bold uppercase tracking-widest">
@@ -302,7 +302,7 @@ export default function Shopping() {
                 {loadingMore ? (
                   <button
                     disabled
-                    className="w-full md:w-auto px-12 py-6 border border-white font-heading font-bold text-xs uppercase tracking-[0.2em] text-white hover:bg-white hover:text-black transition-colors duration-500 disabled:opacity-50 flex items-center justify-center gap-4"
+                    className="w-full md:w-auto px-12 py-6 border border-[var(--color-primary)] font-heading font-bold text-xs uppercase tracking-[0.2em] hover:bg-[var(--color-accent)] hover:text-[var(--color-accent-contrast)] transition-colors duration-500 disabled:opacity-50 flex items-center justify-center gap-4"
                   >
                     <Loader2 size={16} className="animate-spin" /> Sedang
                     Memuat…
@@ -310,8 +310,8 @@ export default function Shopping() {
                 ) : (
                   <AnimatedButton
                     onClick={() => loadProducts(page + 1)}
-                    fillColor="bg-white"
-                    className="w-full md:w-auto px-12 py-6 rounded-full border border-white/30 font-heading font-bold text-xs uppercase tracking-[0.2em] text-white hover:border-white hover:text-black transition-colors duration-500 flex items-center justify-center"
+                    fillColor="bg-[var(--color-accent)]"
+                    className="w-full md:w-auto px-12 py-6 rounded-full border border-[var(--color-primary)]/30 font-heading font-bold text-xs uppercase tracking-[0.2em] hover:border-[var(--color-primary)] hover:text-[var(--color-accent-contrast)] transition-colors duration-500 flex items-center justify-center"
                   >
                     Muat Lebih Banyak
                   </AnimatedButton>

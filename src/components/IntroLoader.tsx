@@ -36,20 +36,17 @@ export default function IntroLoader({
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    // Phase counter: 0% → 100% fast tick
     const interval = setInterval(() => {
       setCount((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
           return 100;
         }
-        // Accelerate: slow start, fast middle, slow end
         const increment = prev < 20 ? 2 : prev < 80 ? 5 : prev < 95 ? 3 : 1;
         return Math.min(prev + increment, 100);
       });
     }, 30);
 
-    // Timeline
     const counterStart = setTimeout(() => setPhase('counter'), 100);
     const brandStart = setTimeout(() => setPhase('brand'), 1200);
     const exitStart = setTimeout(() => setPhase('exit'), 2400);
@@ -76,41 +73,40 @@ export default function IntroLoader({
             clipPath: 'inset(0 0 100% 0)',
             transition: { duration: 0.8, ease: [0.85, 0, 0.15, 1] },
           }}
-          className="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center no-theme-transition"
+          style={{ backgroundColor: 'var(--color-bg)' }}
         >
-          {/* Top-left corner: Warung Mbah Manto */}
+          {/* Top-left corner */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{
-              duration: 0.8,
-              ease: [0.22, 1, 0.36, 1],
-              delay: 0.1,
-            }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
             className="absolute top-8 left-8 md:left-12"
           >
-            <span className="font-heading text-xs md:text-sm text-white/40 tracking-widest uppercase">
+            <span
+              className="font-heading text-xs md:text-sm tracking-widest uppercase"
+              style={{ color: 'var(--color-text-muted)' }}
+            >
               Warung Mbah Manto
             </span>
           </motion.div>
 
-          {/* Top-right corner: Year */}
+          {/* Top-right corner */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{
-              duration: 0.8,
-              ease: [0.22, 1, 0.36, 1],
-              delay: 0.1,
-            }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
             className="absolute top-8 right-8 md:right-12"
           >
-            <span className="font-heading text-xs md:text-sm text-white/40 tracking-widest">
+            <span
+              className="font-heading text-xs md:text-sm tracking-widest"
+              style={{ color: 'var(--color-text-muted)' }}
+            >
               ©2026
             </span>
           </motion.div>
 
-          {/* Center: Counter → Brand Transition */}
+          {/* Center: Counter → Brand */}
           <div className="relative flex items-center justify-center">
             <AnimatePresence mode="wait">
               {phase === 'enter' || phase === 'counter' ? (
@@ -122,22 +118,23 @@ export default function IntroLoader({
                     opacity: 0,
                     scale: 0.8,
                     filter: 'blur(10px)',
-                    transition: {
-                      duration: 0.4,
-                      ease: [0.22, 1, 0.36, 1],
-                    },
+                    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
                   }}
                   className="flex flex-col items-center gap-6"
                 >
-                  {/* Percentage Counter */}
-                  <span className="font-heading font-black text-[clamp(5rem,15vw,12rem)] text-white tracking-tighter leading-none tabular-nums">
+                  <span
+                    className="font-heading font-black text-[clamp(5rem,15vw,12rem)] tracking-tighter leading-none tabular-nums"
+                    style={{ color: 'var(--color-text-heading)' }}
+                  >
                     {count}
                   </span>
-
-                  {/* Progress bar */}
-                  <div className="w-32 md:w-48 h-[2px] bg-white/10 rounded-full overflow-hidden">
+                  <div
+                    className="w-32 md:w-48 h-[2px] rounded-full overflow-hidden"
+                    style={{ backgroundColor: 'var(--color-border)' }}
+                  >
                     <motion.div
-                      className="h-full bg-white rounded-full"
+                      className="h-full rounded-full"
+                      style={{ backgroundColor: 'var(--color-text-heading)' }}
                       initial={{ width: '0%' }}
                       animate={{ width: `${count}%` }}
                       transition={{ duration: 0.05 }}
@@ -156,7 +153,8 @@ export default function IntroLoader({
                       variants={letterVariants}
                       initial="hidden"
                       animate="visible"
-                      className="font-heading font-black text-[clamp(4rem,16vw,14rem)] text-white tracking-tighter uppercase leading-none"
+                      className="font-heading font-black text-[clamp(4rem,16vw,14rem)] tracking-tighter uppercase leading-none"
+                      style={{ color: 'var(--color-text-heading)' }}
                     >
                       {letter}
                     </motion.span>
@@ -166,37 +164,56 @@ export default function IntroLoader({
             </AnimatePresence>
           </div>
 
-          {/* Bottom: Animated tagline */}
+          {/* Bottom tagline */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.8,
-              ease: [0.22, 1, 0.36, 1],
-              delay: 0.3,
-            }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
             className="absolute bottom-8 left-0 right-0 flex justify-center"
           >
-            <span className="font-serif italic text-xs md:text-sm text-white/30 tracking-wider">
+            <span
+              className="font-serif italic text-xs md:text-sm tracking-wider"
+              style={{ color: 'var(--color-text-muted)' }}
+            >
               Grosir & Eceran Sembako Terpercaya
             </span>
           </motion.div>
 
-          {/* Animated corner brackets */}
+          {/* Corner brackets */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.15 }}
             transition={{ delay: 0.2, duration: 0.8 }}
             className="absolute inset-8 md:inset-12 pointer-events-none"
           >
-            {/* Top-left bracket */}
-            <div className="absolute top-0 left-0 w-8 h-8 border-t-[1px] border-l-[1px] border-white" />
-            {/* Top-right bracket */}
-            <div className="absolute top-0 right-0 w-8 h-8 border-t-[1px] border-r-[1px] border-white" />
-            {/* Bottom-left bracket */}
-            <div className="absolute bottom-0 left-0 w-8 h-8 border-b-[1px] border-l-[1px] border-white" />
-            {/* Bottom-right bracket */}
-            <div className="absolute bottom-0 right-0 w-8 h-8 border-b-[1px] border-r-[1px] border-white" />
+            <div
+              className="absolute top-0 left-0 w-8 h-8"
+              style={{
+                borderTop: '1px solid var(--color-text-heading)',
+                borderLeft: '1px solid var(--color-text-heading)',
+              }}
+            />
+            <div
+              className="absolute top-0 right-0 w-8 h-8"
+              style={{
+                borderTop: '1px solid var(--color-text-heading)',
+                borderRight: '1px solid var(--color-text-heading)',
+              }}
+            />
+            <div
+              className="absolute bottom-0 left-0 w-8 h-8"
+              style={{
+                borderBottom: '1px solid var(--color-text-heading)',
+                borderLeft: '1px solid var(--color-text-heading)',
+              }}
+            />
+            <div
+              className="absolute bottom-0 right-0 w-8 h-8"
+              style={{
+                borderBottom: '1px solid var(--color-text-heading)',
+                borderRight: '1px solid var(--color-text-heading)',
+              }}
+            />
           </motion.div>
         </motion.div>
       ) : null}

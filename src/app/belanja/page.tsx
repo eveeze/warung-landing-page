@@ -101,7 +101,7 @@ export default function Belanja() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-black text-white pt-32 pb-40">
+      <main className="min-h-screen bg-[var(--color-bg)] text-[var(--color-primary)] pt-32 pb-40">
         <div className="w-full px-6 max-w-[1600px] mx-auto">
           {/* ─── Header Section ─── */}
           <div className="mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-8 border-b border-border/30 pb-12">
@@ -116,7 +116,7 @@ export default function Belanja() {
                 standar kualitas terbaik Warung Mbah Manto.
                 <br />
                 <br />
-                <span className="text-white/80 bg-white/10 px-3 py-2 rounded border border-white/20 inline-block text-sm">
+                <span className="text-[var(--color-primary)]/80 bg-[var(--color-accent)]/10 px-3 py-2 rounded border border-white/20 inline-block text-sm">
                   💡 <strong>Simulasi Belanja:</strong> Pemesanan asli akan
                   diarahkan ke WhatsApp <strong>0882‑003‑310‑360</strong>.
                 </span>
@@ -143,13 +143,13 @@ export default function Belanja() {
                 placeholder="Cari produk…"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-transparent border-b-2 border-border/30 pl-10 pr-12 py-6 text-2xl md:text-4xl font-heading font-bold text-white uppercase placeholder:text-border focus:outline-none focus:border-white transition-colors duration-500 rounded-none peer"
+                className="w-full bg-transparent border-b-2 border-border/30 pl-10 pr-12 py-6 text-2xl md:text-4xl font-heading font-bold text-[var(--color-primary)] uppercase placeholder:text-border focus:outline-none focus:border-white transition-colors duration-500 rounded-none peer"
               />
-              <div className="absolute left-0 bottom-0 w-full h-[2px] bg-white scale-x-0 peer-focus:scale-x-100 transition-transform duration-700 origin-left" />
+              <div className="absolute left-0 bottom-0 w-full h-[2px] bg-[var(--color-accent)] scale-x-0 peer-focus:scale-x-100 transition-transform duration-700 origin-left" />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 text-text-muted hover:text-white transition-colors p-2"
+                  className="absolute right-0 top-1/2 -translate-y-1/2 text-text-muted hover:text-[var(--color-primary)] transition-colors p-2"
                 >
                   <X size={16} />
                 </button>
@@ -175,7 +175,7 @@ export default function Belanja() {
                       {activeCategoryId === null && (
                         <motion.div
                           layoutId="activePill"
-                          className="absolute inset-0 bg-white rounded-full"
+                          className="absolute inset-0 bg-[var(--color-accent)] rounded-full"
                           transition={{
                             type: 'spring',
                             stiffness: 400,
@@ -184,7 +184,7 @@ export default function Belanja() {
                         />
                       )}
                       <span
-                        className={`relative z-10 ${activeCategoryId === null ? 'text-black' : 'text-text-muted hover:text-white'}`}
+                        className={`relative z-10 ${activeCategoryId === null ? 'text-[var(--color-accent-contrast)]' : 'text-text-muted hover:text-[var(--color-primary)]'}`}
                       >
                         Semua
                       </span>
@@ -203,7 +203,7 @@ export default function Belanja() {
                         {activeCategoryId === cat.id && (
                           <motion.div
                             layoutId="activePill"
-                            className="absolute inset-0 bg-white rounded-full"
+                            className="absolute inset-0 bg-[var(--color-accent)] rounded-full"
                             transition={{
                               type: 'spring',
                               stiffness: 400,
@@ -212,7 +212,7 @@ export default function Belanja() {
                           />
                         )}
                         <span
-                          className={`relative z-10 ${activeCategoryId === cat.id ? 'text-black' : 'text-text-muted hover:text-white'}`}
+                          className={`relative z-10 ${activeCategoryId === cat.id ? 'text-[var(--color-accent-contrast)]' : 'text-text-muted hover:text-[var(--color-primary)]'}`}
                         >
                           {cat.name}
                         </span>
@@ -228,7 +228,7 @@ export default function Belanja() {
                       <div ref={dropdownRef} className="relative">
                         <button
                           onClick={() => setDropdownOpen(!dropdownOpen)}
-                          className="flex items-center gap-2 px-5 py-3 rounded-full border border-border/50 bg-white/[0.03] text-sm font-heading font-bold text-white hover:border-white/50 transition-colors"
+                          className="flex items-center gap-2 px-5 py-3 rounded-full border border-border/50 bg-[var(--color-accent)]/[0.03] text-sm font-heading font-bold text-[var(--color-primary)] hover:border-white/50 transition-colors"
                         >
                           <span>{activeCategoryName}</span>
                           <motion.span
@@ -259,8 +259,8 @@ export default function Belanja() {
                                 }}
                                 className={`w-full text-left px-5 py-3 text-sm font-heading font-medium transition-colors ${
                                   activeCategoryId === null
-                                    ? 'bg-white text-black font-bold'
-                                    : 'text-text-muted hover:text-white hover:bg-white/5'
+                                    ? 'bg-[var(--color-accent)] text-[var(--color-accent-contrast)] font-bold'
+                                    : 'text-text-muted hover:text-[var(--color-primary)] hover:bg-[var(--color-accent)]/5'
                                 }`}
                               >
                                 Semua Produk
@@ -275,8 +275,8 @@ export default function Belanja() {
                                   }}
                                   className={`w-full text-left px-5 py-3 text-sm font-heading font-medium transition-colors ${
                                     activeCategoryId === cat.id
-                                      ? 'bg-white text-black font-bold'
-                                      : 'text-text-muted hover:text-white hover:bg-white/5'
+                                      ? 'bg-[var(--color-accent)] text-[var(--color-accent-contrast)] font-bold'
+                                      : 'text-text-muted hover:text-[var(--color-primary)] hover:bg-[var(--color-accent)]/5'
                                   }`}
                                 >
                                   {cat.name}
@@ -299,7 +299,7 @@ export default function Belanja() {
                           animate={{ opacity: 1, scale: 1 }}
                           exit={{ opacity: 0, scale: 0.8 }}
                           onClick={() => setActiveCategoryId(null)}
-                          className="text-[10px] text-text-muted hover:text-white font-heading font-bold uppercase tracking-widest transition-colors flex items-center gap-1"
+                          className="text-[10px] text-text-muted hover:text-[var(--color-primary)] font-heading font-bold uppercase tracking-widest transition-colors flex items-center gap-1"
                         >
                           <X size={12} />
                           Hapus Filter
@@ -319,8 +319,8 @@ export default function Belanja() {
                           }
                           className={`flex-shrink-0 px-4 py-2 rounded-full text-[10px] font-heading font-bold uppercase tracking-widest border transition-all duration-300 ${
                             activeCategoryId === cat.id
-                              ? 'bg-white text-black border-white'
-                              : 'bg-transparent text-text-muted border-border/30 hover:border-white/50 hover:text-white'
+                              ? 'bg-[var(--color-accent)] text-[var(--color-accent-contrast)] border-white'
+                              : 'bg-transparent text-text-muted border-border/30 hover:border-white/50 hover:text-[var(--color-primary)]'
                           }`}
                         >
                           {cat.name}
@@ -338,9 +338,9 @@ export default function Belanja() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-16">
               {Array.from({ length: 8 }).map((_, i) => (
                 <div key={i} className="flex flex-col animate-pulse">
-                  <div className="w-full aspect-[4/5] bg-white/[0.03] rounded mb-4" />
-                  <div className="h-4 bg-white/[0.05] rounded w-3/4 mb-2" />
-                  <div className="h-3 bg-white/[0.03] rounded w-1/2" />
+                  <div className="w-full aspect-[4/5] bg-[var(--color-accent)]/[0.03] rounded mb-4" />
+                  <div className="h-4 bg-[var(--color-accent)]/[0.05] rounded w-3/4 mb-2" />
+                  <div className="h-3 bg-[var(--color-accent)]/[0.03] rounded w-1/2" />
                 </div>
               ))}
             </div>
@@ -356,7 +356,7 @@ export default function Belanja() {
               <div className="w-20 h-20 rounded-full border border-border/30 flex items-center justify-center mb-8">
                 <Search size={28} className="text-text-muted" />
               </div>
-              <h3 className="font-heading font-bold text-2xl text-white mb-3">
+              <h3 className="font-heading font-bold text-2xl text-[var(--color-primary)] mb-3">
                 Produk Tidak Ditemukan
               </h3>
               <p className="font-serif text-text-muted text-sm max-w-md mb-8">
@@ -370,8 +370,8 @@ export default function Belanja() {
                     setSearchQuery('');
                     setActiveCategoryId(null);
                   }}
-                  fillColor="bg-white"
-                  className="mt-4 px-8 py-4 rounded-full border border-white/30 text-[10px] font-heading font-bold uppercase tracking-widest text-white hover:border-white hover:text-black transition-colors flex items-center justify-center"
+                  fillColor="bg-[var(--color-accent)]"
+                  className="mt-4 px-8 py-4 rounded-full border border-white/30 text-[10px] font-heading font-bold uppercase tracking-widest text-[var(--color-primary)] hover:border-white hover:text-[var(--color-accent-contrast)] transition-colors flex items-center justify-center"
                 >
                   Reset Semua Filter
                 </AnimatedButton>
@@ -415,7 +415,7 @@ export default function Belanja() {
                         />
                       ) : (
                         <div className="absolute inset-0 bg-[#0a0a0a] flex items-center justify-center">
-                          <span className="font-heading font-black text-6xl text-white/5 group-hover:text-white/20 transition-colors duration-700">
+                          <span className="font-heading font-black text-6xl text-[var(--color-primary)]/5 group-hover:text-[var(--color-primary)]/20 transition-colors duration-700">
                             {product.name.charAt(0)}
                           </span>
                         </div>
@@ -426,14 +426,14 @@ export default function Belanja() {
 
                       {/* Category badge on card */}
                       {product.category && (
-                        <span className="absolute top-4 left-4 text-[10px] font-heading font-bold bg-black/60 backdrop-blur-md text-white px-4 py-1.5 rounded-full uppercase tracking-widest border border-white/10">
+                        <span className="absolute top-4 left-4 text-[10px] font-heading font-bold bg-[var(--color-bg)]/60 backdrop-blur-md text-[var(--color-primary)] px-4 py-1.5 rounded-full uppercase tracking-widest border border-white/10">
                           {product.category.name}
                         </span>
                       )}
                       {/* Grosir badge */}
                       {product.pricing_tiers &&
                         product.pricing_tiers.length > 0 && (
-                          <span className="absolute top-4 right-4 text-[10px] font-heading font-bold bg-white text-black px-4 py-1.5 rounded-full uppercase tracking-widest">
+                          <span className="absolute top-4 right-4 text-[10px] font-heading font-bold bg-[var(--color-accent)] text-[var(--color-accent-contrast)] px-4 py-1.5 rounded-full uppercase tracking-widest">
                             Grosir
                           </span>
                         )}
@@ -479,7 +479,7 @@ export default function Belanja() {
                             );
                             openCart();
                           }}
-                          className="mt-6 self-start flex items-center gap-2 text-[10px] font-heading font-bold uppercase tracking-widest text-white border border-white/20 px-4 py-2 rounded-full hover:bg-white hover:text-black transition-all duration-300"
+                          className="mt-6 self-start flex items-center gap-2 text-[10px] font-heading font-bold uppercase tracking-widest text-[var(--color-primary)] border border-white/20 px-4 py-2 rounded-full hover:bg-[var(--color-accent)] hover:text-[var(--color-accent-contrast)] transition-all duration-300"
                         >
                           + Keranjang
                         </button>

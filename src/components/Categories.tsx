@@ -62,7 +62,7 @@ export default function Categories() {
   const isInView = useInView(ref, { once: true, margin: '-10% 0px' });
 
   return (
-    <section ref={ref} id="kategori" className="w-full bg-black pt-24 pb-32">
+    <section ref={ref} id="kategori" className="w-full pt-24 pb-32">
       <div className="w-full px-6">
         {/* Meta Header */}
         <div className="flex justify-between items-center text-text-muted font-heading font-bold text-[10px] uppercase tracking-widest border-b border-border/30 mb-16 pb-4">
@@ -77,7 +77,7 @@ export default function Categories() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
-            className="font-heading font-medium text-[clamp(4rem,8vw,8rem)] leading-[0.9] tracking-tighter text-white"
+            className="font-heading font-medium text-[clamp(4rem,8vw,8rem)] leading-[0.9] tracking-tighter "
           >
             Penuhi Kebutuhan <br className="hidden md:block" />
             <span className="text-text-muted">Harian Anda</span>
@@ -91,8 +91,8 @@ export default function Categories() {
             <AnimatedButton
               href="/belanja"
               as="a"
-              fillColor="bg-white"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-border/50 text-white font-heading font-bold text-xs uppercase tracking-widest hover:border-white hover:text-black transition-colors duration-300"
+              fillColor="bg-[var(--color-accent)]"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-border/50 font-heading font-bold text-xs uppercase tracking-widest hover:border-[var(--color-primary)] hover:text-[var(--color-accent-contrast)] transition-colors duration-300"
             >
               Lihat Semua Kategori →
             </AnimatedButton>
@@ -110,7 +110,7 @@ export default function Categories() {
             <motion.div key={cat.id} variants={itemVars}>
               <Link
                 href={`/belanja?kategori=${cat.id}`}
-                className="group block relative w-full aspect-[4/3] md:aspect-[1/1] xl:aspect-[4/3] rounded-[2rem] overflow-hidden bg-[#050505] p-2 border border-white/5 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-black outline-none shadow-xl hover:shadow-[0_0_40px_rgba(255,255,255,0.05)] transition-shadow duration-700"
+                className="group block relative w-full aspect-[4/3] md:aspect-[1/1] xl:aspect-[4/3] rounded-[2rem] overflow-hidden bg-[#050505] p-2 border border-[var(--color-primary)]/5 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-bg)] outline-none shadow-xl hover:shadow-[0_0_40px_rgba(255,255,255,0.05)] transition-shadow duration-700"
               >
                 {/* Inner Image Container */}
                 <div className="relative w-full h-full rounded-[1.5rem] overflow-hidden">
@@ -131,14 +131,14 @@ export default function Categories() {
                     <div className="flex flex-col transform group-hover:-translate-y-2 transition-transform duration-700 ease-[0.16,1,0.3,1]">
                       {/* Pill Badge */}
                       <div className="mb-4">
-                        <span className="inline-flex items-center px-4 py-1.5 bg-black/40 backdrop-blur-xl rounded-full text-[10px] md:text-xs font-heading font-medium text-white/80 uppercase tracking-widest border border-white/10 group-hover:bg-white/10 group-hover:text-white transition-colors duration-500">
+                        <span className="inline-flex items-center px-4 py-1.5 bg-[var(--color-bg)]/40 backdrop-blur-xl rounded-full text-[10px] md:text-xs font-heading font-medium text-[var(--color-primary)]/80 uppercase tracking-widest border border-[var(--color-primary)]/10 group-hover:bg-[var(--color-accent)]/10 group-hover:text-[var(--color-primary)] transition-colors duration-500">
                           {cat.count}
                         </span>
                       </div>
 
                       {/* Category Name with Slide Arrow */}
                       <div className="flex items-end justify-between overflow-hidden">
-                        <h3 className="font-heading font-black text-4xl md:text-5xl lg:text-7xl text-white tracking-tighter leading-none mb-0">
+                        <h3 className="font-heading font-black text-4xl md:text-5xl lg:text-7xl tracking-tighter leading-none mb-0">
                           {cat.name}
                         </h3>
                         <div className="translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 ease-[0.16,1,0.3,1] pb-2 md:pb-4">
@@ -147,7 +147,7 @@ export default function Categories() {
                             height="32"
                             viewBox="0 0 24 24"
                             fill="none"
-                            className="text-white w-8 h-8 md:w-12 md:h-12"
+                            className="w-8 h-8 md:w-12 md:h-12"
                             stroke="currentColor"
                             strokeWidth="1.5"
                             strokeLinecap="round"

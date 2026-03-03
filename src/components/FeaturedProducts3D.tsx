@@ -72,7 +72,7 @@ function ProductCard3D({
 
       {/* Editorial, center gravity typography */}
       <div className="relative z-10 text-center flex flex-col items-center">
-        <h3 className="font-heading font-black text-4xl md:text-6xl text-white tracking-tight leading-none mb-2 mix-blend-difference drop-shadow-md">
+        <h3 className="font-heading font-black text-4xl md:text-6xl tracking-tight leading-none mb-2 mix-blend-difference drop-shadow-md">
           {product.name}.
         </h3>
       </div>
@@ -100,7 +100,7 @@ export default function FeaturedProducts3D() {
   const rotateY = useTransform(scrollYProgress, [0, 1], [40, -320]);
 
   return (
-    <section ref={containerRef} className="relative h-[400vh] bg-black">
+    <section ref={containerRef} className="relative h-[400vh] ">
       <div
         className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden border-t border-border"
         style={{ perspective: '2500px', perspectiveOrigin: 'center center' }}

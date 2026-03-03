@@ -67,7 +67,7 @@ export default function ProductDetail() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
+      <div className="min-h-screen bg-[var(--color-bg)] flex items-center justify-center">
         <div className="w-16 h-16 border-t-2 border-white rounded-full animate-spin"></div>
       </div>
     );
@@ -75,13 +75,13 @@ export default function ProductDetail() {
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-black flex flex-col items-center justify-center text-white gap-6">
+      <div className="min-h-screen bg-[var(--color-bg)] flex flex-col items-center justify-center text-[var(--color-primary)] gap-6">
         <h1 className="font-heading font-bold text-4xl">
           Produk Tidak Ditemukan
         </h1>
         <Link
           href="/belanja"
-          className="text-text-muted hover:text-white transition-colors border-b border-white pb-1"
+          className="text-text-muted hover:text-[var(--color-primary)] transition-colors border-b border-white pb-1"
         >
           Kembali ke Katalog
         </Link>
@@ -94,7 +94,7 @@ export default function ProductDetail() {
   return (
     <>
       <Navbar />
-      <main className="bg-black text-white relative">
+      <main className="bg-[var(--color-bg)] text-[var(--color-primary)] relative">
         {/* Split Screen: Image + Details */}
         <div className="min-h-screen flex flex-col md:flex-row">
           {/* Left Side: Massive Edge-to-Edge Image with Parallax */}
@@ -108,18 +108,18 @@ export default function ProductDetail() {
               />
             ) : (
               <div className="absolute inset-0 bg-gradient-to-br from-forest-light via-black to-forest-mid flex items-center justify-center">
-                <span className="font-heading font-black text-[8rem] text-white/10 uppercase">
+                <span className="font-heading font-black text-[8rem] text-[var(--color-primary)]/10 uppercase">
                   {product.name.charAt(0)}
                 </span>
               </div>
             )}
             {/* Subtle vignette/overlay */}
-            <div className="absolute inset-0 bg-black/10 pointer-events-none" />
+            <div className="absolute inset-0 bg-[var(--color-bg)]/10 pointer-events-none" />
 
             {/* Back Button (Absolute over image) */}
             <Link
               href="/belanja"
-              className="absolute top-32 left-6 z-10 text-[10px] bg-black/50 backdrop-blur-md px-4 py-2 rounded-full font-heading font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-colors"
+              className="absolute top-32 left-6 z-10 text-[10px] bg-[var(--color-bg)]/50 backdrop-blur-md px-4 py-2 rounded-full font-heading font-bold tracking-widest uppercase hover:bg-[var(--color-accent)] hover:text-[var(--color-accent-contrast)] transition-colors"
             >
               ← Kembali
             </Link>
@@ -142,7 +142,7 @@ export default function ProductDetail() {
                   Katalog {`//`} {product.id.slice(0, 8)}
                 </span>
                 {product.category && (
-                  <span className="text-[9px] font-heading font-bold bg-white/10 text-white px-3 py-1 rounded-full uppercase tracking-widest border border-white/20">
+                  <span className="text-[9px] font-heading font-bold bg-[var(--color-accent)]/10 text-[var(--color-primary)] px-3 py-1 rounded-full uppercase tracking-widest border border-white/20">
                     {product.category.name}
                   </span>
                 )}
@@ -158,7 +158,7 @@ export default function ProductDetail() {
 
               {/* Unit badge */}
               <div className="text-[10px] text-text-muted font-heading font-bold uppercase tracking-widest mb-8">
-                Dijual per <span className="text-white">{product.unit}</span>
+                Dijual per <span className="text-[var(--color-primary)]">{product.unit}</span>
               </div>
 
               {/* Description (only if available) */}
@@ -184,7 +184,7 @@ export default function ProductDetail() {
                         / {product.unit}
                       </span>
                       {livePrice.tierName !== 'Harga Dasar' && (
-                        <span className="text-[9px] font-heading font-bold text-black bg-white px-2 py-1 rounded-full uppercase tracking-widest mb-1">
+                        <span className="text-[9px] font-heading font-bold text-[var(--color-accent-contrast)] bg-[var(--color-accent)] px-2 py-1 rounded-full uppercase tracking-widest mb-1">
                           {livePrice.tierName}
                         </span>
                       )}
@@ -196,26 +196,26 @@ export default function ProductDetail() {
                         <button
                           onClick={() => setQuantity(Math.max(1, quantity - 1))}
                           disabled={quantity <= 1}
-                          className="w-10 h-10 flex items-center justify-center text-text-muted hover:text-white transition-colors disabled:opacity-30 font-heading font-bold"
+                          className="w-10 h-10 flex items-center justify-center text-text-muted hover:text-[var(--color-primary)] transition-colors disabled:opacity-30 font-heading font-bold"
                         >
                           −
                         </button>
                         <span
-                          className="w-12 text-center font-heading font-bold text-white text-sm"
+                          className="w-12 text-center font-heading font-bold text-[var(--color-primary)] text-sm"
                           style={{ fontVariantNumeric: 'tabular-nums' }}
                         >
                           {quantity}
                         </span>
                         <button
                           onClick={() => setQuantity(quantity + 1)}
-                          className="w-10 h-10 flex items-center justify-center text-text-muted hover:text-white transition-colors font-heading font-bold"
+                          className="w-10 h-10 flex items-center justify-center text-text-muted hover:text-[var(--color-primary)] transition-colors font-heading font-bold"
                         >
                           +
                         </button>
                       </div>
                       <span className="font-heading text-sm text-text-muted">
                         Subtotal:{' '}
-                        <span className="text-white font-bold">
+                        <span className="text-[var(--color-primary)] font-bold">
                           {formatRupiah(livePrice.pricePerUnit * quantity)}
                         </span>
                       </span>
@@ -236,8 +236,8 @@ export default function ProductDetail() {
                         );
                         openCart();
                       }}
-                      className="group w-full sm:w-auto px-10 py-5 rounded-full bg-transparent border border-white/20 text-white font-heading font-bold text-xs uppercase tracking-widest hover:border-white hover:text-black transition-colors duration-500 flex items-center justify-center"
-                      fillColor="bg-white"
+                      className="group w-full sm:w-auto px-10 py-5 rounded-full bg-transparent border border-white/20 text-[var(--color-primary)] font-heading font-bold text-xs uppercase tracking-widest hover:border-white hover:text-[var(--color-accent-contrast)] transition-colors duration-500 flex items-center justify-center"
+                      fillColor="bg-[var(--color-accent)]"
                     >
                       {`+ Tambah ${quantity > 1 ? `${quantity} ` : ''}ke Keranjang`}
                     </AnimatedButton>
@@ -259,12 +259,12 @@ export default function ProductDetail() {
                           quantity >= tier.min_quantity &&
                           (tier.max_quantity === null ||
                             quantity <= tier.max_quantity)
-                            ? 'bg-white/10 border border-white/20'
-                            : 'bg-white/[0.03]'
+                            ? 'bg-[var(--color-accent)]/10 border border-white/20'
+                            : 'bg-[var(--color-accent)]/[0.03]'
                         }`}
                       >
                         <div className="flex flex-col">
-                          <span className="font-heading font-bold text-sm text-white">
+                          <span className="font-heading font-bold text-sm text-[var(--color-primary)]">
                             {tier.name || `Tier ${idx + 1}`}
                           </span>
                           <span className="text-[10px] text-text-muted font-heading tracking-wider">
@@ -275,7 +275,7 @@ export default function ProductDetail() {
                             {product.unit}
                           </span>
                         </div>
-                        <span className="font-heading font-bold text-white text-sm">
+                        <span className="font-heading font-bold text-[var(--color-primary)] text-sm">
                           {formatRupiah(tier.price)} / {product.unit}
                         </span>
                       </div>
@@ -323,7 +323,7 @@ export default function ProductDetail() {
 
         {/* Related Products Section */}
         {relatedProducts.length > 0 && (
-          <section className="w-full bg-black border-t border-border/30 pt-24 pb-32 px-6">
+          <section className="w-full bg-[var(--color-bg)] border-t border-border/30 pt-24 pb-32 px-6">
             <div className="max-w-[1600px] mx-auto">
               {/* Section Header */}
               <div className="flex justify-between items-end mb-16">
@@ -337,7 +337,7 @@ export default function ProductDetail() {
                 </div>
                 <Link
                   href="/belanja"
-                  className="text-[10px] font-heading font-bold uppercase tracking-widest text-text-muted hover:text-white transition-colors border-b border-border/50 pb-1"
+                  className="text-[10px] font-heading font-bold uppercase tracking-widest text-text-muted hover:text-[var(--color-primary)] transition-colors border-b border-border/50 pb-1"
                 >
                   Lihat Semua →
                 </Link>
@@ -373,7 +373,7 @@ export default function ProductDetail() {
                           />
                         ) : (
                           <div className="absolute inset-0 bg-[#0a0a0a] flex items-center justify-center">
-                            <span className="font-heading font-black text-4xl text-white/5 group-hover:text-white/20 transition-colors duration-700">
+                            <span className="font-heading font-black text-4xl text-[var(--color-primary)]/5 group-hover:text-[var(--color-primary)]/20 transition-colors duration-700">
                               {rp.name.charAt(0)}
                             </span>
                           </div>

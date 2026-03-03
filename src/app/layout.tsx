@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import { CartProvider } from '@/lib/cart';
+import { ThemeProvider } from '@/lib/theme';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
@@ -92,9 +93,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className="scroll-smooth bg-black text-white">
+    <html lang="id" className="scroll-smooth" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t)}else{document.documentElement.setAttribute('data-theme',window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}}catch(e){document.documentElement.setAttribute('data-theme','dark')}})()`,
+          }}
+        />
+      </head>
       <body
-        className={`${interHeading.variable} ${inter.variable} ${playfair.variable} font-body antialiased bg-black selection:bg-white selection:text-black`}
+        className={`${interHeading.variable} ${inter.variable} ${playfair.variable} font-body antialiased`}
       >
         <script
           type="application/ld+json"
@@ -191,7 +199,9 @@ export default function RootLayout({
             }),
           }}
         />
-        <CartProvider>{children}</CartProvider>
+        <ThemeProvider>
+          <CartProvider>{children}</CartProvider>
+        </ThemeProvider>
         <Analytics />
         <SpeedInsights />
       </body>

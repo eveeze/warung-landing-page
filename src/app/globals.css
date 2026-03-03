@@ -1,29 +1,85 @@
 @import 'tailwindcss';
 
+/* ================================================================
+   THEME SYSTEM — CSS Variables
+   ================================================================ */
+
+/* Dark Theme (Default) */
+[data-theme='dark'],
+:root {
+  --color-bg: #000000;
+  --color-bg-secondary: #0a0a0a;
+  --color-surface: #111111;
+  --color-surface-hover: #1a1a1a;
+
+  --color-primary: #ffffff;
+  --color-accent: #ffffff;
+  --color-accent-contrast: #000000;
+
+  --color-text-heading: #ffffff;
+  --color-text-body: #a0a0a0;
+  --color-text-muted: #666666;
+
+  --color-border: rgba(255, 255, 255, 0.15);
+  --color-border-strong: rgba(255, 255, 255, 0.3);
+
+  --color-overlay: rgba(0, 0, 0, 0.8);
+  --color-card: #111111;
+  --color-card-hover: #1a1a1a;
+
+  --color-scrollbar-track: #000000;
+  --color-scrollbar-thumb: #1a1a1a;
+  --color-scrollbar-hover: #ffffff;
+}
+
+/* Light Theme — Navy Blue Brand */
+[data-theme='light'] {
+  --color-bg: #f5f5f0;
+  --color-bg-secondary: #eeeee8;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f0f0ea;
+
+  --color-primary: #1a2744;
+  --color-accent: #1a2744;
+  --color-accent-contrast: #ffffff;
+
+  --color-text-heading: #1a2744;
+  --color-text-body: #4a5568;
+  --color-text-muted: #8895a7;
+
+  --color-border: rgba(26, 39, 68, 0.15);
+  --color-border-strong: rgba(26, 39, 68, 0.3);
+
+  --color-overlay: rgba(245, 245, 240, 0.9);
+  --color-card: #ffffff;
+  --color-card-hover: #f8f8f4;
+
+  --color-scrollbar-track: #f5f5f0;
+  --color-scrollbar-thumb: #d0d0c8;
+  --color-scrollbar-hover: #1a2744;
+}
+
 @theme inline {
-  /* SWISS BRUTALIST PURE BLACK & WHITE + EDITORIAL TOUCH */
+  /* Legacy variables (kept for compat) */
   --color-forest: #ffffff;
   --color-forest-deep: #000000;
   --color-forest-mid: #0a0a0a;
   --color-forest-light: #1a1a1a;
 
   --color-cream: #000000;
-  --color-surface: #000000;
-  --color-border: #ffffff;
-
-  --color-text-primary: #ffffff;
-  --color-text-body: #a0a0a0;
-  --color-text-muted: #666666;
 
   --font-heading: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
-  --font-serif:
-    var(--font-serif), 'Playfair Display', serif; /* Restored Editorial Font */
+  --font-serif: var(--font-serif), 'Playfair Display', serif;
 
   /* Framer-like Smooth Easings */
   --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
+/* ================================================================
+   ANIMATIONS
+   ================================================================ */
 
 @keyframes marquee {
   0% {
@@ -43,14 +99,46 @@
   }
 }
 
-/* Base Styles */
+@keyframes marquee-half {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ================================================================
+   BASE STYLES
+   ================================================================ */
+
 html {
   scroll-behavior: smooth;
 }
 
+/* Smooth theme transition on ALL elements */
+*,
+*::before,
+*::after {
+  transition-property:
+    background-color, border-color, color, fill, stroke, box-shadow;
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Opt-out for animated elements that manage their own transitions */
+.no-theme-transition,
+.no-theme-transition *,
+.animate-marquee,
+.animate-marquee-slow,
+.animate-marquee-seamless,
+.animate-marquee-seamless-fast {
+  transition-property: none !important;
+}
+
 body {
   font-family: var(--font-body);
-  background: var(--color-forest-deep);
+  background: var(--color-bg);
   color: var(--color-text-body);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -64,7 +152,7 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading);
-  color: var(--color-text-primary);
+  color: var(--color-text-heading);
   letter-spacing: -0.02em;
   line-height: 1.1;
 }
@@ -74,52 +162,41 @@ h6 {
   width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-forest-deep);
+  background: var(--color-scrollbar-track);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-forest-light);
+  background: var(--color-scrollbar-thumb);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-forest);
+  background: var(--color-scrollbar-hover);
 }
 
 ::selection {
-  background: var(--color-forest);
-  color: var(--color-forest-deep);
+  background: var(--color-primary);
+  color: var(--color-bg);
 }
 
 .skeleton {
   background: linear-gradient(
     90deg,
     var(--color-surface) 25%,
-    var(--color-forest-mid) 50%,
+    var(--color-bg-secondary) 50%,
     var(--color-surface) 75%
   );
   background-size: 400% 100%;
   animation: shimmer 3s ease-in-out infinite;
 }
 
-/* Marquee Utillity */
+/* Marquee Utilities */
 .animate-marquee {
   animation: marquee 25s linear infinite;
 }
 .animate-marquee-slow {
   animation: marquee 40s linear infinite;
 }
-
-@keyframes marquee-half {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
 .animate-marquee-seamless {
   animation: marquee-half 40s linear infinite;
 }
-
 .animate-marquee-seamless-fast {
   animation: marquee-half 25s linear infinite;
 }

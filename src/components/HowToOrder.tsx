@@ -73,7 +73,7 @@ export default function HowToOrder() {
   const [activeStep, setActiveStep] = useState<number | null>(null);
 
   return (
-    <section ref={ref} id="cara-pesan" className="w-full bg-black pt-32 pb-40">
+    <section ref={ref} id="cara-pesan" className="w-full pt-32 pb-40">
       <div className="w-full px-6 max-w-[1600px] mx-auto">
         {/* Meta Header */}
         <div className="flex justify-between items-center text-text-muted font-heading font-bold text-[10px] uppercase tracking-widest border-b border-border/30 mb-16 pb-4">
@@ -92,7 +92,7 @@ export default function HowToOrder() {
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             >
               <h2
-                className="font-heading font-medium text-[clamp(4.5rem,7vw,8rem)] leading-[0.9] tracking-tighter text-white mb-8"
+                className="font-heading font-medium text-[clamp(4.5rem,7vw,8rem)] leading-[0.9] tracking-tighter mb-8"
                 style={{ textWrap: 'balance' }}
               >
                 Belanja <br className="hidden lg:block" /> Cepat,{' '}
@@ -150,13 +150,13 @@ export default function HowToOrder() {
                   className="relative border-t border-border/20 py-12 md:py-16 cursor-default"
                 >
                   {/* Hover Fill Background */}
-                  <div className="absolute inset-0 bg-white/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-[var(--color-accent)]/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                   {/* Top Row: Number + Icon */}
                   <div className="relative z-10 flex items-center justify-between mb-8">
                     {/* Step Number — Now Visible */}
                     <div className="flex items-center gap-4">
-                      <span className="font-heading font-black text-5xl md:text-7xl tracking-tighter text-white/10 group-hover:text-white/30 transition-colors duration-500">
+                      <span className="font-heading font-black text-5xl md:text-7xl tracking-tighter text-[var(--color-primary)]/10 group-hover:text-[var(--color-primary)]/30 transition-colors duration-500">
                         {step.num}
                       </span>
                       {/* Animated line */}
@@ -169,19 +169,19 @@ export default function HowToOrder() {
                           ease: [0.16, 1, 0.3, 1],
                           delay: 0.2 + idx * 0.15,
                         }}
-                        className="h-[1px] w-12 md:w-20 bg-white/20 origin-left"
+                        className="h-[1px] w-12 md:w-20 bg-[var(--color-accent)]/20 origin-left"
                       />
                     </div>
 
                     {/* Icon Circle */}
-                    <div className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-white/10 flex items-center justify-center text-white/30 group-hover:border-white/40 group-hover:text-white/70 group-hover:scale-110 transition-all duration-500">
+                    <div className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)]/30 group-hover:border-[var(--color-primary)]/40 group-hover:text-[var(--color-primary)]/70 group-hover:scale-110 transition-all duration-500">
                       {step.icon}
                     </div>
                   </div>
 
                   {/* Content */}
                   <div className="relative z-10">
-                    <h3 className="font-heading font-bold text-2xl md:text-4xl text-white mb-4 tracking-tight group-hover:text-white transition-colors">
+                    <h3 className="font-heading font-bold text-2xl md:text-4xl mb-4 tracking-tight group-hover:text-[var(--color-primary)] transition-colors">
                       {step.title}
                     </h3>
 
@@ -200,7 +200,7 @@ export default function HowToOrder() {
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="1.5"
-                      className="text-white/30"
+                      className="text-[var(--color-text-muted)]"
                     >
                       <path d="m9 18 6-6-6-6" />
                     </svg>

@@ -17,10 +17,7 @@ export default function FeaturedWorks() {
   }, []);
 
   return (
-    <section
-      id="works"
-      className="relative w-full bg-black pt-32 pb-40 overflow-hidden"
-    >
+    <section id="works" className="relative w-full pt-32 pb-40 overflow-hidden">
       <div className="w-full px-6 mb-16">
         {/* Meta Header */}
         <div className="flex justify-between items-center text-text-muted font-heading font-bold text-[10px] uppercase tracking-widest border-b border-border/30 pb-4">
@@ -32,13 +29,13 @@ export default function FeaturedWorks() {
 
       {/* Infinite Marquee Heading */}
       <div className="w-full relative flex items-center overflow-hidden mb-24 select-none">
-        <div className="flex flex-shrink-0 animate-marquee-slow font-heading font-black text-[clamp(6rem,20vw,25rem)] leading-[0.8] tracking-tighter text-white whitespace-nowrap">
+        <div className="flex flex-shrink-0 animate-marquee-slow font-heading font-black text-[clamp(6rem,20vw,25rem)] leading-[0.8] tracking-tighter whitespace-nowrap">
           <span className="pr-16">Produk Pilihan©</span>
           <span className="pr-16">Produk Pilihan©</span>
           <span className="pr-16">Produk Pilihan©</span>
           <span className="pr-16">Produk Pilihan©</span>
         </div>
-        <div className="flex flex-shrink-0 animate-marquee-slow font-heading font-black text-[clamp(6rem,20vw,25rem)] leading-[0.8] tracking-tighter text-white whitespace-nowrap">
+        <div className="flex flex-shrink-0 animate-marquee-slow font-heading font-black text-[clamp(6rem,20vw,25rem)] leading-[0.8] tracking-tighter whitespace-nowrap">
           <span className="pr-16">Produk Pilihan©</span>
           <span className="pr-16">Produk Pilihan©</span>
           <span className="pr-16">Produk Pilihan©</span>
@@ -54,7 +51,7 @@ export default function FeaturedWorks() {
           <div className="max-w-md">
             <p className="font-serif text-base text-text-muted leading-relaxed mb-8">
               Setiap produk kami seleksi langsung dari pemasok terpercaya. Dari{' '}
-              <strong className="text-white font-medium">
+              <strong className="font-medium">
                 bahan pokok, bumbu dapur, hingga kebutuhan rumah tangga
               </strong>{' '}
               — semua tersedia dengan harga transparan dan kualitas yang
@@ -63,8 +60,8 @@ export default function FeaturedWorks() {
             <Link href="/belanja" className="inline-block">
               <AnimatedButton
                 as="span"
-                fillColor="bg-white"
-                className="inline-flex items-center justify-center px-8 py-3 rounded-full border border-white text-white font-heading font-bold text-xs uppercase tracking-widest hover:border-white hover:text-black transition-colors duration-300"
+                fillColor="bg-[var(--color-accent)]"
+                className="inline-flex items-center justify-center px-8 py-3 rounded-full border border-[var(--color-primary)] font-heading font-bold text-xs uppercase tracking-widest hover:border-[var(--color-primary)] hover:text-[var(--color-accent-contrast)] transition-colors duration-300"
               >
                 Jelajahi Katalog →
               </AnimatedButton>
@@ -86,10 +83,10 @@ export default function FeaturedWorks() {
                 ) : (
                   <div className="absolute inset-0 bg-[#111]" />
                 )}
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
+                <div className="absolute inset-0 bg-[var(--color-bg)]/20 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
               </div>
               <div className="flex justify-between items-center px-2">
-                <span className="font-heading font-bold text-white text-sm md:text-base tracking-tight">
+                <span className="font-heading font-bold text-sm md:text-base tracking-tight">
                   {products[0].name}
                 </span>
                 <span className="font-heading font-medium text-text-muted text-xs">
@@ -117,10 +114,10 @@ export default function FeaturedWorks() {
                 ) : (
                   <div className="absolute inset-0 bg-[#111]" />
                 )}
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
+                <div className="absolute inset-0 bg-[var(--color-bg)]/20 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
               </div>
               <div className="flex justify-between items-center px-2">
-                <span className="font-heading font-bold text-white text-sm md:text-base tracking-tight">
+                <span className="font-heading font-bold text-sm md:text-base tracking-tight">
                   {products[1].name}
                 </span>
                 <span className="font-heading font-medium text-text-muted text-xs">
@@ -145,10 +142,10 @@ export default function FeaturedWorks() {
                 ) : (
                   <div className="absolute inset-0 bg-[#111]" />
                 )}
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
+                <div className="absolute inset-0 bg-[var(--color-bg)]/20 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
               </div>
               <div className="flex justify-between items-center px-2">
-                <span className="font-heading font-bold text-white text-sm md:text-base tracking-tight">
+                <span className="font-heading font-bold text-sm md:text-base tracking-tight">
                   {products[2].name}
                 </span>
                 <span className="font-heading font-medium text-text-muted text-xs">

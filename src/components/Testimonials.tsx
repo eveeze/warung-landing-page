@@ -70,13 +70,13 @@ function TestimonialCard({
 }) {
   return (
     <div
-      className={`group w-full lg:w-[400px] bg-[#050505] border border-white/5 rounded-[2.5rem] p-8 md:p-10 flex flex-col shadow-lg hover:shadow-[0_0_40px_rgba(255,255,255,0.06)] transition-all duration-700 min-h-[280px] ${className}`}
+      className={`group w-full lg:w-[400px] bg-[#050505] border border-[var(--color-primary)]/5 rounded-[2.5rem] p-8 md:p-10 flex flex-col shadow-lg hover:shadow-[0_0_40px_rgba(255,255,255,0.06)] transition-all duration-700 min-h-[280px] ${className}`}
     >
       <p className="font-serif text-[15px] md:text-lg text-text-muted leading-relaxed max-w-[95%] mb-12 flex-1 relative z-10">
         "{data.quote}"
       </p>
 
-      <div className="flex items-center gap-4 pt-6 border-t border-white/5 mt-auto relative z-10">
+      <div className="flex items-center gap-4 pt-6 border-t border-[var(--color-primary)]/5 mt-auto relative z-10">
         <div className="relative w-12 h-12 rounded-full overflow-hidden">
           <img
             src={data.image}
@@ -86,7 +86,7 @@ function TestimonialCard({
         </div>
         <div className="flex-1 flex flex-col">
           <div className="flex items-center gap-1.5">
-            <h4 className="font-heading font-bold text-white text-sm md:text-base tracking-tight text-white/90 group-hover:text-white transition-colors">
+            <h4 className="font-heading font-bold text-sm md:text-base tracking-tight text-[var(--color-primary)]/90 group-hover:text-[var(--color-primary)] transition-colors">
               {data.author}
             </h4>
             {/* Verified Badge Icon */}
@@ -125,18 +125,18 @@ export default function Testimonials() {
     <section
       ref={containerRef}
       id="ulasan"
-      className="relative h-auto lg:h-[350vh] bg-black z-10 border-t border-border/30"
+      className="relative h-auto lg:h-[350vh] z-10 border-t border-border/30"
     >
       <div className="sticky top-0 h-[100dvh] w-full flex flex-col items-center justify-center overflow-hidden z-0">
         {/* Infinite Looping Background Text */}
         <div className="absolute inset-0 flex items-center overflow-hidden whitespace-nowrap pointer-events-none select-none">
-          <div className="flex flex-shrink-0 animate-marquee-slow font-heading font-black text-[clamp(4rem,20vw,12rem)] leading-[0.8] tracking-tighter text-white opacity-100 drop-shadow-md">
+          <div className="flex flex-shrink-0 animate-marquee-slow font-heading font-black text-[clamp(4rem,20vw,12rem)] leading-[0.8] tracking-tighter opacity-100 drop-shadow-md">
             <span className="pr-16">© — Reviews in Testimonial</span>
             <span className="pr-16">© — Reviews in Testimonial</span>
             <span className="pr-16">© — Reviews in Testimonial</span>
             <span className="pr-16">© — Reviews in Testimonial</span>
           </div>
-          <div className="flex flex-shrink-0 animate-marquee-slow font-heading font-black text-[clamp(4rem,20vw,12rem)] leading-[0.8] tracking-tighter text-white opacity-100 drop-shadow-md">
+          <div className="flex flex-shrink-0 animate-marquee-slow font-heading font-black text-[clamp(4rem,20vw,12rem)] leading-[0.8] tracking-tighter opacity-100 drop-shadow-md">
             <span className="pr-16">© — Reviews in Testimonial</span>
             <span className="pr-16">© — Reviews in Testimonial</span>
             <span className="pr-16">© — Reviews in Testimonial</span>
@@ -149,8 +149,8 @@ export default function Testimonials() {
           <AnimatedButton
             href="#contact"
             as="a"
-            fillColor="bg-white"
-            className="group inline-flex items-center justify-center px-6 md:px-8 py-3 rounded-[2rem] border-2 border-white/20 bg-black/40 backdrop-blur-md text-white font-heading font-bold text-xs md:text-sm uppercase tracking-widest hover:border-white hover:text-black transition-colors duration-500 shadow-[0_0_0_rgba(255,255,255,0)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]"
+            fillColor="bg-[var(--color-accent)]"
+            className="group inline-flex items-center justify-center px-6 md:px-8 py-3 rounded-[2rem] border-2 border-[var(--color-primary)]/20 bg-[var(--color-bg)]/40 backdrop-blur-md font-heading font-bold text-xs md:text-sm uppercase tracking-widest hover:border-[var(--color-primary)] hover:text-[var(--color-accent-contrast)] transition-colors duration-500 shadow-[0_0_0_rgba(255,255,255,0)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]"
           >
             Hubungi Kami
           </AnimatedButton>

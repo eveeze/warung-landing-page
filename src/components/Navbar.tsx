@@ -3,8 +3,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useCart } from '@/lib/cart';
+import { useTheme } from '@/lib/theme';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 
 const navLinks = [
@@ -19,6 +20,7 @@ const navLinks = [
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { totalItems, openCart } = useCart();
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <>
@@ -26,7 +28,11 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.85, 0, 0.15, 1] }}
-        className="fixed top-0 left-0 right-0 z-50 bg-black border-b border-border"
+        className="fixed top-0 left-0 right-0 z-50"
+        style={{
+          backgroundColor: 'var(--color-bg)',
+          borderBottom: '1px solid var(--color-border)',
+        }}
       >
         <div className="mx-auto max-w-[1600px] px-6 md:px-12 xl:px-20 py-6">
           <div className="grid grid-cols-2 md:grid-cols-12 gap-4 items-start">
@@ -34,7 +40,8 @@ export default function Navbar() {
             <div className="col-span-1 md:col-span-3">
               <Link
                 href="/"
-                className="font-heading text-lg md:text-xl text-white tracking-tight hover:opacity-50 transition-opacity relative z-50"
+                className="font-heading text-lg md:text-xl tracking-tight hover:opacity-50 transition-opacity relative z-50"
+                style={{ color: 'var(--color-text-heading)' }}
                 onClick={() => setMobileOpen(false)}
               >
                 Warung Manto®
@@ -43,16 +50,22 @@ export default function Navbar() {
 
             {/* Middle: Quick Links (Desktop only) */}
             <div className="hidden md:flex flex-col col-span-5">
-              <span className="text-[10px] font-heading font-bold text-white tracking-wider mb-1">
+              <span
+                className="text-[10px] font-heading font-bold tracking-wider mb-1"
+                style={{ color: 'var(--color-text-heading)' }}
+              >
                 Akses Cepat
               </span>
-              <div className="flex flex-wrap gap-2 text-[10px] text-text-muted font-heading tracking-wider">
+              <div
+                className="flex flex-wrap gap-2 text-[10px] font-heading tracking-wider"
+                style={{ color: 'var(--color-text-muted)' }}
+              >
                 {navLinks.map((link, i) => (
                   <AnimatedButton
                     key={link.href}
                     href={link.href}
                     as="a"
-                    className="hover:text-white transition-colors flex"
+                    className="hover:opacity-70 transition-colors flex"
                   >
                     {link.label + (i < navLinks.length - 1 ? ',' : '')}
                   </AnimatedButton>
@@ -60,23 +73,68 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* Right: Info & Cart */}
+            {/* Right: Info & Cart & Theme Toggle */}
             <div className="col-span-1 md:col-span-4 flex justify-end md:justify-between items-start">
               {/* Meta Info (Desktop only) */}
               <div className="hidden md:flex flex-col">
-                <span className="text-[10px] font-heading font-bold text-white tracking-wider mb-1">
+                <span
+                  className="text-[10px] font-heading font-bold tracking-wider mb-1"
+                  style={{ color: 'var(--color-text-heading)' }}
+                >
                   Berbasis di Indonesia
                 </span>
-                <span className="text-[10px] text-text-muted font-heading tracking-wider">
+                <span
+                  className="text-[10px] font-heading tracking-wider"
+                  style={{ color: 'var(--color-text-muted)' }}
+                >
                   Grosir + Eceran
                 </span>
               </div>
 
-              <div className="flex items-center gap-6 relative z-50">
+              <div className="flex items-center gap-4 md:gap-6 relative z-50">
+                {/* Theme Toggle */}
+                <button
+                  onClick={toggleTheme}
+                  className="relative w-8 h-8 flex items-center justify-center rounded-full no-theme-transition"
+                  style={{ border: '1px solid var(--color-border-strong)' }}
+                  aria-label="Toggle Theme"
+                >
+                  <AnimatePresence mode="wait">
+                    {theme === 'dark' ? (
+                      <motion.div
+                        key="sun"
+                        initial={{ rotate: -90, scale: 0, opacity: 0 }}
+                        animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                        exit={{ rotate: 90, scale: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                      >
+                        <Sun
+                          size={14}
+                          style={{ color: 'var(--color-text-heading)' }}
+                        />
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                        key="moon"
+                        initial={{ rotate: 90, scale: 0, opacity: 0 }}
+                        animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                        exit={{ rotate: -90, scale: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                      >
+                        <Moon
+                          size={14}
+                          style={{ color: 'var(--color-text-heading)' }}
+                        />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </button>
+
                 {/* Cart Button */}
                 <AnimatedButton
                   onClick={openCart}
-                  className="text-[10px] font-heading font-bold text-white tracking-widest hover:opacity-100 transition-opacity uppercase flex"
+                  className="text-[10px] font-heading font-bold tracking-widest hover:opacity-100 transition-opacity uppercase flex"
+                  style={{ color: 'var(--color-text-heading)' }}
                 >
                   {`Keranjang [${totalItems}]`}
                 </AnimatedButton>
@@ -93,7 +151,8 @@ export default function Navbar() {
                       y: mobileOpen ? 8 : 0,
                     }}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    className="w-6 h-[2px] bg-white rounded-full origin-center"
+                    className="w-6 h-[2px] rounded-full origin-center"
+                    style={{ backgroundColor: 'var(--color-text-heading)' }}
                   />
                   <motion.div
                     animate={{
@@ -101,7 +160,8 @@ export default function Navbar() {
                       x: mobileOpen ? 20 : 0,
                     }}
                     transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                    className="w-6 h-[2px] bg-white rounded-full"
+                    className="w-6 h-[2px] rounded-full"
+                    style={{ backgroundColor: 'var(--color-text-heading)' }}
                   />
                   <motion.div
                     animate={{
@@ -109,7 +169,8 @@ export default function Navbar() {
                       y: mobileOpen ? -8 : 0,
                     }}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    className="w-6 h-[2px] bg-white rounded-full origin-center"
+                    className="w-6 h-[2px] rounded-full origin-center"
+                    style={{ backgroundColor: 'var(--color-text-heading)' }}
                   />
                 </button>
               </div>
@@ -118,7 +179,7 @@ export default function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu - Framer Glassmorphic Vibes */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -134,7 +195,8 @@ export default function Navbar() {
               },
             }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-40 bg-black/80 flex flex-col justify-between px-6 pt-32 pb-12"
+            className="fixed inset-0 z-40 flex flex-col justify-between px-6 pt-32 pb-12"
+            style={{ backgroundColor: 'var(--color-overlay)' }}
           >
             <div className="flex flex-col gap-6 mt-12 md:mt-20">
               {navLinks.map((link, i) => (
@@ -159,7 +221,8 @@ export default function Navbar() {
                       delay: 0.1 + i * 0.08,
                     }}
                     onClick={() => setMobileOpen(false)}
-                    className="block text-6xl sm:text-7xl font-heading font-black text-white hover:text-text-muted transition-colors tracking-tighter uppercase leading-[0.85]"
+                    className="block text-6xl sm:text-7xl font-heading font-black tracking-tighter uppercase leading-[0.85] transition-colors"
+                    style={{ color: 'var(--color-text-heading)' }}
                   >
                     {link.label}
                   </motion.a>
@@ -167,7 +230,6 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Footer-like element inside the mobile menu */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -177,21 +239,34 @@ export default function Navbar() {
                 duration: 0.8,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="flex justify-between items-end border-t border-white/20 pt-6 mt-8"
+              className="flex justify-between items-end pt-6 mt-8"
+              style={{ borderTop: '1px solid var(--color-border)' }}
             >
               <div className="flex flex-col">
-                <span className="text-[10px] text-text-muted font-heading font-bold uppercase tracking-widest mb-1">
+                <span
+                  className="text-[10px] font-heading font-bold uppercase tracking-widest mb-1"
+                  style={{ color: 'var(--color-text-muted)' }}
+                >
                   Lokasi
                 </span>
-                <span className="font-serif italic text-sm text-white">
+                <span
+                  className="font-serif italic text-sm"
+                  style={{ color: 'var(--color-text-heading)' }}
+                >
                   Indonesia
                 </span>
               </div>
               <div className="flex flex-col text-right">
-                <span className="text-[10px] text-text-muted font-heading font-bold uppercase tracking-widest mb-1">
+                <span
+                  className="text-[10px] font-heading font-bold uppercase tracking-widest mb-1"
+                  style={{ color: 'var(--color-text-muted)' }}
+                >
                   Kontak
                 </span>
-                <span className="font-serif italic text-sm text-white">
+                <span
+                  className="font-serif italic text-sm"
+                  style={{ color: 'var(--color-text-heading)' }}
+                >
                   WhatsApp
                 </span>
               </div>
