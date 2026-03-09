@@ -34,9 +34,24 @@ export default function Contact() {
             target="_blank"
             rel="noopener noreferrer"
             fillColor="bg-[var(--color-accent)]"
-            className="inline-flex items-center justify-center px-10 py-4 rounded-full border border-[var(--color-primary)] font-heading font-bold text-sm uppercase tracking-widest hover:border-[var(--color-primary)] hover:text-[var(--color-accent-contrast)] transition-colors duration-300"
+            iconRight={
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="transform transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:translate-x-1.5"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            }
+            className="group inline-flex items-center justify-center px-10 py-4 rounded-full border border-[var(--color-primary)] font-heading font-bold text-sm uppercase tracking-widest hover:border-[var(--color-primary)] hover:text-[var(--color-accent-contrast)] transition-colors duration-300"
           >
-            Hubungi via WhatsApp →
+            Hubungi via WhatsApp
           </AnimatedButton>
         </div>
       </div>

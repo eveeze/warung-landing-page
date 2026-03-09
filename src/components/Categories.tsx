@@ -98,9 +98,24 @@ export default function Categories() {
               href="/belanja"
               as="a"
               fillColor="bg-forest"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-forest/30 font-heading font-bold text-xs uppercase tracking-widest text-text-primary hover:border-forest hover:text-cream transition-all duration-300"
+              iconRight={
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="transform transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:translate-x-1"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              }
+              className="group inline-flex items-center justify-center px-6 py-3 rounded-full border border-forest/30 font-heading font-bold text-xs uppercase tracking-widest text-text-primary hover:border-forest hover:text-cream transition-all duration-300"
             >
-              Lihat Semua Kategori →
+              Lihat Semua Kategori
             </AnimatedButton>
           </motion.div>
         </div>
@@ -130,24 +145,24 @@ export default function Categories() {
                   />
 
                   {/* Vignette Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent opacity-90 group-hover:opacity-40 transition-opacity duration-700 group-hover:bg-white/20" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent opacity-90 group-hover:opacity-40 transition-opacity duration-700 group-hover:bg-text-primary/10" />
 
                   {/* Content Container */}
                   <div className="absolute inset-x-0 bottom-0 p-6 md:p-8 flex flex-col justify-end">
                     <div className="flex flex-col transform group-hover:-translate-y-2 transition-transform duration-700 ease-[0.16,1,0.3,1]">
                       {/* Pill Badge */}
                       <div className="mb-4">
-                        <span className="inline-flex items-center px-4 py-1.5 bg-[#0f172a]/80 backdrop-blur-xl rounded-full text-[10px] md:text-xs font-heading font-medium text-white uppercase tracking-widest border border-white/20 group-hover:bg-forest group-hover:text-cream transition-all duration-500">
+                        <span className="inline-flex items-center px-4 py-1.5 bg-surface/80 backdrop-blur-xl rounded-full text-[10px] md:text-xs font-heading font-medium text-text-primary uppercase tracking-widest border border-border group-hover:bg-forest group-hover:text-cream transition-all duration-500">
                           {cat.count}
                         </span>
                       </div>
 
                       {/* Category Name with Slide Arrow */}
                       <div className="flex items-end justify-between overflow-hidden">
-                        <h3 className="font-heading font-black text-4xl md:text-5xl lg:text-7xl tracking-tighter leading-none mb-0 text-white group-hover:text-cream transition-colors duration-500 drop-shadow-lg">
+                        <h3 className="font-heading font-black text-4xl md:text-5xl lg:text-7xl tracking-tighter leading-none mb-0 text-text-primary group-hover:text-forest transition-colors duration-500 drop-shadow-sm">
                           {cat.name}
                         </h3>
-                        <div className="translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 ease-[0.16,1,0.3,1] pb-2 md:pb-4 text-cream">
+                        <div className="translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 ease-[0.16,1,0.3,1] pb-2 md:pb-4 text-forest">
                           <svg
                             width="32"
                             height="32"

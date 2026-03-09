@@ -5,6 +5,7 @@ import { CartProvider } from '@/lib/cart';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import SmoothScrollProvider from '@/components/SmoothScrollProvider';
 
 const inter = Inter({
   variable: '--font-body',
@@ -91,111 +92,113 @@ export default function RootLayout({
   return (
     <html lang="id" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${interHeading.variable} ${inter.variable} ${playfair.variable} font-body antialiased bg-forest-deep text-text-primary selection:bg-forest selection:text-forest-deep transition-colors duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]`}
+        className={`${interHeading.variable} ${inter.variable} ${playfair.variable} font-body antialiased bg-forest-deep text-text-primary selection:bg-forest selection:text-forest-deep`}
       >
         <ThemeProvider
           attribute="data-theme"
           defaultTheme="system"
           enableSystem
         >
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                '@context': 'https://schema.org',
-                '@type': 'GroceryStore',
-                '@id': 'https://warungmanto.store/#business',
-                name: 'Warung Mbah Manto',
-                alternateName: 'Warung Manto',
-                description:
-                  'Warung grosir dan eceran sembako terpercaya sejak 2014. Melayani kebutuhan belanja harian, bumbu dapur, minuman, dan kebutuhan rumah tangga dengan harga jujur dan stok lengkap.',
-                url: 'https://warungmanto.store',
-                telephone: '+62882003310360',
-                image: 'https://warungmanto.store/opengraph-image',
-                address: {
-                  '@type': 'PostalAddress',
-                  streetAddress: 'Jl. Raya',
-                  addressLocality: 'Indonesia',
-                  addressRegion: 'Jawa',
-                  addressCountry: 'ID',
-                },
-                geo: {
-                  '@type': 'GeoCoordinates',
-                  latitude: -7.0,
-                  longitude: 110.0,
-                },
-                openingHoursSpecification: {
-                  '@type': 'OpeningHoursSpecification',
-                  dayOfWeek: [
-                    'Monday',
-                    'Tuesday',
-                    'Wednesday',
-                    'Thursday',
-                    'Friday',
-                    'Saturday',
-                    'Sunday',
-                  ],
-                  opens: '06:00',
-                  closes: '21:00',
-                },
-                priceRange: 'Rp',
-                currenciesAccepted: 'IDR',
-                paymentAccepted: 'Cash, QRIS',
-                hasOfferCatalog: {
-                  '@type': 'OfferCatalog',
-                  name: 'Katalog Produk',
-                  itemListElement: [
-                    {
-                      '@type': 'OfferCatalog',
-                      name: 'Sembako',
-                    },
-                    {
-                      '@type': 'OfferCatalog',
-                      name: 'Bumbu Dapur',
-                    },
-                    {
-                      '@type': 'OfferCatalog',
-                      name: 'Minuman',
-                    },
-                    {
-                      '@type': 'OfferCatalog',
-                      name: 'Kebutuhan Rumah Tangga',
-                    },
-                  ],
-                },
-                sameAs: [],
-                foundingDate: '2014',
-                areaServed: {
-                  '@type': 'GeoCircle',
-                  geoMidpoint: {
+          <SmoothScrollProvider>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  '@context': 'https://schema.org',
+                  '@type': 'GroceryStore',
+                  '@id': 'https://warungmanto.store/#business',
+                  name: 'Warung Mbah Manto',
+                  alternateName: 'Warung Manto',
+                  description:
+                    'Warung grosir dan eceran sembako terpercaya sejak 2014. Melayani kebutuhan belanja harian, bumbu dapur, minuman, dan kebutuhan rumah tangga dengan harga jujur dan stok lengkap.',
+                  url: 'https://warungmanto.store',
+                  telephone: '+62882003310360',
+                  image: 'https://warungmanto.store/opengraph-image',
+                  address: {
+                    '@type': 'PostalAddress',
+                    streetAddress: 'Jl. Raya',
+                    addressLocality: 'Indonesia',
+                    addressRegion: 'Jawa',
+                    addressCountry: 'ID',
+                  },
+                  geo: {
                     '@type': 'GeoCoordinates',
                     latitude: -7.0,
                     longitude: 110.0,
                   },
-                  geoRadius: '10000',
-                },
-              }),
-            }}
-          />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                '@context': 'https://schema.org',
-                '@type': 'WebSite',
-                '@id': 'https://warungmanto.store/#website',
-                name: 'Warung Mbah Manto',
-                url: 'https://warungmanto.store',
-                publisher: {
-                  '@id': 'https://warungmanto.store/#business',
-                },
-                inLanguage: 'id-ID',
-              }),
-            }}
-          />
-          <CartProvider>{children}</CartProvider>
-          <Analytics />
-          <SpeedInsights />
+                  openingHoursSpecification: {
+                    '@type': 'OpeningHoursSpecification',
+                    dayOfWeek: [
+                      'Monday',
+                      'Tuesday',
+                      'Wednesday',
+                      'Thursday',
+                      'Friday',
+                      'Saturday',
+                      'Sunday',
+                    ],
+                    opens: '06:00',
+                    closes: '21:00',
+                  },
+                  priceRange: 'Rp',
+                  currenciesAccepted: 'IDR',
+                  paymentAccepted: 'Cash, QRIS',
+                  hasOfferCatalog: {
+                    '@type': 'OfferCatalog',
+                    name: 'Katalog Produk',
+                    itemListElement: [
+                      {
+                        '@type': 'OfferCatalog',
+                        name: 'Sembako',
+                      },
+                      {
+                        '@type': 'OfferCatalog',
+                        name: 'Bumbu Dapur',
+                      },
+                      {
+                        '@type': 'OfferCatalog',
+                        name: 'Minuman',
+                      },
+                      {
+                        '@type': 'OfferCatalog',
+                        name: 'Kebutuhan Rumah Tangga',
+                      },
+                    ],
+                  },
+                  sameAs: [],
+                  foundingDate: '2014',
+                  areaServed: {
+                    '@type': 'GeoCircle',
+                    geoMidpoint: {
+                      '@type': 'GeoCoordinates',
+                      latitude: -7.0,
+                      longitude: 110.0,
+                    },
+                    geoRadius: '10000',
+                  },
+                }),
+              }}
+            />
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  '@context': 'https://schema.org',
+                  '@type': 'WebSite',
+                  '@id': 'https://warungmanto.store/#website',
+                  name: 'Warung Mbah Manto',
+                  url: 'https://warungmanto.store',
+                  publisher: {
+                    '@id': 'https://warungmanto.store/#business',
+                  },
+                  inLanguage: 'id-ID',
+                }),
+              }}
+            />
+            <CartProvider>{children}</CartProvider>
+            <Analytics />
+            <SpeedInsights />
+          </SmoothScrollProvider>
         </ThemeProvider>
       </body>
     </html>

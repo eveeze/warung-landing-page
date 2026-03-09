@@ -61,9 +61,24 @@ export default function FeaturedWorks() {
               <AnimatedButton
                 as="span"
                 fillColor="bg-[var(--color-accent)]"
-                className="inline-flex items-center justify-center px-8 py-3 rounded-full border border-[var(--color-primary)] font-heading font-bold text-xs uppercase tracking-widest hover:border-[var(--color-primary)] hover:text-[var(--color-accent-contrast)] transition-colors duration-300"
+                iconRight={
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="transform transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:translate-x-1"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                }
+                className="group inline-flex items-center justify-center px-8 py-3 rounded-full border border-[var(--color-primary)] font-heading font-bold text-xs uppercase tracking-widest hover:border-[var(--color-primary)] hover:text-[var(--color-accent-contrast)] transition-colors duration-300"
               >
-                Jelajahi Katalog →
+                Jelajahi Katalog
               </AnimatedButton>
             </Link>
           </div>
