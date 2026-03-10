@@ -24,8 +24,8 @@ export default function Contact() {
             className="font-heading font-medium text-[clamp(2.5rem,5vw,5rem)] leading-[1.1] tracking-tighter mb-12"
             style={{ textWrap: 'balance' }}
           >
-            10+ tahun™ melayani ribuan pelanggan setia dengan harga jujur, stok
-            lengkap, dan layanan sepenuh hati.
+            {new Date().getFullYear() - 2005}+ tahun™ melayani ribuan pelanggan
+            setia dengan harga jujur, stok lengkap, dan layanan sepenuh hati.
           </h2>
 
           <AnimatedButton
