@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 interface AnimatedButtonProps {
   children: string; // We enforce string so we can split it into characters
@@ -132,17 +133,17 @@ export default function AnimatedButton({
 
   if (as === 'a' && href) {
     return (
-      <a
+      <Link
         href={href}
         className={outerClasses}
-        onClick={onClick}
+        onClick={onClick as any}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         target={target}
         rel={rel}
       >
         {innerContent}
-      </a>
+      </Link>
     );
   }
 

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { usePathname, useRouter } from 'next/navigation';
 import { useCart } from '@/lib/cart';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 import ThemeToggle from '@/components/ThemeToggle';
@@ -22,6 +23,34 @@ const navLinks = [
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { totalItems, openCart } = useCart();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
+    if (href.startsWith('/#')) {
+      const targetId = href.substring(2);
+
+      // If we are already on the home page, intercept for smooth scroll
+      if (pathname === '/') {
+        e.preventDefault();
+        setMobileOpen(false);
+        const element = document.getElementById(targetId);
+        if (element) {
+          if ((window as any).lenis) {
+            (window as any).lenis.scrollTo(element, { offset: -80 });
+          } else {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      } else {
+        // We are on another page (e.g., /belanja).
+        // Let the Next.js Link handle the navigation to the home page hash.
+        setMobileOpen(false);
+      }
+    } else {
+      setMobileOpen(false);
+    }
+  };
 
   return (
     <>
@@ -55,6 +84,7 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     as="a"
+                    onClick={(e) => handleNavClick(e as any, link.href)}
                     className="hover:text-text-primary transition-colors flex duration-700"
                   >
                     {link.label + (i < navLinks.length - 1 ? ',' : '')}
@@ -164,7 +194,7 @@ export default function Navbar() {
                       ease: [0.22, 1, 0.36, 1],
                       delay: 0.1 + i * 0.08,
                     }}
-                    onClick={() => setMobileOpen(false)}
+                    onClick={(e) => handleNavClick(e, link.href)}
                     className="block text-6xl sm:text-7xl font-heading font-black text-text-primary hover:text-text-muted transition-colors tracking-tighter uppercase leading-[0.85] duration-700"
                   >
                     {link.label}

@@ -494,7 +494,7 @@ export default function Belanja() {
                             );
                             openCart();
                           }}
-                          className="mt-6 self-start flex items-center gap-2 text-[10px] font-heading font-bold uppercase tracking-widest text-[var(--color-primary)] border border-white/20 px-4 py-2 rounded-full hover:bg-[var(--color-accent)] hover:text-[var(--color-accent-contrast)] transition-all duration-300"
+                          className="mt-6 self-start flex items-center gap-2 text-[10px] font-heading font-bold uppercase tracking-widest text-[var(--color-primary)] border border-[var(--color-primary)]/20 px-4 py-2 rounded-full hover:bg-[var(--color-primary)] hover:text-[var(--color-bg)] hover:border-[var(--color-primary)] transition-all duration-300"
                         >
                           + Keranjang
                         </button>

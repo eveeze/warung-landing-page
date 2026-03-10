@@ -1,19 +1,40 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { fetchProducts } from '@/lib/api';
 import type { Product } from '@/lib/api';
+import InfiniteMarquee from '@/lib/infinite-marquee';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 
 export default function FeaturedWorks() {
   const [products, setProducts] = useState<Product[]>([]);
+  const marqueeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     fetchProducts({ perPage: 3 })
       .then((res) => setProducts(res.products.slice(0, 3)))
       .catch(() => {});
+  }, []);
+
+  useEffect(() => {
+    let marquee: InfiniteMarquee | null = null;
+    if (marqueeRef.current) {
+      setTimeout(() => {
+        if (marqueeRef.current) {
+          marquee = new InfiniteMarquee({
+            element: marqueeRef.current,
+            speed: 2,
+            direction: 'left-to-right',
+            controlsOnHover: false,
+          });
+        }
+      }, 100);
+    }
+    return () => {
+      if (marquee) marquee.destroy();
+    };
   }, []);
 
   return (
@@ -27,19 +48,20 @@ export default function FeaturedWorks() {
         </div>
       </div>
 
-      {/* Infinite Marquee Heading */}
-      <div className="w-full relative flex items-center overflow-hidden mb-24 select-none">
-        <div className="flex flex-shrink-0 animate-marquee-slow font-heading font-black text-[clamp(6rem,20vw,25rem)] leading-[0.8] tracking-tighter whitespace-nowrap">
-          <span className="pr-16">Produk Pilihan©</span>
-          <span className="pr-16">Produk Pilihan©</span>
-          <span className="pr-16">Produk Pilihan©</span>
-          <span className="pr-16">Produk Pilihan©</span>
-        </div>
-        <div className="flex flex-shrink-0 animate-marquee-slow font-heading font-black text-[clamp(6rem,20vw,25rem)] leading-[0.8] tracking-tighter whitespace-nowrap">
-          <span className="pr-16">Produk Pilihan©</span>
-          <span className="pr-16">Produk Pilihan©</span>
-          <span className="pr-16">Produk Pilihan©</span>
-          <span className="pr-16">Produk Pilihan©</span>
+      {/* GSAP Infinite Marquee Heading */}
+      <div className="w-full relative flex items-center overflow-hidden mb-24 select-none h-auto py-2">
+        <div
+          ref={marqueeRef}
+          className="flex flex-nowrap min-w-max items-center"
+        >
+          {Array.from({ length: 8 }).map((_, i) => (
+            <div
+              key={i}
+              className="flex-shrink-0 flex items-center pr-16 font-heading font-black text-[clamp(6rem,20vw,25rem)] leading-[0.8] tracking-tighter whitespace-nowrap"
+            >
+              Produk Pilihan©
+            </div>
+          ))}
         </div>
       </div>
 

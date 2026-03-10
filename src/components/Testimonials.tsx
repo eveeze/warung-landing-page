@@ -1,8 +1,9 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import AnimatedButton from '@/components/ui/AnimatedButton';
+import InfiniteMarquee from '@/lib/infinite-marquee';
 
 const testimonials = [
   {
@@ -108,10 +109,30 @@ function TestimonialCard({
 
 export default function Testimonials() {
   const containerRef = useRef<HTMLElement>(null);
+  const marqueeRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start end', 'end start'],
   });
+
+  useEffect(() => {
+    let marquee: InfiniteMarquee | null = null;
+    if (marqueeRef.current) {
+      setTimeout(() => {
+        if (marqueeRef.current) {
+          marquee = new InfiniteMarquee({
+            element: marqueeRef.current,
+            speed: 2,
+            direction: 'left-to-right',
+            controlsOnHover: false,
+          });
+        }
+      }, 100);
+    }
+    return () => {
+      if (marquee) marquee.destroy();
+    };
+  }, []);
 
   // Adjusted Parallax values for 6 cards: left, right, center staggered
   const y1 = useTransform(scrollYProgress, [0, 1], ['100vh', '-100vh']);
@@ -129,18 +150,19 @@ export default function Testimonials() {
     >
       <div className="sticky top-0 h-[100dvh] w-full flex flex-col items-center justify-center overflow-hidden z-0">
         {/* Infinite Looping Background Text */}
-        <div className="absolute inset-0 flex items-center overflow-hidden whitespace-nowrap pointer-events-none select-none">
-          <div className="flex flex-shrink-0 animate-marquee-slow font-heading font-black text-[clamp(4rem,20vw,12rem)] leading-[0.8] tracking-tighter opacity-100 drop-shadow-md">
-            <span className="pr-16">© — Reviews in Testimonial</span>
-            <span className="pr-16">© — Reviews in Testimonial</span>
-            <span className="pr-16">© — Reviews in Testimonial</span>
-            <span className="pr-16">© — Reviews in Testimonial</span>
-          </div>
-          <div className="flex flex-shrink-0 animate-marquee-slow font-heading font-black text-[clamp(4rem,20vw,12rem)] leading-[0.8] tracking-tighter opacity-100 drop-shadow-md">
-            <span className="pr-16">© — Reviews in Testimonial</span>
-            <span className="pr-16">© — Reviews in Testimonial</span>
-            <span className="pr-16">© — Reviews in Testimonial</span>
-            <span className="pr-16">© — Reviews in Testimonial</span>
+        <div className="absolute inset-0 flex flex-col justify-center overflow-hidden whitespace-nowrap pointer-events-none select-none">
+          <div
+            ref={marqueeRef}
+            className="flex flex-nowrap min-w-max items-center"
+          >
+            {Array.from({ length: 8 }).map((_, i) => (
+              <div
+                key={i}
+                className="flex-shrink-0 flex items-center pr-16 font-heading font-black text-[clamp(4rem,20vw,12rem)] leading-[0.8] tracking-tighter opacity-100 drop-shadow-md"
+              >
+                © — APA KATA PELANGGAN KAMI
+              </div>
+            ))}
           </div>
         </div>
 

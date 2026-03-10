@@ -1,6 +1,8 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import InfiniteMarquee from '@/lib/infinite-marquee';
 
 const defaultVars = {
   hidden: { opacity: 0, y: 30 },
@@ -15,27 +17,32 @@ const marqueeItems = [
   { text: 'WARUNG MBAH MANTO™', type: 'bold' },
   { text: '— Grosir & Eceran Terpercaya', type: 'serif' },
   { text: 'BUKA SETIAP HARI', type: 'bold' },
-  { text: '— Sejak 2014, Melayani Sepenuh Hati', type: 'serif' },
+  { text: '— Sejak 2005, Melayani Sepenuh Hati', type: 'serif' },
 ];
 
-const MarqueeContent = () => (
-  <div className="flex items-center min-w-full shrink-0 justify-around gap-12 px-6">
-    {marqueeItems.map((item, i) => (
-      <span
-        key={i}
-        className={
-          item.type === 'bold'
-            ? 'font-heading font-black uppercase text-2xl md:text-4xl tracking-tighter'
-            : 'font-serif italic text-xl md:text-2xl text-text-muted'
-        }
-      >
-        {item.text}
-      </span>
-    ))}
-  </div>
-);
-
 export default function Hero({ introComplete }: { introComplete: boolean }) {
+  const marqueeRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let marquee: InfiniteMarquee | null = null;
+    if (introComplete && marqueeRef.current) {
+      // give Framer Motion time to mount/animate before measuring
+      setTimeout(() => {
+        if (marqueeRef.current) {
+          marquee = new InfiniteMarquee({
+            element: marqueeRef.current,
+            speed: 1.5,
+            direction: 'left-to-right',
+            controlsOnHover: false,
+          });
+        }
+      }, 500);
+    }
+    return () => {
+      if (marquee) marquee.destroy();
+    };
+  }, [introComplete]);
+
   return (
     <section
       id="beranda"
@@ -109,16 +116,34 @@ export default function Hero({ introComplete }: { introComplete: boolean }) {
         </motion.div>
       </div>
 
-      {/* Infinite Marquee */}
+      {/* GSAP Infinite Marquee */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={introComplete ? { opacity: 1 } : { opacity: 0 }}
         transition={{ delay: 1.5, duration: 1 }}
         className="w-full border-t border-b border-border transition-colors duration-700 py-4 overflow-hidden flex bg-forest-deep mt-auto"
       >
-        <div className="flex animate-marquee min-w-max">
-          <MarqueeContent />
-          <MarqueeContent />
+        <div ref={marqueeRef} className="flex min-w-max items-center">
+          {/* Render enough children so GSAP can loop seamlessly */}
+          {Array.from({ length: 8 }).map((_, i) => (
+            <div
+              key={i}
+              className="flex shrink-0 items-center justify-around gap-12 px-6"
+            >
+              {marqueeItems.map((item, j) => (
+                <span
+                  key={`${i}-${j}`}
+                  className={
+                    item.type === 'bold'
+                      ? 'font-heading font-black uppercase text-2xl md:text-4xl tracking-tighter whitespace-nowrap'
+                      : 'font-serif italic text-xl md:text-2xl text-text-muted whitespace-nowrap'
+                  }
+                >
+                  {item.text}
+                </span>
+              ))}
+            </div>
+          ))}
         </div>
       </motion.div>
     </section>
