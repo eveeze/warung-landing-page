@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     template: '%s | Warung Mbah Manto',
   },
   description:
-    'Warung Mbah Manto melayani kebutuhan belanja harian dan grosir sembako terpercaya sejak 2014. Harga jujur, stok lengkap, dan layanan pesan antar cepat via WhatsApp.',
+    'Warung Mbah Manto melayani kebutuhan belanja harian dan grosir sembako terpercaya sejak 2005. Harga jujur, stok lengkap, dan layanan pesan antar cepat via WhatsApp.',
   keywords: [
     'warung mbah manto',
     'warung manto',
@@ -111,7 +111,7 @@ export default function RootLayout({
                   name: 'Warung Mbah Manto',
                   alternateName: 'Warung Manto',
                   description:
-                    'Warung grosir dan eceran sembako terpercaya sejak 2014. Melayani kebutuhan belanja harian, bumbu dapur, minuman, dan kebutuhan rumah tangga dengan harga jujur dan stok lengkap.',
+                    'Warung grosir dan eceran sembako terpercaya sejak 2005. Melayani kebutuhan belanja harian, bumbu dapur, minuman, dan kebutuhan rumah tangga dengan harga jujur dan stok lengkap.',
                   url: 'https://warungmanto.store',
                   telephone: '+62882006706334',
                   image: 'https://warungmanto.store/opengraph-image',
@@ -167,7 +167,7 @@ export default function RootLayout({
                     ],
                   },
                   sameAs: [],
-                  foundingDate: '2014',
+                  foundingDate: '2005',
                   areaServed: {
                     '@type': 'GeoCircle',
                     geoMidpoint: {

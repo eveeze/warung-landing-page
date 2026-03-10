@@ -39,16 +39,15 @@ export default function Image() {
         >
           Warung Mbah Manto™
         </div>
-        <div
+        <p
           style={{
-            fontSize: '28px',
-            color: '#888',
-            fontStyle: 'italic',
-            textAlign: 'center',
+            fontSize: 32,
+            color: '#facc15',
+            textAlign: 'center', // Keeping textAlign for consistency, as it was in the original div
           }}
         >
-          Grosir & Eceran Sembako Terpercaya — Sejak 2014
-        </div>
+          Grosir & Eceran Sembako Terpercaya — Sejak 2005
+        </p>
         <div
           style={{
             marginTop: '32px',

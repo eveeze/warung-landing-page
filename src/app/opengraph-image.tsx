@@ -39,16 +39,9 @@ export default function Image() {
         >
           Warung Mbah Manto™
         </div>
-        <div
-          style={{
-            fontSize: '28px',
-            color: '#888',
-            fontStyle: 'italic',
-            textAlign: 'center',
-          }}
-        >
-          Grosir & Eceran Sembako Terpercaya — Sejak 2014
-        </div>
+        <p style={{ fontSize: 32, color: '#facc15' }}>
+          Grosir & Eceran Sembako Terpercaya — Sejak 2005
+        </p>
         <div
           style={{
             marginTop: '32px',
