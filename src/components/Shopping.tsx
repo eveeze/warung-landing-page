@@ -318,8 +318,8 @@ export default function Shopping() {
                 ) : (
                   <AnimatedButton
                     onClick={() => loadProducts(page + 1)}
-                    fillColor="bg-[var(--color-accent)]"
-                    className="w-full md:w-auto px-12 py-6 rounded-full border border-[var(--color-primary)]/30 font-heading font-bold text-xs uppercase tracking-[0.2em] hover:border-[var(--color-primary)] hover:text-[var(--color-accent-contrast)] transition-colors duration-500 flex items-center justify-center"
+                    fillColor="bg-forest"
+                    className="w-full md:w-auto px-12 py-6 rounded-full border border-[var(--color-primary)]/30 font-heading font-bold text-xs uppercase tracking-[0.2em] hover:border-[var(--color-primary)] hover:text-cream transition-colors duration-500 flex items-center justify-center"
                   >
                     Muat Lebih Banyak
                   </AnimatedButton>

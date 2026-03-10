@@ -101,36 +101,51 @@ export default function Belanja() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[var(--color-bg)] text-[var(--color-primary)] pt-32 pb-40">
-        <div className="w-full px-6 max-w-[1600px] mx-auto">
-          {/* ─── Header Section ─── */}
-          <div className="mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-8 border-b border-border/30 pb-12">
-            <div>
-              <h1 className="font-heading font-medium text-[clamp(4rem,10vw,8rem)] leading-[0.85] tracking-tighter mb-4">
-                Katalog
-                <br />
-                Belanja
-              </h1>
-              <p className="font-serif text-text-muted text-base max-w-md">
-                Koleksi lengkap kebutuhan harian dan pasokan bisnis dengan
-                standar kualitas terbaik Warung Mbah Manto.
-                <br />
-                <br />
-                <span className="text-[var(--color-primary)]/80 bg-[var(--color-accent)]/10 px-3 py-2 rounded border border-white/20 inline-block text-sm">
-                  💡 <strong>Simulasi Belanja:</strong> Pemesanan asli akan
-                  diarahkan ke WhatsApp <strong>0882‑003‑310‑360</strong>.
-                </span>
-              </p>
-            </div>
-            <div className="text-[10px] font-heading font-bold uppercase tracking-widest text-text-muted text-right">
-              <span>Menampilkan {products.length} Produk</span>
-              <br />
-              <span>(WM™ — 04)</span>
+      <main className="min-h-screen bg-[var(--color-bg)] text-[var(--color-primary)] pt-32 pb-40 overflow-hidden">
+        {/* ─── FeaturedWorks-Matched Infinite Marquee Header (FULL WIDTH) ─── */}
+        <div className="relative w-full pt-16 pb-8 overflow-hidden">
+          {/* Meta Header matching FeaturedWorks (Constrained Width) */}
+          <div className="w-full px-6 max-w-[1600px] mx-auto mb-16 md:mb-24">
+            <div className="flex justify-between items-center text-text-muted font-heading font-bold text-[10px] uppercase tracking-widest border-b border-border/30 pb-4">
+              <span>© KATALOG BELANJA</span>
+              <span className="hidden md:block">(WM™ — 04)</span>
+              <span>
+                KETERSEDIAAN: {products.length.toString().padStart(3, '0')}
+              </span>
             </div>
           </div>
 
+          {/* Exact FeaturedWorks Infinite Marquee Structure (100% Width natively) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full relative flex items-center overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28 mb-16 md:mb-24 select-none"
+          >
+            <div className="flex flex-shrink-0 animate-marquee-slow font-heading font-black text-[clamp(6rem,20vw,25rem)] leading-none tracking-tighter whitespace-nowrap text-[var(--color-primary)]">
+              <span className="pr-16">Katalog Belanja©</span>
+              <span className="pr-16">Katalog Belanja©</span>
+              <span className="pr-16">Katalog Belanja©</span>
+              <span className="pr-16">Katalog Belanja©</span>
+            </div>
+            <div className="flex flex-shrink-0 animate-marquee-slow font-heading font-black text-[clamp(6rem,20vw,25rem)] leading-none tracking-tighter whitespace-nowrap text-[var(--color-primary)]">
+              <span className="pr-16">Katalog Belanja©</span>
+              <span className="pr-16">Katalog Belanja©</span>
+              <span className="pr-16">Katalog Belanja©</span>
+              <span className="pr-16">Katalog Belanja©</span>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* ─── Main Content Container ─── */}
+        <div className="w-full px-6 max-w-[1600px] mx-auto">
           {/* ─── Search + Filter Bar ─── */}
-          <div className="mb-16 space-y-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
+            className="mb-16 space-y-6"
+          >
             {/* Search Input */}
             <div className="relative mb-8">
               <Search
@@ -331,7 +346,7 @@ export default function Belanja() {
                 )}
               </LayoutGroup>
             )}
-          </div>
+          </motion.div>
 
           {/* ─── Loading Skeleton ─── */}
           {isLoading && (
@@ -370,8 +385,8 @@ export default function Belanja() {
                     setSearchQuery('');
                     setActiveCategoryId(null);
                   }}
-                  fillColor="bg-[var(--color-accent)]"
-                  className="mt-4 px-8 py-4 rounded-full border border-white/30 text-[10px] font-heading font-bold uppercase tracking-widest text-[var(--color-primary)] hover:border-white hover:text-[var(--color-accent-contrast)] transition-colors flex items-center justify-center"
+                  fillColor="bg-forest"
+                  className="mt-4 px-8 py-4 rounded-full border border-white/30 text-[10px] font-heading font-bold uppercase tracking-widest text-[var(--color-primary)] hover:border-white hover:text-cream transition-colors flex items-center justify-center"
                 >
                   Reset Semua Filter
                 </AnimatedButton>

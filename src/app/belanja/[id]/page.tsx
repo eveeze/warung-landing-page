@@ -158,7 +158,10 @@ export default function ProductDetail() {
 
               {/* Unit badge */}
               <div className="text-[10px] text-text-muted font-heading font-bold uppercase tracking-widest mb-8">
-                Dijual per <span className="text-[var(--color-primary)]">{product.unit}</span>
+                Dijual per{' '}
+                <span className="text-[var(--color-primary)]">
+                  {product.unit}
+                </span>
               </div>
 
               {/* Description (only if available) */}
@@ -236,8 +239,8 @@ export default function ProductDetail() {
                         );
                         openCart();
                       }}
-                      className="group w-full sm:w-auto px-10 py-5 rounded-full bg-transparent border border-white/20 text-[var(--color-primary)] font-heading font-bold text-xs uppercase tracking-widest hover:border-white hover:text-[var(--color-accent-contrast)] transition-colors duration-500 flex items-center justify-center"
-                      fillColor="bg-[var(--color-accent)]"
+                      className="group w-full sm:w-auto px-10 py-5 rounded-full bg-transparent border border-white/20 text-[var(--color-primary)] font-heading font-bold text-xs uppercase tracking-widest hover:border-white hover:text-cream transition-colors duration-500 flex items-center justify-center"
+                      fillColor="bg-forest"
                     >
                       {`+ Tambah ${quantity > 1 ? `${quantity} ` : ''}ke Keranjang`}
                     </AnimatedButton>

@@ -9,13 +9,13 @@ export default function Contact() {
       <div className="w-full px-6 flex-1 flex flex-col md:flex-row gap-12 md:gap-24">
         {/* Left: Large Portrait Image */}
         <div className="w-full md:w-1/2 flex-1 relative rounded-2xl md:rounded-[2rem] overflow-hidden bg-[var(--color-surface)] min-h-[50vh] md:min-h-full">
-          {/* Using a placeholder aesthetic image to match the reference look */}
+          {/* Portrait of Mbah Manto */}
           <img
-            src="https://images.unsplash.com/photo-1600607688969-a5bfcd64bd40?q=80&w=1400&auto=format&fit=crop"
-            alt="Warung Mbah Manto"
-            className="absolute inset-0 w-full h-full object-cover mix-blend-luminosity opacity-80"
+            src="/mbahe.jpg"
+            alt="Mbah Manto"
+            className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg)] via-transparent to-transparent opacity-60" />
         </div>
 
         {/* Right: Massive Typography & CTA */}
@@ -30,10 +30,10 @@ export default function Contact() {
 
           <AnimatedButton
             as="a"
-            href="https://wa.me/62882003310360"
+            href="https://wa.me/62882006706334"
             target="_blank"
             rel="noopener noreferrer"
-            fillColor="bg-[var(--color-accent)]"
+            fillColor="bg-forest"
             iconRight={
               <svg
                 width="20"
@@ -49,7 +49,7 @@ export default function Contact() {
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             }
-            className="group inline-flex items-center justify-center px-10 py-4 rounded-full border border-[var(--color-primary)] font-heading font-bold text-sm uppercase tracking-widest hover:border-[var(--color-primary)] hover:text-[var(--color-accent-contrast)] transition-colors duration-300"
+            className="group inline-flex items-center justify-center px-10 py-4 rounded-full border border-[var(--color-primary)] font-heading font-bold text-sm uppercase tracking-widest hover:border-[var(--color-primary)] hover:text-cream transition-colors duration-300"
           >
             Hubungi via WhatsApp
           </AnimatedButton>

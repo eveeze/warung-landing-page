@@ -76,7 +76,7 @@ export default function IntroLoader({
             clipPath: 'inset(0 0 100% 0)',
             transition: { duration: 0.8, ease: [0.85, 0, 0.15, 1] },
           }}
-          className="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center"
+          className="fixed inset-0 z-[100] bg-forest-deep flex flex-col items-center justify-center"
         >
           {/* Top-left corner: Warung Mbah Manto */}
           <motion.div
@@ -89,7 +89,7 @@ export default function IntroLoader({
             }}
             className="absolute top-8 left-8 md:left-12"
           >
-            <span className="font-heading text-xs md:text-sm text-white/40 tracking-widest uppercase">
+            <span className="font-heading text-xs md:text-sm text-text-primary/40 tracking-widest uppercase">
               Warung Mbah Manto
             </span>
           </motion.div>
@@ -105,7 +105,7 @@ export default function IntroLoader({
             }}
             className="absolute top-8 right-8 md:right-12"
           >
-            <span className="font-heading text-xs md:text-sm text-white/40 tracking-widest">
+            <span className="font-heading text-xs md:text-sm text-text-primary/40 tracking-widest">
               ©2026
             </span>
           </motion.div>
@@ -130,14 +130,14 @@ export default function IntroLoader({
                   className="flex flex-col items-center gap-6"
                 >
                   {/* Percentage Counter */}
-                  <span className="font-heading font-black text-[clamp(5rem,15vw,12rem)] text-white tracking-tighter leading-none tabular-nums">
+                  <span className="font-heading font-black text-[clamp(5rem,15vw,12rem)] text-text-primary tracking-tighter leading-none tabular-nums">
                     {count}
                   </span>
 
                   {/* Progress bar */}
-                  <div className="w-32 md:w-48 h-[2px] bg-white/10 rounded-full overflow-hidden">
+                  <div className="w-32 md:w-48 h-[2px] bg-text-primary/10 rounded-full overflow-hidden">
                     <motion.div
-                      className="h-full bg-white rounded-full"
+                      className="h-full bg-text-primary rounded-full"
                       initial={{ width: '0%' }}
                       animate={{ width: `${count}%` }}
                       transition={{ duration: 0.05 }}
@@ -156,7 +156,7 @@ export default function IntroLoader({
                       variants={letterVariants}
                       initial="hidden"
                       animate="visible"
-                      className="font-heading font-black text-[clamp(4rem,16vw,14rem)] text-white tracking-tighter uppercase leading-none"
+                      className="font-heading font-black text-[clamp(4rem,16vw,14rem)] text-text-primary tracking-tighter uppercase leading-none"
                     >
                       {letter}
                     </motion.span>
@@ -177,7 +177,7 @@ export default function IntroLoader({
             }}
             className="absolute bottom-8 left-0 right-0 flex justify-center"
           >
-            <span className="font-serif italic text-xs md:text-sm text-white/30 tracking-wider">
+            <span className="font-serif italic text-xs md:text-sm text-text-primary/30 tracking-wider">
               Grosir & Eceran Sembako Terpercaya
             </span>
           </motion.div>
@@ -190,13 +190,13 @@ export default function IntroLoader({
             className="absolute inset-8 md:inset-12 pointer-events-none"
           >
             {/* Top-left bracket */}
-            <div className="absolute top-0 left-0 w-8 h-8 border-t-[1px] border-l-[1px] border-white" />
+            <div className="absolute top-0 left-0 w-8 h-8 border-t-[1px] border-l-[1px] border-text-primary" />
             {/* Top-right bracket */}
-            <div className="absolute top-0 right-0 w-8 h-8 border-t-[1px] border-r-[1px] border-white" />
+            <div className="absolute top-0 right-0 w-8 h-8 border-t-[1px] border-r-[1px] border-text-primary" />
             {/* Bottom-left bracket */}
-            <div className="absolute bottom-0 left-0 w-8 h-8 border-b-[1px] border-l-[1px] border-white" />
+            <div className="absolute bottom-0 left-0 w-8 h-8 border-b-[1px] border-l-[1px] border-text-primary" />
             {/* Bottom-right bracket */}
-            <div className="absolute bottom-0 right-0 w-8 h-8 border-b-[1px] border-r-[1px] border-white" />
+            <div className="absolute bottom-0 right-0 w-8 h-8 border-b-[1px] border-r-[1px] border-text-primary" />
           </motion.div>
         </motion.div>
       ) : null}

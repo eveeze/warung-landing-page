@@ -60,7 +60,7 @@ export default function FeaturedWorks() {
             <Link href="/belanja" className="inline-block">
               <AnimatedButton
                 as="span"
-                fillColor="bg-[var(--color-accent)]"
+                fillColor="bg-forest"
                 iconRight={
                   <svg
                     width="16"
@@ -76,7 +76,7 @@ export default function FeaturedWorks() {
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
                 }
-                className="group inline-flex items-center justify-center px-8 py-3 rounded-full border border-[var(--color-primary)] font-heading font-bold text-xs uppercase tracking-widest hover:border-[var(--color-primary)] hover:text-[var(--color-accent-contrast)] transition-colors duration-300"
+                className="group inline-flex items-center justify-center px-8 py-3 rounded-full border border-[var(--color-primary)] font-heading font-bold text-xs uppercase tracking-widest hover:border-[var(--color-primary)] hover:text-cream transition-colors duration-300"
               >
                 Jelajahi Katalog
               </AnimatedButton>

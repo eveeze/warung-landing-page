@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -15,28 +15,50 @@ import Footer from '@/components/Footer';
 import IntroLoader from '@/components/IntroLoader';
 
 export default function HomeClient() {
-  const [introComplete, setIntroComplete] = useState(false);
+  // 3-State logic to perfectly handle hydration without visually flashing the UI
+  const [introState, setIntroState] = useState<'pending' | 'playing' | 'done'>(
+    'pending',
+  );
+
+  useEffect(() => {
+    // Only run physically in the browser
+    const hasPlayed = sessionStorage.getItem('introPlayed');
+    if (hasPlayed) {
+      setIntroState('done'); // Skip intro gracefully
+    } else {
+      setIntroState('playing'); // Start intro
+    }
+  }, []);
 
   const handleIntroComplete = useCallback(() => {
-    setIntroComplete(true);
+    sessionStorage.setItem('introPlayed', 'true');
+    setIntroState('done');
   }, []);
 
   return (
     <>
-      {/* Intro Loader */}
+      {/* Intro Overlay Manager */}
       <AnimatePresence>
-        {!introComplete && <IntroLoader onComplete={handleIntroComplete} />}
+        {introState === 'pending' && (
+          <motion.div
+            key="pending"
+            className="fixed inset-0 z-[100] bg-forest-deep"
+          />
+        )}
+        {introState === 'playing' && (
+          <IntroLoader key="intro-loader" onComplete={handleIntroComplete} />
+        )}
       </AnimatePresence>
 
       {/* Main Page Content */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={introComplete ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        animate={{ opacity: introState === 'done' ? 1 : 0 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
         <Navbar />
         <main>
-          <Hero introComplete={introComplete} />
+          <Hero introComplete={introState === 'done'} />
           <About />
           <Categories />
           <FeaturedWorks />

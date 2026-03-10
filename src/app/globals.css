@@ -185,3 +185,28 @@ h6 {
   animation: marquee-half 25s linear infinite;
   will-change: transform;
 }
+
+/* Theme View Transition Classes */
+html.theme-transition::view-transition-group(root) {
+  animation-timing-function: var(--ease-premium);
+  animation-duration: 1.5s;
+}
+
+html.theme-transition::view-transition-old(root) {
+  animation: none;
+  z-index: 1;
+}
+
+html.theme-transition::view-transition-new(root) {
+  animation: wipe-down 1.5s var(--ease-premium) both;
+  z-index: 2;
+}
+
+@keyframes wipe-down {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}

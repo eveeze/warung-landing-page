@@ -39,7 +39,7 @@ export default function CartDrawer() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
             onClick={closeCart}
-            className="fixed inset-0 z-50 bg-text-primary/60 backdrop-blur-md"
+            className="fixed inset-0 z-50 bg-black/60 backdrop-blur-md"
           />
 
           {/* Drawer */}
@@ -51,7 +51,7 @@ export default function CartDrawer() {
             className="fixed right-0 top-0 bottom-0 z-50 w-full max-w-md bg-surface border-l border-border shadow-[-30px_0_80px_-20px_rgba(0,0,0,0.15)] flex flex-col"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-8 py-8 border-b border-border">
+            <div className="flex items-center justify-between px-6 md:px-8 py-6 md:py-8 border-b border-border">
               <div>
                 <h2 className="font-heading font-black text-2xl uppercase tracking-tighter">
                   Keranjang
@@ -69,7 +69,7 @@ export default function CartDrawer() {
             </div>
 
             {/* Items */}
-            <div className="flex-1 overflow-y-auto px-8 py-6 custom-scrollbar">
+            <div className="flex-1 overflow-y-auto px-6 md:px-8 py-6 custom-scrollbar">
               {items.length === 0 ? (
                 <div className="flex flex-col items-center justify-center h-full text-center">
                   <div className="w-16 h-16 rounded-full border border-border flex items-center justify-center mb-6">
@@ -184,7 +184,7 @@ export default function CartDrawer() {
 
             {/* Footer — Checkout */}
             {items.length > 0 && (
-              <div className="border-t border-border px-8 py-8 space-y-8 bg-surface">
+              <div className="border-t border-border px-6 md:px-8 py-6 md:py-8 space-y-6 md:space-y-8 bg-surface">
                 {/* Total */}
                 <div className="flex items-end justify-between">
                   <span className="text-xs text-text-muted font-heading uppercase tracking-[0.3em] font-medium">
@@ -226,8 +226,8 @@ export default function CartDrawer() {
                       className="relative z-10"
                     />
                   }
-                  fillColor="bg-[var(--color-accent)]"
-                  className="group w-full flex items-center justify-center gap-3 bg-[var(--color-surface)] border border-[var(--color-primary)]/10 hover:text-[var(--color-accent-contrast)] font-heading font-black text-xs tracking-[0.2em] uppercase py-5 transition-colors duration-500 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-[var(--color-surface)] disabled:hover:text-[var(--color-primary)]"
+                  fillColor="bg-forest"
+                  className="group w-full flex items-center justify-center gap-3 bg-[var(--color-surface)] border border-[var(--color-primary)]/10 hover:text-cream font-heading font-black text-xs tracking-[0.2em] uppercase py-5 transition-colors duration-500 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-[var(--color-surface)] disabled:hover:text-[var(--color-primary)]"
                 >
                   Checkout via WA
                 </AnimatedButton>

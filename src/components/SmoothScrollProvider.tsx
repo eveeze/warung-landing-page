@@ -18,23 +18,32 @@ export default function SmoothScrollProvider({
     isLenisInitialized.current = true;
 
     const lenis = new Lenis({
-      lerp: 0.08, // Dynamic linear interpolation for Framer-like vibes instead of hardcoded duration
+      lerp: 0.04, // Lower lerp for a much heavier, buttery smooth "Framer" feel
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1.1, // Slightly faster wheel mapping
-      touchMultiplier: 2, // Make touch feel a bit faster/responsive
+      wheelMultiplier: 0.8, // Slightly slower wheel mapping for elegance
+      touchMultiplier: 1.5, // Balance touch input
     });
+
+    // Expose lenis globally for use in other components like the "Back to Top" button
+    (window as any).lenis = lenis;
+
+    let rafId: number;
 
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     return () => {
+      if (rafId) cancelAnimationFrame(rafId);
       lenis.destroy();
+      if ((window as any).lenis === lenis) {
+        delete (window as any).lenis;
+      }
       isLenisInitialized.current = false;
     };
   }, []);

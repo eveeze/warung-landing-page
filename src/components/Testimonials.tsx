@@ -149,8 +149,8 @@ export default function Testimonials() {
           <AnimatedButton
             href="#contact"
             as="a"
-            fillColor="bg-[var(--color-accent)]"
-            className="group inline-flex items-center justify-center px-6 md:px-8 py-3 rounded-[2rem] border-2 border-[var(--color-primary)]/20 bg-[var(--color-bg)]/40 backdrop-blur-md font-heading font-bold text-xs md:text-sm uppercase tracking-widest hover:border-[var(--color-primary)] hover:text-[var(--color-accent-contrast)] transition-colors duration-500 shadow-[0_0_0_rgba(255,255,255,0)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]"
+            fillColor="bg-forest"
+            className="group inline-flex items-center justify-center px-6 md:px-8 py-3 rounded-[2rem] border-2 border-[var(--color-primary)]/20 bg-[var(--color-bg)]/40 backdrop-blur-md font-heading font-bold text-xs md:text-sm uppercase tracking-widest hover:border-[var(--color-primary)] hover:text-cream transition-colors duration-500 shadow-[0_0_0_rgba(255,255,255,0)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]"
           >
             Hubungi Kami
           </AnimatedButton>

@@ -81,7 +81,7 @@ export default function Categories() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
-            className="font-heading font-medium text-[clamp(4rem,8vw,8rem)] text-text-primary transition-colors duration-700 leading-[0.9] tracking-tighter will-change-[opacity,transform]"
+            className="font-heading font-medium text-[clamp(4rem,8vw,8rem)] text-text-primary transition-colors duration-700 leading-[0.9] tracking-tighter"
           >
             Penuhi Kebutuhan <br className="hidden md:block" />
             <span className="text-text-muted transition-colors duration-700">
@@ -120,71 +120,70 @@ export default function Categories() {
           </motion.div>
         </div>
 
-        {/* Categories Premium 2x2 Grid */}
+        {/* Categories Framer-Vibe Accordion Hover */}
         <motion.div
-          variants={containerVars}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 will-change-[opacity]"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{
+            duration: 0.8,
+            ease: [0.16, 1, 0.3, 1] as const,
+            delay: 0.2,
+          }}
+          className="flex flex-col md:flex-row gap-4 lg:gap-6 h-[700px] md:h-[600px] w-full"
         >
           {categories.map((cat, idx) => (
-            <motion.div
+            <Link
               key={cat.id}
-              variants={itemVars}
-              className="will-change-[opacity,transform]"
+              href={`/belanja?kategori=${cat.id}`}
+              className="group relative flex-1 hover:flex-[3] md:hover:flex-[4] transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden rounded-[2rem] border border-border/50 bg-surface block-layer outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-4 focus-visible:ring-offset-forest-deep min-w-0"
             >
-              <Link
-                href={`/belanja?kategori=${cat.id}`}
-                className="group block relative w-full aspect-[4/3] md:aspect-[1/1] xl:aspect-[4/3] rounded-[2rem] overflow-hidden bg-surface p-2 border border-border/50 focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-4 focus-visible:ring-offset-forest-deep outline-none transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 block-layer"
-              >
-                {/* Inner Image Container */}
-                <div className="relative w-full h-full rounded-[1.5rem] overflow-hidden transform-gpu">
-                  <img
-                    src={cat.image}
-                    alt={`Kategori ${cat.name}`}
-                    className="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-80 group-hover:scale-105 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform"
-                    loading={idx > 1 ? 'lazy' : 'eager'}
-                  />
+              {/* Image Layer */}
+              <div className="absolute inset-0 w-full h-full bg-surface">
+                <img
+                  src={cat.image}
+                  alt={`Kategori ${cat.name}`}
+                  loading={idx > 1 ? 'lazy' : 'eager'}
+                  className="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-80 transition-[filter,opacity,transform] duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                />
+                {/* Gradient vignette for text readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent group-hover:from-text-primary/95 group-hover:via-text-primary/40 group-hover:to-transparent transition-colors duration-700 opacity-90" />
+              </div>
 
-                  {/* Vignette Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent opacity-90 group-hover:opacity-40 transition-opacity duration-700 group-hover:bg-text-primary/10" />
-
-                  {/* Content Container */}
-                  <div className="absolute inset-x-0 bottom-0 p-6 md:p-8 flex flex-col justify-end">
-                    <div className="flex flex-col transform group-hover:-translate-y-2 transition-transform duration-700 ease-[0.16,1,0.3,1]">
-                      {/* Pill Badge */}
-                      <div className="mb-4">
-                        <span className="inline-flex items-center px-4 py-1.5 bg-surface/95 rounded-full text-[10px] md:text-xs font-heading font-medium text-text-primary uppercase tracking-widest border border-border group-hover:bg-forest group-hover:text-cream transition-colors duration-500">
-                          {cat.count}
-                        </span>
-                      </div>
-
-                      {/* Category Name with Slide Arrow */}
-                      <div className="flex items-end justify-between overflow-hidden">
-                        <h3 className="font-heading font-black text-4xl md:text-5xl lg:text-7xl tracking-tighter leading-none mb-0 text-text-primary group-hover:text-forest transition-colors duration-500 drop-shadow-sm">
-                          {cat.name}
-                        </h3>
-                        <div className="translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 ease-[0.16,1,0.3,1] pb-2 md:pb-4 text-forest">
-                          <svg
-                            width="32"
-                            height="32"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            className="w-8 h-8 md:w-12 md:h-12"
-                            stroke="currentColor"
-                            strokeWidth="1.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          >
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                          </svg>
-                        </div>
-                      </div>
+              {/* Content Layer */}
+              <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
+                <div className="flex w-full items-end justify-between transition-transform duration-700 ease-[0.16,1,0.3,1] translate-y-2 group-hover:translate-y-0">
+                  <div className="flex flex-col gap-3 relative z-10 w-full md:w-auto">
+                    {/* Badge */}
+                    <div className="w-fit">
+                      <span className="inline-flex items-center px-4 py-1.5 bg-surface/95 rounded-full text-[10px] md:text-xs font-heading font-medium text-text-primary uppercase tracking-widest border border-border group-hover:bg-forest group-hover:text-cream group-hover:border-forest transition-colors duration-500 shadow-sm md:shadow-none">
+                        {cat.count}
+                      </span>
                     </div>
+
+                    {/* Title */}
+                    <h3 className="font-heading font-black text-3xl md:text-4xl lg:text-5xl tracking-tighter leading-none text-text-primary group-hover:text-surface transition-colors duration-500 whitespace-nowrap drop-shadow-sm min-w-max">
+                      {cat.name}
+                    </h3>
+                  </div>
+
+                  {/* Arrow Icon */}
+                  <div className="hidden md:flex flex-shrink-0 w-12 h-12 rounded-full border border-forest/30 bg-surface/10 items-center justify-center text-forest group-hover:bg-forest group-hover:text-cream group-hover:border-forest opacity-0 group-hover:opacity-100 transform origin-left -translate-x-8 group-hover:translate-x-0 transition-all duration-[600ms] ease-[0.16,1,0.3,1]">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
                   </div>
                 </div>
-              </Link>
-            </motion.div>
+              </div>
+            </Link>
           ))}
         </motion.div>
       </div>

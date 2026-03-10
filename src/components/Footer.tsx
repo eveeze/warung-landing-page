@@ -9,7 +9,17 @@ export default function Footer() {
   const ref = useRef<HTMLElement>(null);
 
   const handleScrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const lenis = (window as any).lenis;
+    if (lenis && typeof lenis.scrollTo === 'function') {
+      // Use Lenis for a very slow, elegant scroll-to-top with Framer-like easing
+      lenis.scrollTo(0, {
+        duration: 2.5,
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      });
+    } else {
+      // Fallback
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (

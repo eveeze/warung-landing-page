@@ -6,6 +6,7 @@ import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import SmoothScrollProvider from '@/components/SmoothScrollProvider';
+import PageTransitionWrapper from '@/components/PageTransitionWrapper';
 
 const inter = Inter({
   variable: '--font-body',
@@ -90,7 +91,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="id" suppressHydrationWarning>
       <body
         className={`${interHeading.variable} ${inter.variable} ${playfair.variable} font-body antialiased bg-forest-deep text-text-primary selection:bg-forest selection:text-forest-deep`}
       >
@@ -112,7 +113,7 @@ export default function RootLayout({
                   description:
                     'Warung grosir dan eceran sembako terpercaya sejak 2014. Melayani kebutuhan belanja harian, bumbu dapur, minuman, dan kebutuhan rumah tangga dengan harga jujur dan stok lengkap.',
                   url: 'https://warungmanto.store',
-                  telephone: '+62882003310360',
+                  telephone: '+62882006706334',
                   image: 'https://warungmanto.store/opengraph-image',
                   address: {
                     '@type': 'PostalAddress',
@@ -195,7 +196,9 @@ export default function RootLayout({
                 }),
               }}
             />
-            <CartProvider>{children}</CartProvider>
+            <CartProvider>
+              <PageTransitionWrapper>{children}</PageTransitionWrapper>
+            </CartProvider>
             <Analytics />
             <SpeedInsights />
           </SmoothScrollProvider>

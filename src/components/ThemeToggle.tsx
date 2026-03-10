@@ -22,6 +22,28 @@ export default function ThemeToggle() {
     };
   }, []);
 
+  const toggleTheme = async (e: React.MouseEvent) => {
+    const isDark = resolvedTheme === 'dark';
+    const nextTheme = isDark ? 'light' : 'dark';
+
+    if (!document.startViewTransition) {
+      setTheme(nextTheme);
+      return;
+    }
+
+    document.documentElement.classList.add('theme-transition');
+
+    const transition = document.startViewTransition(() => {
+      const root = document.documentElement;
+      root.setAttribute('data-theme', nextTheme);
+      // Let next-themes also sync its state
+      setTheme(nextTheme);
+    });
+
+    await transition.finished;
+    document.documentElement.classList.remove('theme-transition');
+  };
+
   if (!mounted) {
     return (
       <div className="w-8 h-8 rounded-full border border-border bg-transparent flex items-center justify-center opacity-0" />
@@ -32,7 +54,7 @@ export default function ThemeToggle() {
 
   return (
     <button
-      onClick={() => setTheme(isDark ? 'light' : 'dark')}
+      onClick={toggleTheme}
       className="relative flex items-center justify-center w-8 h-8 rounded-full border border-border/40 hover:border-text-primary transition-colors group overflow-hidden bg-transparent"
       aria-label="Toggle Dark Mode"
     >
