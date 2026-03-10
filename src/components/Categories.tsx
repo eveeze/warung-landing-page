@@ -81,7 +81,7 @@ export default function Categories() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
-            className="font-heading font-medium text-[clamp(4rem,8vw,8rem)] text-text-primary transition-colors duration-700 leading-[0.9] tracking-tighter "
+            className="font-heading font-medium text-[clamp(4rem,8vw,8rem)] text-text-primary transition-colors duration-700 leading-[0.9] tracking-tighter will-change-[opacity,transform]"
           >
             Penuhi Kebutuhan <br className="hidden md:block" />
             <span className="text-text-muted transition-colors duration-700">
@@ -125,22 +125,24 @@ export default function Categories() {
           variants={containerVars}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 will-change-[opacity]"
         >
           {categories.map((cat, idx) => (
-            <motion.div key={cat.id} variants={itemVars}>
+            <motion.div
+              key={cat.id}
+              variants={itemVars}
+              className="will-change-[opacity,transform]"
+            >
               <Link
                 href={`/belanja?kategori=${cat.id}`}
-                className="group block relative w-full aspect-[4/3] md:aspect-[1/1] xl:aspect-[4/3] rounded-[2rem] overflow-hidden bg-surface p-2 border border-border/50 focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-4 focus-visible:ring-offset-forest-deep outline-none shadow-xl hover:shadow-[0_0_40px_rgba(30,58,138,0.15)] transition-all duration-700"
+                className="group block relative w-full aspect-[4/3] md:aspect-[1/1] xl:aspect-[4/3] rounded-[2rem] overflow-hidden bg-surface p-2 border border-border/50 focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-4 focus-visible:ring-offset-forest-deep outline-none transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 block-layer"
               >
                 {/* Inner Image Container */}
-                <div className="relative w-full h-full rounded-[1.5rem] overflow-hidden">
-                  <motion.img
-                    whileHover={{ scale: 1.08 }}
-                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                <div className="relative w-full h-full rounded-[1.5rem] overflow-hidden transform-gpu">
+                  <img
                     src={cat.image}
                     alt={`Kategori ${cat.name}`}
-                    className="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-80 transition-all duration-700"
+                    className="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-80 group-hover:scale-105 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform"
                     loading={idx > 1 ? 'lazy' : 'eager'}
                   />
 
@@ -152,7 +154,7 @@ export default function Categories() {
                     <div className="flex flex-col transform group-hover:-translate-y-2 transition-transform duration-700 ease-[0.16,1,0.3,1]">
                       {/* Pill Badge */}
                       <div className="mb-4">
-                        <span className="inline-flex items-center px-4 py-1.5 bg-surface/80 backdrop-blur-xl rounded-full text-[10px] md:text-xs font-heading font-medium text-text-primary uppercase tracking-widest border border-border group-hover:bg-forest group-hover:text-cream transition-all duration-500">
+                        <span className="inline-flex items-center px-4 py-1.5 bg-surface/95 rounded-full text-[10px] md:text-xs font-heading font-medium text-text-primary uppercase tracking-widest border border-border group-hover:bg-forest group-hover:text-cream transition-colors duration-500">
                           {cat.count}
                         </span>
                       </div>
