@@ -9,6 +9,7 @@ import {
   type ReactNode,
 } from 'react';
 import { calculatePrice, formatRupiah, type PricingTier } from './api';
+import { getWhatsAppNumber } from './secure-contact';
 
 export interface CartItem {
   productId: string;
@@ -152,8 +153,11 @@ export function useCart() {
 export function generateWhatsAppURL(
   cartItems: CartItem[],
   customerInfo: { name: string; address?: string },
-  waNumber = '62882006706334',
+  waNumber?: string,
 ): string {
+  // Get WhatsApp number dari secure utility
+  const phoneNumber = waNumber || getWhatsAppNumber();
+  
   let message = 'Halo Warung Manto! 👋\nSaya ingin memesan:\n\n';
   let grandTotal = 0;
 
@@ -172,5 +176,5 @@ export function generateWhatsAppURL(
   if (customerInfo.name) message += `\nNama: ${customerInfo.name}`;
   if (customerInfo.address) message += `\nAlamat: ${customerInfo.address}`;
 
-  return `https://api.whatsapp.com/send?phone=${waNumber}&text=${encodeURIComponent(message)}`;
+  return `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
 }

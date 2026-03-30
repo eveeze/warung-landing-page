@@ -113,7 +113,6 @@ export default function RootLayout({
                   description:
                     'Warung grosir dan eceran sembako terpercaya sejak 2005. Melayani kebutuhan belanja harian, bumbu dapur, minuman, dan kebutuhan rumah tangga dengan harga jujur dan stok lengkap.',
                   url: 'https://warungmanto.store',
-                  telephone: '+62882006706334',
                   image: 'https://warungmanto.store/opengraph-image',
                   address: {
                     '@type': 'PostalAddress',

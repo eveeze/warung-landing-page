@@ -1,4 +1,7 @@
+'use client';
+
 import AnimatedButton from '@/components/ui/AnimatedButton';
+import { getWhatsAppDirectLink } from '@/lib/secure-contact';
 
 export default function Contact() {
   return (
@@ -30,7 +33,7 @@ export default function Contact() {
 
           <AnimatedButton
             as="a"
-            href="https://wa.me/62882006706334"
+            href={getWhatsAppDirectLink()}
             target="_blank"
             rel="noopener noreferrer"
             fillColor="bg-forest"
